@@ -15,9 +15,10 @@
 #  lng           :float            not null
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  url           :string           not null
 #
 class Business < ApplicationRecord
-    validates :name, :address, :city, :state, :zipcode, :price_range, :lat, :lng, presence: true
+    validates :name, :address, :city, :state, :zipcode, :url, :price_range, :lat, :lng, presence: true
 
     has_many :reviews,
     foreign_key: :business_id,

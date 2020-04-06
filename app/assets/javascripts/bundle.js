@@ -153,107 +153,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _components_root__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/root */ "./frontend/components/root.jsx");
-/* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./store/store */ "./frontend/store/store.js");
-/* harmony import */ var _util_session_api_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./util/session_api_util */ "./frontend/util/session_api_util.js");
+/* harmony import */ var _util_session_api_util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./util/session_api_util */ "./frontend/util/session_api_util.js");
 
 
-
+ // import configureStore from './store/store';
 
 
 document.addEventListener("DOMContentLoaded", function () {
-  var store = Object(_store_store__WEBPACK_IMPORTED_MODULE_3__["default"])();
-  window.dispatch = store.dispatch;
-  window.getState = store.getState;
-  window.signup = _util_session_api_util__WEBPACK_IMPORTED_MODULE_4__["signup"];
-  window.login = _util_session_api_util__WEBPACK_IMPORTED_MODULE_4__["login"];
-  window.logout = _util_session_api_util__WEBPACK_IMPORTED_MODULE_4__["logout"];
+  // const store = configureStore();
+  // window.dispatch = store.dispatch;
+  // window.getState = store.getState;
+  window.signup = _util_session_api_util__WEBPACK_IMPORTED_MODULE_3__["signup"];
+  window.login = _util_session_api_util__WEBPACK_IMPORTED_MODULE_3__["login"];
+  window.logout = _util_session_api_util__WEBPACK_IMPORTED_MODULE_3__["logout"];
   var root = document.getElementById("root");
-  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_root__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    store: store
-  }), root);
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Bench"), root);
 });
-
-/***/ }),
-
-/***/ "./frontend/reducers/entities_reducer.js":
-/*!***********************************************!*\
-  !*** ./frontend/reducers/entities_reducer.js ***!
-  \***********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
-/* harmony import */ var _users_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./users_reducer */ "./frontend/reducers/users_reducer.js");
-/* harmony import */ var _users_reducer__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_users_reducer__WEBPACK_IMPORTED_MODULE_1__);
-
-
-var entitiesReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  users: _users_reducer__WEBPACK_IMPORTED_MODULE_1___default.a
-});
-/* harmony default export */ __webpack_exports__["default"] = (entitiesReducer);
-
-/***/ }),
-
-/***/ "./frontend/reducers/root_reducer.js":
-/*!*******************************************!*\
-  !*** ./frontend/reducers/root_reducer.js ***!
-  \*******************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
-/* harmony import */ var _entities_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./entities_reducer */ "./frontend/reducers/entities_reducer.js");
-
-
-var rootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  entities: _entities_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
-});
-/* harmony default export */ __webpack_exports__["default"] = (rootReducer);
-
-/***/ }),
-
-/***/ "./frontend/reducers/users_reducer.js":
-/*!********************************************!*\
-  !*** ./frontend/reducers/users_reducer.js ***!
-  \********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-
-
-/***/ }),
-
-/***/ "./frontend/store/store.js":
-/*!*********************************!*\
-  !*** ./frontend/store/store.js ***!
-  \*********************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _reducers_root_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../reducers/root_reducer */ "./frontend/reducers/root_reducer.js");
-/* harmony import */ var react_thunk__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-thunk */ "./node_modules/react-thunk/dist/commonjs/index.js");
-/* harmony import */ var react_thunk__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_thunk__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react_logger__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-logger */ "./node_modules/react-logger/index.js");
-/* harmony import */ var react_logger__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_logger__WEBPACK_IMPORTED_MODULE_3__);
-
-
-
-
-
-var configureStore = function configureStore() {
-  var preloadedState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  return Object(react__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers_root_reducer__WEBPACK_IMPORTED_MODULE_1__["default"], preloadedState, Object(react__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(react_thunk__WEBPACK_IMPORTED_MODULE_2___default.a, react_logger__WEBPACK_IMPORTED_MODULE_3___default.a));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (configureStore);
 
 /***/ }),
 
@@ -385,90 +300,6 @@ function _inheritsLoose(subClass, superClass) {
 }
 
 module.exports = _inheritsLoose;
-
-/***/ }),
-
-/***/ "./node_modules/array-slice/index.js":
-/*!*******************************************!*\
-  !*** ./node_modules/array-slice/index.js ***!
-  \*******************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/*!
- * array-slice <https://github.com/jonschlinkert/array-slice>
- *
- * Copyright (c) 2014-2015, Jon Schlinkert.
- * Licensed under the MIT License.
- */
-
-
-
-module.exports = function slice(arr, start, end) {
-  var len = arr.length >>> 0;
-  var range = [];
-
-  start = idx(arr, start);
-  end = idx(arr, end, len);
-
-  while (start < end) {
-    range.push(arr[start++]);
-  }
-  return range;
-};
-
-
-function idx(arr, pos, end) {
-  var len = arr.length >>> 0;
-
-  if (pos == null) {
-    pos = end || 0;
-  } else if (pos < 0) {
-    pos = Math.max(len + pos, 0);
-  } else {
-    pos = Math.min(pos, len);
-  }
-
-  return pos;
-}
-
-/***/ }),
-
-/***/ "./node_modules/console/console.js":
-/*!*****************************************!*\
-  !*** ./node_modules/console/console.js ***!
-  \*****************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(module) {// Avoid `console` errors in environments that lack a console.
-var method;
-var noop = function () {};
-var methods = [
-    'assert', 'clear', 'count', 'debug', 'dir', 'dirxml', 'error',
-    'exception', 'group', 'groupCollapsed', 'groupEnd', 'info', 'log',
-    'markTimeline', 'profile', 'profileEnd', 'table', 'time', 'timeEnd',
-    'timeStamp', 'trace', 'warn'
-];
-var length = methods.length;
-
-while (length--) {
-  method = methods[length];
-
-  // Only stub undefined methods.
-  if (!console[method]) {
-    console[method] = noop;
-  }
-}
-
-if (( true && module !== null) && module.exports) {
-  exports = module.exports = console;
-} else {
-  window.console = console;
-}
-
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../webpack/buildin/module.js */ "./node_modules/webpack/buildin/module.js")(module)))
 
 /***/ }),
 
@@ -28348,36 +28179,6 @@ if (false) {} else {
 
 /***/ }),
 
-/***/ "./node_modules/react-logger/index.js":
-/*!********************************************!*\
-  !*** ./node_modules/react-logger/index.js ***!
-  \********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var slice = __webpack_require__(/*! array-slice */ "./node_modules/array-slice/index.js");
-var console = __webpack_require__(/*! console */ "./node_modules/console/console.js");
-
-var levels = ['log', 'dir', 'error', 'count', 'info'];
-
-var logger = {};
-
-levels.forEach(function (level) {
-  logger[level] = function() {
-    var args = slice(arguments);
-    args.unshift('[' + this.constructor.displayName + ']');
-    console[level].apply(console, args);
-  };
-});
-
-module.exports = logger;
-
-
-/***/ }),
-
 /***/ "./node_modules/react-redux/es/components/Context.js":
 /*!***********************************************************!*\
   !*** ./node_modules/react-redux/es/components/Context.js ***!
@@ -31194,89 +30995,6 @@ if (true) {
 
 //# sourceMappingURL=react-router.js.map
 
-
-/***/ }),
-
-/***/ "./node_modules/react-thunk/dist/commonjs/index.js":
-/*!*********************************************************!*\
-  !*** ./node_modules/react-thunk/dist/commonjs/index.js ***!
-  \*********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var getDisplayName = function getDisplayName(component) {
-    return component.displayName || component.name || 'Component';
-};
-
-var shallowEquals = function shallowEquals(left, right) {
-    return Object.keys(left).length === Object.keys(right).length && Object.keys(left).every(function (leftKey) {
-        return left[leftKey] === right[leftKey];
-    });
-};
-
-var thunk = function thunk(component, pure) {
-    var ReactThunk = (function (_React$Component) {
-        _inherits(ReactThunk, _React$Component);
-
-        function ReactThunk(props) {
-            _classCallCheck(this, ReactThunk);
-
-            var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ReactThunk).call(this, props));
-
-            _this.componentFn = component(props);
-
-            if (typeof _this.componentFn !== 'function') {
-                throw new Error('[react-thunk] component supplied doesn\'t return a function');
-            }
-            return _this;
-        }
-
-        _createClass(ReactThunk, [{
-            key: 'shouldComponentUpdate',
-            value: function shouldComponentUpdate(nextProps) {
-                if (pure) {
-                    return !shallowEqual(this.props, nextProps);
-                }
-
-                return true;
-            }
-        }, {
-            key: 'render',
-            value: function render(props) {
-                return this.componentFn(props);
-            }
-        }]);
-
-        return ReactThunk;
-    })(_react2.default.Component);
-
-    ReactThunk.displayName = 'ReactThunk[' + getDisplayName(component) + ']';
-
-    return ReactThunk;
-};
-
-exports.default = thunk;
 
 /***/ }),
 
@@ -35485,39 +35203,6 @@ module.exports = function(originalModule) {
 		});
 		Object.defineProperty(module, "exports", {
 			enumerable: true
-		});
-		module.webpackPolyfill = 1;
-	}
-	return module;
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/webpack/buildin/module.js":
-/*!***********************************!*\
-  !*** (webpack)/buildin/module.js ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = function(module) {
-	if (!module.webpackPolyfill) {
-		module.deprecate = function() {};
-		module.paths = [];
-		// module.parent = undefined by default
-		if (!module.children) module.children = [];
-		Object.defineProperty(module, "loaded", {
-			enumerable: true,
-			get: function() {
-				return module.l;
-			}
-		});
-		Object.defineProperty(module, "id", {
-			enumerable: true,
-			get: function() {
-				return module.i;
-			}
 		});
 		module.webpackPolyfill = 1;
 	}

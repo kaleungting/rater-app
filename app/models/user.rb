@@ -26,8 +26,8 @@ class User < ApplicationRecord
     foreign_key: :author_id,
     class_name: :Review
 
-    def self.find_by_credentials(username,password)
-        @user = User.find(username: username)
+    def self.find_by_credentials(email,password)
+        @user = User.find_by(email: email)
         return nil unless @user && @user.is_password?(password)
         return @user
     end
@@ -47,11 +47,11 @@ class User < ApplicationRecord
     end
 
     def ensure_session_token
-        self.session_token ||= self.generate_session_token
+        self.session_token ||= self.class.generate_session_token
     end
 
     def reset_session_token!
-        self.update!(session_token: self.generate_session_token)
+        self.update!(session_token: self.class.generate_session_token)
         self.save
         self.session_token
     end
