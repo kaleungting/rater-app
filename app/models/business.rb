@@ -18,8 +18,8 @@
 #  url           :string           not null
 #
 class Business < ApplicationRecord
-    validates :name, :address, :city, :state, :zipcode, :url, :price_range, :lat, :lng, presence: true
-
+    validates :name, :address, :city, :state, :url, :price_range, :lat, :lng, presence: true
+    validates :zipcode, length: { is: 5 }
     has_many :reviews,
     foreign_key: :business_id,
     class_name: :Review
