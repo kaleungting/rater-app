@@ -1,0 +1,19 @@
+.home-main-container {
+  height: 100%;
+  display: block;
+  flex-direction: column;
+  position: absolute;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+  background-image: image-url("burger.jpg");
+  min-width: 100%;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -2;
+}
+
+.footer-img {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
