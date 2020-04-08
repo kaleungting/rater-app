@@ -5,7 +5,8 @@ import { AuthRoute } from "../util/route_util";
 import Homepage from "../components/home_page/home_page";
 import SignupFormContainer from "./session/signup_form_container";
 import LoginFormContainer from "./session/login_form_container";
-import Footer from './footer/footer';
+import BusinessIndexContainer from "./business_index/business_index_container";
+import Footer from "./footer/footer";
 const App = () => (
   <div>
     <header>
@@ -13,7 +14,8 @@ const App = () => (
     </header>
     <AuthRoute path="/login" component={LoginFormContainer} />
     <AuthRoute path="/signup" component={SignupFormContainer} />
-    <Footer/>
+    <Route path="/businesses" component={BusinessIndexContainer} />
+    <Footer />
   </div>
 );
 

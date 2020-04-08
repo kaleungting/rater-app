@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Errors from './errors';
+import Errors from "./errors";
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -35,7 +35,7 @@ class SessionForm extends React.Component {
     this.props.action(user);
   }
 
-  componentDidMount(){
+  componentWillUnmount() {
     this.props.clearErrors();
   }
 
@@ -61,13 +61,17 @@ class SessionForm extends React.Component {
     const signup = (
       <div>
         <div className="errors-container">
-        <Errors errors={this.props.errors} />
+          <Errors errors={this.props.errors} />
         </div>
         <h1>Be a Rater</h1>
         <button className="demo-btn" onClick={this.demoUser}>
           Demo Login
         </button>
-        <div className="hr-line"><hr />OR<hr /></div>
+        <div className="hr-line">
+          <hr />
+          OR
+          <hr />
+        </div>
         <form onSubmit={this.handleSubmit} className="signup-form">
           <div className="full-name">
             <input
@@ -274,7 +278,11 @@ class SessionForm extends React.Component {
         <button className="demo-btn" onClick={this.demoUser}>
           Demo Login
         </button>
-        <div className="hr-line"><hr/>OR<hr/></div>
+        <div className="hr-line">
+          <hr />
+          OR
+          <hr />
+        </div>
         <form onSubmit={this.handleSubmit} className="login-form">
           <input
             type="email"
@@ -305,10 +313,7 @@ class SessionForm extends React.Component {
         <div className="session-form-container">
           <div className="session-form">{display}</div>
           <div className="session-form-img">
-            <img
-              src={signupIllustration}
-              alt="signup-illustration"
-            />
+            <img src={signupIllustration} alt="signup-illustration" />
           </div>
         </div>
       </>
