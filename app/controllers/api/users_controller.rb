@@ -6,15 +6,14 @@ class Api::UsersController < ApplicationController
             login!(@user)
             render :show
         else
-            render json: @user.errors.full_messages, status: 404 
+            render json: @user.errors.full_messages, status: 422 
         end
     end
 
     private
     def user_params
-        params.require(:user).permit(:first_name, :last_name, :email, :password, :zip_code)
+        params.require(:user).permit(:first_name, :last_name, :email, :password, :zip_code, :birthday)
     end
     
 end
 
-# window.signup({email: "user1@gmail.com", password: "password1", first_name: "ken", last_name:"ting", zip_code:"11374"})

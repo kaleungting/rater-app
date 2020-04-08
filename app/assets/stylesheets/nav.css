@@ -1,0 +1,135 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  height: 75px;
+  align-items: center;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.left-nav a {
+  padding: 10px;
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  font-family: sans-serif;
+  font-weight: 700;
+  margin: 0 5px 0 5px;
+}
+
+.right-nav a {
+  padding: 10px;
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  font-family: sans-serif;
+  font-weight: 700;
+  margin: 0 5px 0 5px;
+}
+
+#signup-btn {
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
+#signup-btn:hover {
+  transition-duration: 0.7s;
+  transition-timing-function: linear;
+  border: 1px solid white;
+  border-radius: 5px;
+  background-color: white;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+#login-btn:hover {
+  border-bottom: 2px solid white;
+}
+
+.left-nav a:hover {
+  border-bottom: 2px solid white;
+}
+
+.dropdown-content-container {
+  display: none;
+  position: absolute;
+  min-width: 150px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  color: black;
+  right: 0;
+  border-radius: 2px;
+}
+
+.dropdown-logout-container {
+  border-top: 1px solid #ccc;
+  margin-top: 10px;
+}
+
+.dropdown-logout {
+  margin-right: 59%;
+  padding-top: 10px;
+  cursor: pointer;
+  font-family: sans-serif;
+}
+
+.dropdown-logout:hover {
+  font-weight: bold;
+}
+
+.show {
+  display: block;
+}
+
+.user-dropdown {
+  position: relative;
+  display: inline-block;
+  font-size: 14px;
+}
+
+.dropdown-arrow::after {
+  position: relative;
+  content: " ";
+  left: 96px;
+  bottom: 37px;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 10px solid #f1f1f1;
+}
+
+.dropdown-arrow {
+  height: 0;
+}
+
+.dropdown-content {
+  color: #0073bb;
+  margin-top: 10px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  background-color: #f1f1f1;
+  border-radius: 2px;
+}
+
+.dropdown-user-container {
+  display: flex;
+}
+
+.user-content-container {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  padding: 5px;
+  font-family: sans-serif;
+  justify-content: center;
+}
+
+.btn-user-dropdown {
+  background: transparent;
+  border: none;
+  color: white;
+  opacity: 80%;
+  cursor: pointer;
+}
