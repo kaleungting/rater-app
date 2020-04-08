@@ -1,14 +1,15 @@
 .home-main-container {
-  height: 100%;
+  height: 600px;
   display: block;
   flex-direction: column;
-  position: absolute;
+//   position: absolute;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
   background-image: image-url("burger.jpg");
   min-width: 100%;
   overflow: hidden;
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
   z-index: -2;
 }
 
@@ -17,3 +18,4 @@
   justify-content: center;
   margin: 0 auto;
 }
+
