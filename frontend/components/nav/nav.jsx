@@ -18,10 +18,7 @@ class Nav extends React.Component {
     const rightNav = currentUser ? (
       <div className="right-nav">
         <div className="user-dropdown">
-          <button
-            className="btn-user-dropdown"
-            onClick={this.dropdownHandler}
-          >
+          <button className="btn-user-dropdown" onClick={this.dropdownHandler}>
             {userPic}
           </button>
           <div id="dropdown" className="dropdown-content-container">
@@ -38,7 +35,9 @@ class Nav extends React.Component {
               </div>
 
               <div className="dropdown-logout-container">
-                <div className="dropdown-logout" onClick={logout}>Logout</div>
+                <div className="dropdown-logout" onClick={logout}>
+                  Logout
+                </div>
               </div>
             </div>
           </div>
