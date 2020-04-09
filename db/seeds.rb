@@ -14,7 +14,7 @@ u2 = User.create!({first_name: "Ray", last_name: "Allen", email: "ra20@gmail.com
 u3 = User.create!({first_name: "Paul", last_name: "Pierce", email: "pp34@gmail.com", password: "password1", birthday: "1969-9-28", zip_code: "11373" })
 u4 = User.create!({first_name: "Kevin", last_name: "Garnett", email: "kg5@gmail.com", password: "password1", birthday: "1968-2-15", zip_code: "10010" })
 
-b1 = Business.create!({name: "Curry Lane", address: "abc123", city: "New York City", state: "NY", zipcode: "11374", phone: "888-888-8888", price_range: "$$", opening_hours: "9AM-10PM", lat: 40.752310, lng: -73.985630, url: "abc.com" })
-b1 = Business.create!({name: "Mad For Chicken", address: "abc123", city: "New York City", state: "NY", zipcode: "11374", phone: "888-888-8888", price_range: "$$", opening_hours: "9AM-10PM", lat: 40.752310, lng: -73.985630, url: "abc.com" })
-b1 = Business.create!({name: "Thai Son", address: "abc123", city: "New York City", state: "NY", zipcode: "11374", phone: "888-888-8888", price_range: "$$", opening_hours: "9AM-10PM", lat: 40.752310, lng: -73.985630, url: "abc.com" })
-b1 = Business.create!({name: "Canto Gourmet", address: "abc123", city: "New York City", state: "NY", zipcode: "11374", phone: "888-888-8888", price_range: "$$", opening_hours: "9AM-10PM", lat: 40.752310, lng: -73.985630, url: "abc.com" })
+b1 = Business.create!({name: "Curry Lane", address: "1921 Roosevelt Ave", city: "New York City", state: "NY", zipcode: "11374", phone: "888-888-8888", price_range: "$$", opening_hours: "9AM-10PM", lat: 40.752310, lng: -73.985630, url: "abc.com" })
+b2 = Business.create!({name: "Mad For Chicken", address: "1515 Northern Blvd", city: "New York City", state: "NY", zipcode: "11374", phone: "888-888-8888", price_range: "$$", opening_hours: "9AM-10PM", lat: 40.752310, lng: -73.985630, url: "abc.com" })
+b3 = Business.create!({name: "Thai Son", address: "1312 Broadway", city: "New York City", state: "NY", zipcode: "11374", phone: "888-888-8888", price_range: "$$", opening_hours: "9AM-10PM", lat: 40.752310, lng: -73.985630, url: "abc.com" })
+b4 = Business.create!({name: "Canto Gourmet", address: "888 Main Street", city: "New York City", state: "NY", zipcode: "11374", phone: "888-888-8888", price_range: "$$", opening_hours: "9AM-10PM", lat: 40.752310, lng: -73.985630, url: "abc.com" })

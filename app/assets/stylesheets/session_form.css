@@ -13,7 +13,7 @@
   width: 100%;
   display: flex;
   align-items: center;
-  height: 500px;
+  height: 550px;
   justify-content: center;
   font-family: sans-serif;
   overflow: hidden;
@@ -121,8 +121,21 @@ hr {
 
 .errors-container {
   display: flex;
-  align-items: center;
+  background-color: #fcd6d3;
   color: red;
-  height: 40px;
+  /* height: 45px; */
   border-radius: 5px;
+  justify-content: space-between;
+}
+
+.fa-times {
+  color: rgb(255, 94, 94);
+}
+
+.error-icon {
+  display: flex;
+  position: relative;
+  right: 0;
+  padding-top: 7px;
+  padding-right: 8px;
 }

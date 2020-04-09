@@ -1,0 +1,13 @@
+.business-index-container {
+  display: flex;
+  width: 60%;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.business-index-content {
+  width: 70%;
+}
+
+
+.business-index-container

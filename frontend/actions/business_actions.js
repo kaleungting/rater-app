@@ -20,7 +20,7 @@ export const fetchBusinesses = () => {
   };
 };
 
-export const fetchBusiness = () => (dispatch) =>
-  BusinessApiUtil.fetchBusiness().then((business) =>
+export const fetchBusiness = (businessId) => (dispatch) =>
+  BusinessApiUtil.fetchBusiness(businessId).then((business) =>
     dispatch(receiveBusiness(business))
   );

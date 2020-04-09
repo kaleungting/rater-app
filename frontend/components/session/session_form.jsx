@@ -23,6 +23,7 @@ class SessionForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.dateUpdate = this.dateUpdate.bind(this);
     this.demoUser = this.demoUser.bind(this);
+    this.handleClearErrors = this.handleClearErrors.bind(this);
   }
 
   handleSubmit(e) {
@@ -35,7 +36,12 @@ class SessionForm extends React.Component {
     this.props.action(user);
   }
 
-  componentWillUnmount() {
+  componentDidMount() {
+    this.props.clearErrors();
+  }
+
+  handleClearErrors(e) {
+    e.preventDefault();
     this.props.clearErrors();
   }
 
@@ -58,10 +64,23 @@ class SessionForm extends React.Component {
   }
 
   render() {
+    const { errors } = this.props;
     const signup = (
       <div>
-        <div className="errors-container">
-          <Errors errors={this.props.errors} />
+        <div
+          className={this.props.errors.length === 0 ? "" : "errors-container"}
+        >
+          <ul>
+            {errors.map((error, idx) => (
+              <li key={idx}>{error}.</li>
+            ))}
+          </ul>
+          <div className="error-icon">
+            <i
+              onClick={this.handleClearErrors}
+              className={this.props.errors.length === 0 ? "" : "fas fa-times"}
+            />
+          </div>
         </div>
         <h1>Be a Rater</h1>
         <button className="demo-btn" onClick={this.demoUser}>
@@ -271,8 +290,20 @@ class SessionForm extends React.Component {
 
     const login = (
       <div>
-        <div className="errors-container">
-          <Errors errors={this.props.errors} />
+        <div
+          className={this.props.errors.length === 0 ? "" : "errors-container"}
+        >
+          <ul>
+            {errors.map((error, idx) => (
+              <li key={idx}>{error}.</li>
+            ))}
+          </ul>
+          <div className="error-icon">
+            <i
+              onClick={this.handleClearErrors}
+              className={this.props.errors.length === 0 ? "" : "fas fa-times"}
+            />
+          </div>
         </div>
         <h1>Login</h1>
         <button className="demo-btn" onClick={this.demoUser}>
