@@ -11,7 +11,7 @@
 .business-nav-container {
   display: flex;
   width: 60%;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
 }
 
@@ -158,4 +158,15 @@
   color: white;
   opacity: 80%;
   cursor: pointer;
+}
+
+.business-nav-logo {
+  color: white;
+  font-family: sans-serif;
+  font-size: 20px;
+  margin-right: 30px;
+}
+
+.business-right-nav {
+  margin-left: 30px;
 }
