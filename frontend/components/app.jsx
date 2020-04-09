@@ -15,7 +15,7 @@ const App = () => (
     </header>
     <AuthRoute path="/login" component={LoginFormContainer} />
     <AuthRoute path="/signup" component={SignupFormContainer} />
-    <Route path="/businesses" component={BusinessIndexContainer} />
+    <Route exact path="/businesses" component={BusinessIndexContainer} />
     <Route
       exact
       path="/businesses/:businessId"

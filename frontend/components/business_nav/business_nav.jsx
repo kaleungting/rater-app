@@ -75,10 +75,8 @@ class BusinessNav extends React.Component {
     );
     return (
       <div className="business-nav">
-        <div className="business-nav-container">
-          {searchBar}
-          {rightNav}
-        </div>
+        <div className="business-nav-container">{searchBar}</div>
+        {rightNav}
       </div>
     );
   }

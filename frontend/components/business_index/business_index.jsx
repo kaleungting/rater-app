@@ -26,6 +26,7 @@ class BusinessIndex extends React.Component {
         <BusinessNavContainer />
         <div className="business-index-container">
           <ul className="business-index-content">{businesses}</ul>
+          <div className="business-index-side">Map Goes Here</div>
         </div>
       </>
     );

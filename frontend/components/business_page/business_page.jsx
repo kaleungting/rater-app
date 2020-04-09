@@ -1,4 +1,5 @@
 import React from "react";
+import BusinessNavContainer from "../business_nav/business_nav_container";
 
 class BusinessPage extends React.Component {
   constructor(props) {
@@ -15,14 +16,17 @@ class BusinessPage extends React.Component {
       return <div></div>;
     }
     return (
-      <div className="business-page-container">
-        <h1>{business.name}</h1>
-        <ul>
-          <li>{business.address}</li>
-          <li>{business.state}</li>
-          <li>{business.city}</li>
-          <li>{business.opening_hours}</li>
-        </ul>
+      <div>
+        <BusinessNavContainer />
+        <div className="business-page-container">
+          <h1>{business.name}</h1>
+          <ul>
+            <li>{business.address}</li>
+            <li>{business.state}</li>
+            <li>{business.city}</li>
+            <li>{business.opening_hours}</li>
+          </ul>
+        </div>
       </div>
     );
   }

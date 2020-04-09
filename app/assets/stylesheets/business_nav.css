@@ -10,8 +10,8 @@
 
 .business-nav-container {
   display: flex;
-  width: 720px;
-  justify-content: space-between;
+  width: 60%;
+  justify-content: flex-end;
   align-items: center;
 }
 
