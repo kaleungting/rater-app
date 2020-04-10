@@ -27,7 +27,6 @@ class BusinessPage extends React.Component {
     return (
       <div>
         <BusinessNavContainer />
-<<<<<<< HEAD
         <div className="business-top-container">
           <div className="business-header">
             <h1>{business.name}</h1>
@@ -37,7 +36,6 @@ class BusinessPage extends React.Component {
               <li>{business.city}</li>
               <li>{business.opening_hours}</li>
             </ul>
-=======
         <div className="business-page-container">
           <div className="top-header">
             <div className="top-header-left">
@@ -107,7 +105,6 @@ class BusinessPage extends React.Component {
                 </ul>
               </div>
             </div>
->>>>>>> newbusiness
           </div>
         </div>
       </div>
@@ -116,11 +113,3 @@ class BusinessPage extends React.Component {
 }
 
 export default BusinessPage;
-
-// <div className="business-category">
-//   <ul>
-//     {business.categories.map((category) => {
-//       return <li>{category.category}</li>;
-//     })}
-//   </ul>
-// </div>
