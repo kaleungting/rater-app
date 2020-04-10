@@ -8,7 +8,7 @@
 #
 class BusinessCategory < ApplicationRecord
 
-    belongs_to :cuisine,
+    belongs_to :category,
     foreign_key: :category_id,
     class_name: :Category
 

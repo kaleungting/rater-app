@@ -80,8 +80,8 @@ class BusinessNav extends React.Component {
           <div className="business-nav-container">
             <div className="business-nav-logo">Rater</div>
             {searchBar}
+            {rightNav}
           </div>
-          {rightNav}
         </div>
         <SubNav />
       </div>

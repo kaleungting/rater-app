@@ -5,6 +5,7 @@
   align-items: center;
   width: 60%;
   margin: 0 auto;
+  min-width: 500px;
 }
 
 .left-nav a {
