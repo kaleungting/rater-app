@@ -29,13 +29,6 @@ class BusinessPage extends React.Component {
         <BusinessNavContainer />
         <div className="business-top-container">
           <div className="business-header">
-            <h1>{business.name}</h1>
-            <ul>
-              <li>{business.address}</li>
-              <li>{business.state}</li>
-              <li>{business.city}</li>
-              <li>{business.opening_hours}</li>
-            </ul>
             <div className="business-page-container">
               <div className="top-header">
                 <div className="top-header-left">
@@ -76,33 +69,33 @@ class BusinessPage extends React.Component {
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="top-sub-header">
-              <div className="map-container">
-                <div className="business-location">Map</div>
-                <div>
-                  <ul className="business-info">
-                    <li>
-                      <i className="material-icons">place</i>
-                      {business.address}
-                    </li>
-                    <li>
-                      <i className="material-icons">k</i>
-                      {business.city}, {business.state}, {business.zipcode}
-                    </li>
-                    <li>
-                      <i className="material-icons">directions</i>
-                      <a href="/">Get directions</a>
-                    </li>
-                    <li>
-                      <i className="material-icons">phone</i>
-                      {business.phone}
-                    </li>
-                    <li>
-                      <i className="material-icons">open_in_browser</i>
-                      <a href="">{business.url}</a>
-                    </li>
-                  </ul>
+              <div className="top-sub-header">
+                <div className="map-container">
+                  <div className="business-location">Map</div>
+                  <div>
+                    <ul className="business-info">
+                      <li>
+                        <i className="material-icons">place</i>
+                        {business.address}
+                      </li>
+                      <li>
+                        <i className="material-icons">k</i>
+                        {business.city}, {business.state}, {business.zipcode}
+                      </li>
+                      <li>
+                        <i className="material-icons">directions</i>
+                        <a href="/">Get directions</a>
+                      </li>
+                      <li>
+                        <i className="material-icons">phone</i>
+                        {business.phone}
+                      </li>
+                      <li>
+                        <i className="material-icons">open_in_browser</i>
+                        <a href="">{business.url}</a>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
