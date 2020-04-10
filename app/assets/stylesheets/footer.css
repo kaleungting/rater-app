@@ -29,14 +29,14 @@ ul {
 
 ul a {
   text-decoration: none;
-  font-family: sans-serif;
+  /* font-family: sans-serif; */
   font-size: 14px;
   color: #0073bb;
 }
 
 ul a:hover {
   text-decoration: none;
-  font-family: sans-serif;
+  /* font-family: sans-serif; */
   font-size: 14px;
   color: #0073bb;
   border-bottom: 0.5px solid #0073bb;
@@ -65,6 +65,6 @@ ul li {
 .topic {
   color: red;
   font-weight: bold;
-  font-family: sans-serif;
+  /* font-family: sans-serif; */
   margin: 0px 0px 12px 0px;
 }

@@ -13,7 +13,7 @@
   text-decoration: none;
   color: white;
   font-size: 16px;
-  font-family: sans-serif;
+  /* font-family: sans-serif; */
   font-weight: 700;
   margin: 0 5px 0 5px;
 }
@@ -23,7 +23,7 @@
   text-decoration: none;
   color: white;
   font-size: 16px;
-  font-family: sans-serif;
+  /* font-family: sans-serif; */
   font-weight: 700;
   margin: 0 5px 0 5px;
 }
@@ -71,7 +71,7 @@
   margin-right: 59%;
   padding-top: 10px;
   cursor: pointer;
-  font-family: sans-serif;
+  /* font-family: sans-serif; */
 }
 
 .dropdown-logout:hover {
@@ -123,7 +123,7 @@
   align-items: center;
   text-align: center;
   padding: 5px;
-  font-family: sans-serif;
+  /* font-family: sans-serif; */
   justify-content: center;
 }
 

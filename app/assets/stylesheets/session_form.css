@@ -15,7 +15,7 @@
   align-items: center;
   height: 550px;
   justify-content: center;
-  font-family: sans-serif;
+  /* font-family: sans-serif; */
   overflow: hidden;
   padding: 0 0 50px 0;
 }
@@ -27,7 +27,7 @@
   color: white;
   font-size: 40px;
   height: 70px;
-  font-family: sans-serif;
+  /* font-family: sans-serif; */
   justify-content: center;
   align-items: center;
   /* margin-bottom: 60px; */

@@ -15,6 +15,7 @@
  */
 html {
   height: 100%;
+  font-family: "Open Sans", sans-serif;
 }
 body {
   margin: 0;
@@ -27,16 +28,7 @@ body {
   color: white;
   background-color: navy;
 }
-/* 
-.home-main-container {
-  height: 100%;
-  display: block;
-  flex-direction: column;
-  position: absolute;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
-  min-width: 100%;
-  overflow: hidden;
-  background-repeat: no-repeat;
-  background-size: cover;
-  z-index: -2;
+
+/* div {
+  border: 1px solid red;
 } */
