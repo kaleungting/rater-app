@@ -63,6 +63,10 @@
   justify-content: center;
 }
 
+.sub-nav-left li:hover {
+  background-color: rgb(245, 245, 245);
+}
+
 .sub-nav-left li a {
   display: flex;
   align-items: center;
@@ -136,4 +140,9 @@ li.sub-nav-left:first-child {
 .sub-nav-contact:hover .contact-popup {
   visibility: visible;
   opacity: 1;
+}
+
+.contact-popup li:hover,
+.sites-popup li:hover {
+  color: #0073bb;
 }

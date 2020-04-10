@@ -18,14 +18,16 @@ class BusinessPage extends React.Component {
     return (
       <div>
         <BusinessNavContainer />
-        <div className="business-page-container">
-          <h1>{business.name}</h1>
-          <ul>
-            <li>{business.address}</li>
-            <li>{business.state}</li>
-            <li>{business.city}</li>
-            <li>{business.opening_hours}</li>
-          </ul>
+        <div className="business-top-container">
+          <div className="business-header">
+            <h1>{business.name}</h1>
+            <ul>
+              <li>{business.address}</li>
+              <li>{business.state}</li>
+              <li>{business.city}</li>
+              <li>{business.opening_hours}</li>
+            </ul>
+          </div>
         </div>
       </div>
     );
