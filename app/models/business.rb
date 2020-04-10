@@ -28,7 +28,7 @@ class Business < ApplicationRecord
     foreign_key: :business_id,
     class_name: :BusinessCategory
 
-    has_many :cuisine_types,
+    has_many :categories,
     through: :business_categories,
-    source: :cuisines
+    source: :category
 end

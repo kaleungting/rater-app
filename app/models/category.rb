@@ -2,12 +2,12 @@
 #
 # Table name: categories
 #
-#  id           :bigint           not null, primary key
-#  cuisine_type :string           not null
+#  id       :bigint           not null, primary key
+#  category :string           not null
 #
 class Category < ApplicationRecord
 
-    validates :cuisine_type, presence: true
+    validates :category, presence: true
 
     has_many :business_categories,
     foreign_key: :category_id,

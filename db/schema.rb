@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_07_052304) do
+ActiveRecord::Schema.define(version: 2020_04_10_012301) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2020_04_07_052304) do
   end
 
   create_table "categories", force: :cascade do |t|
-    t.string "cuisine_type", null: false
+    t.string "category", null: false
   end
 
   create_table "reviews", force: :cascade do |t|
