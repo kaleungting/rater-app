@@ -52,9 +52,11 @@
   margin: 0 auto;
   align-items: center;
   height: 100px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
-.business-detail {
+.business-address {
   display: flex;
 }
 
@@ -124,6 +126,10 @@
   width: 300px;
 }
 
+.business-location {
+  width: 300px;
+  height: 150px;
+}
 .business-info {
   text-align: left;
   padding: 0;

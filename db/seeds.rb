@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'open-uri'
 
 User.destroy_all
 Business.destroy_all
@@ -45,5 +46,28 @@ bc8 = BusinessCategory.create!({business_id: b5.id, category_id:c1.id})
 bc9 = BusinessCategory.create!({business_id: b5.id, category_id:c2.id})
 bc10 = BusinessCategory.create!({business_id: b5.id, category_id:c6.id})
 
+cl_pp = open('https://rater-app-seed.s3.amazonaws.com/businesses/curry_lane/curry_lane_profile_pic.jpg')
+cl_p1 = open('https://rater-app-seed.s3.amazonaws.com/businesses/curry_lane/curry_lane_photo1.jpg')
+mfc_pp = open('https://rater-app-seed.s3.amazonaws.com/businesses/mfc/mfc_profile_picture.jpg')
+mfc_p1 = open('https://rater-app-seed.s3.amazonaws.com/businesses/mfc/mfc_photo1.jpg')
+mfc_p2 = open('https://rater-app-seed.s3.amazonaws.com/businesses/mfc/mfc_photo2.jpg')
+cg_pp = open('https://rater-app-seed.s3.amazonaws.com/businesses/canton_gourmet/cg_profile_pic.jpg')
+cg1 = open('https://rater-app-seed.s3.amazonaws.com/businesses/canton_gourmet/cg_photo1.jpg')
+ch_pp = open('https://rater-app-seed.s3.amazonaws.com/businesses/coffeehaus/ch_profile_pic.jpg')
+ch1 = open('https://rater-app-seed.s3.amazonaws.com/businesses/coffeehaus/ch_photo1.jpg')
+ts_pp = open('https://rater-app-seed.s3.amazonaws.com/businesses/thai_son/ts_profile_pic.jpg')
+ts_p1 = open('https://rater-app-seed.s3.amazonaws.com/businesses/thai_son/ts_photo1.jpg')
+ts_p2 = open('https://rater-app-seed.s3.amazonaws.com/businesses/thai_son/ts_photo2.jpg')
 
-
+b1.profile_picture.attach(io: cl_pp, filename: 'cl_pp.jpg')
+b1.photos.attach(io: cl_p1, filename: 'cl_p1.jpg')
+b2.profile_picture.attach(io: mfc_pp, filename: 'mfc_pp.jpg')
+b2.photos.attach(io: mfc_p1, filename: 'mfc_p1.jpg')
+b2.photos.attach(io: mfc_p2, filename: 'mfc_p2.jpg')
+b3.profile_picture.attach(io: ts_pp, filename: 'ts_pp.jpg')
+b3.photos.attach(io: ts_p1, filename: 'ts_p1.jpg')
+b3.photos.attach(io: ts_p2, filename: 'ts_p2.jpg')
+b4.profile_picture.attach(io: cg_pp, filename: 'cg_pp.jpg')
+b4.photos.attach(io: cg_p1, filename: 'cg_p1.jpg')
+b5.profile_picture.attach(io: ch_pp, filename: 'ch_pp.jpg')
+b5.photos.attach(io: ch_p1, filename: 'ch_p1.jpg')

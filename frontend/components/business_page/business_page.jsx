@@ -2,7 +2,7 @@ import React from "react";
 import BusinessNavContainer from "../business_nav/business_nav_container";
 import { Link } from "react-router-dom";
 import FakeSidebar from "./fake_side_bar";
-
+import BusinessMap from "../map/business_map";
 class BusinessPage extends React.Component {
   constructor(props) {
     super(props);
@@ -62,7 +62,7 @@ class BusinessPage extends React.Component {
                       </button>
                       <button>
                         <i className="material-icons">share</i>
-                        <span>Add Photo</span>
+                        <span>Share</span>
                       </button>
                       <button>
                         <i className="material-icons">bookmark</i>
@@ -73,7 +73,9 @@ class BusinessPage extends React.Component {
                 </div>
                 <div className="top-sub-header">
                   <div className="map-container">
-                    <div className="business-location">Map</div>
+                    <div className="business-location">
+                      <BusinessMap />
+                    </div>
                     <div>
                       <ul className="business-info">
                         <li>
