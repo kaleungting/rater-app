@@ -11,3 +11,11 @@ export const fetchBusiness = (businessId) => {
     url: `/api/businesses/${businessId}`,
   });
 };
+
+export const searchBusinesses = (search) => {
+  return $.ajax({
+    method: "GET",
+    url: "/api/businesses/search}",
+    data: { search },
+  });
+};
