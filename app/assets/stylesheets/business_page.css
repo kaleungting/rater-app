@@ -194,3 +194,48 @@ li.sidebar-info-item {
   color: rgb(255, 217, 0);
   font-weight: bolder;
 }
+.business-photos-container ul {
+  display: flex;
+  margin: 0px;
+  padding: 0px;
+}
+
+.business-photos-container {
+  display: flex;
+  align-items: flex-end;
+}
+
+.business-photos-container li {
+  margin: 0px;
+  height: 220px;
+}
+.business-photos {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+}
+
+.business-photos:hover {
+  height: 250px;
+  width: 250px;
+  position: relative;
+  z-index: 1;
+  object-fit: cover;
+  transform: translateY(-15px);
+  transition: all 0.2s ease-out;
+}
+
+#photo1 {
+  height: 250px;
+  width: 250px;
+  position: relative;
+  z-index: 1;
+  object-fit: cover;
+  transform: translateY(-15px);
+  transition: all 0.2s ease-out;
+}
+
+.top-sub-header {
+  display: flex;
+  height: 279px;
+}

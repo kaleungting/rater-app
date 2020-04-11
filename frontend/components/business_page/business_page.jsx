@@ -101,6 +101,21 @@ class BusinessPage extends React.Component {
                       </ul>
                     </div>
                   </div>
+                  <div className="business-photos-container">
+                    <ul>
+                      {business.photos.map((photo, idx) => {
+                        return (
+                          <li key={`${photo}+${idx}`}>
+                            <img
+                              className="business-photos"
+                              id={`photo${idx}`}
+                              src={photo}
+                            ></img>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
                 </div>
               </div>
               <div className="business-main-container">
