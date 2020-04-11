@@ -46,10 +46,10 @@ class BusinessNav extends React.Component {
       </div>
     ) : (
       <div className="business-right-nav">
-        <Link id="login-btn" to="/login">
+        <Link id="bus-login-btn" to="/login">
           Log In
         </Link>
-        <Link id="signup-btn" to="/signup">
+        <Link id="bus-signup-btn" to="/signup">
           Sign Up
         </Link>
       </div>

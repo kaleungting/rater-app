@@ -58,26 +58,26 @@
   border: none;
 }
 
-#signup-btn {
+#bus-signup-btn {
   border: 1px solid white;
   border-radius: 5px;
   font-size: 13px;
 }
 
-#signup-btn:hover {
+#bus-signup-btn:hover {
   border: 1px solid white;
   border-radius: 5px;
   background-color: white;
   color: rgba(0, 0, 0, 0.5);
 }
 
-#login-btn {
+#bus-login-btn {
   border: 1px solid #004875;
   border-radius: 5px;
   font-size: 13px;
 }
 
-#login-btn:hover {
+#bus-login-btn:hover {
   background-color: #004875;
   border-bottom: none;
 }

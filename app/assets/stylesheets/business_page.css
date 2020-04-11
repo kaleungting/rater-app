@@ -216,12 +216,12 @@ li.sidebar-info-item {
 }
 
 .business-photos:hover {
-  height: 250px;
-  width: 250px;
+  height: 230px;
+  width: 230px;
   position: relative;
   z-index: 1;
   object-fit: cover;
-  transform: translateY(-15px);
+  transform: translateY(-5px);
   transition: all 0.2s ease-out;
 }
 
@@ -235,7 +235,18 @@ li.sidebar-info-item {
   transition: all 0.2s ease-out;
 }
 
+#photo1:hover {
+  height: 260px;
+  width: 260px;
+  position: relative;
+  z-index: 1;
+  object-fit: cover;
+  transform: translateY(-15px);
+  transition: all 0.2s ease-out;
+}
+
 .top-sub-header {
   display: flex;
   height: 279px;
 }
+`
