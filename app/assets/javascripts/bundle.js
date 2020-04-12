@@ -90,7 +90,7 @@
 /*!**********************************************!*\
   !*** ./frontend/actions/business_actions.js ***!
   \**********************************************/
-/*! exports provided: RECEIVE_ALL_BUSINESSES, RECEIVE_BUSINESS, fetchBusinesses, fetchBusiness */
+/*! exports provided: RECEIVE_ALL_BUSINESSES, RECEIVE_BUSINESS, fetchBusinesses, fetchBusiness, searchBusinesses */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -99,6 +99,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_BUSINESS", function() { return RECEIVE_BUSINESS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchBusinesses", function() { return fetchBusinesses; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchBusiness", function() { return fetchBusiness; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "searchBusinesses", function() { return searchBusinesses; });
 /* harmony import */ var _util_business_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/business_api_util */ "./frontend/util/business_api_util.js");
 var RECEIVE_ALL_BUSINESSES = "RECEIVE_ALL_BUSINESSES";
 var RECEIVE_BUSINESS = "RECEIVE_BUSINESS";
@@ -129,6 +130,13 @@ var fetchBusiness = function fetchBusiness(businessId) {
   return function (dispatch) {
     return _util_business_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchBusiness"](businessId).then(function (business) {
       return dispatch(receiveBusiness(business));
+    });
+  };
+};
+var searchBusinesses = function searchBusinesses(search) {
+  return function (dispatch) {
+    return _util_business_api_util__WEBPACK_IMPORTED_MODULE_0__["searchBusinesses"](search).then(function (businesses) {
+      return dispatch(receiveAllBusinesses(businesses));
     });
   };
 };
@@ -280,7 +288,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _business_index_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./business_index_item */ "./frontend/components/business_index/business_index_item.jsx");
-/* harmony import */ var _business_nav_business_nav_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../business_nav/business_nav_container */ "./frontend/components/business_nav/business_nav_container.js");
+/* harmony import */ var _business_nav_business_nav__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../business_nav/business_nav */ "./frontend/components/business_nav/business_nav.jsx");
 /* harmony import */ var _map_business_map__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../map/business_map */ "./frontend/components/map/business_map.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -335,7 +343,9 @@ var BusinessIndex = /*#__PURE__*/function (_React$Component) {
           idx: idx + 1
         });
       });
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_business_nav_business_nav_container__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_business_nav_business_nav__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        searchBusinesses: this.props.searchBusinesses
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "business-index-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "business-index-content"
@@ -378,6 +388,9 @@ var mdp = function mdp(dispatch) {
   return {
     fetchBusinesses: function fetchBusinesses() {
       return dispatch(Object(_actions_business_actions__WEBPACK_IMPORTED_MODULE_2__["fetchBusinesses"])());
+    },
+    searchBusinesses: function searchBusinesses(query) {
+      return dispatch(Object(_actions_business_actions__WEBPACK_IMPORTED_MODULE_2__["searchBusinesses"])(query));
     }
   };
 };
@@ -2449,13 +2462,14 @@ var configureStore = function configureStore() {
 /*!********************************************!*\
   !*** ./frontend/util/business_api_util.js ***!
   \********************************************/
-/*! exports provided: fetchBusinesses, fetchBusiness */
+/*! exports provided: fetchBusinesses, fetchBusiness, searchBusinesses */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchBusinesses", function() { return fetchBusinesses; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchBusiness", function() { return fetchBusiness; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "searchBusinesses", function() { return searchBusinesses; });
 var fetchBusinesses = function fetchBusinesses() {
   return $.ajax({
     method: "GET",
@@ -2466,6 +2480,15 @@ var fetchBusiness = function fetchBusiness(businessId) {
   return $.ajax({
     method: "GET",
     url: "/api/businesses/".concat(businessId)
+  });
+};
+var searchBusinesses = function searchBusinesses(search) {
+  return $.ajax({
+    method: "GET",
+    url: "/api/businesses/search}",
+    data: {
+      search: search
+    }
   });
 };
 

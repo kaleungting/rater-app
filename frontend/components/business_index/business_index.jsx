@@ -1,6 +1,6 @@
 import React from "react";
 import BusinessIndexItem from "./business_index_item";
-import BusinessNavContainer from "../business_nav/business_nav_container";
+import BusinessNav from "../business_nav/business_nav";
 import BusinessMap from "../map/business_map";
 
 class BusinessIndex extends React.Component {
@@ -24,7 +24,7 @@ class BusinessIndex extends React.Component {
     });
     return (
       <>
-        <BusinessNavContainer />
+        <BusinessNav searchBusinesses={this.props.searchBusinesses} />
         <div className="business-index-container">
           <ul className="business-index-content">{businesses}</ul>
           <div className="business-index-side">
