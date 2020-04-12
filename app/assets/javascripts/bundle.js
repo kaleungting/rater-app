@@ -323,9 +323,17 @@ var BusinessIndex = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(BusinessIndex);
 
   function BusinessIndex(props) {
+    var _this;
+
     _classCallCheck(this, BusinessIndex);
 
-    return _super.call(this, props);
+    _this = _super.call(this, props);
+    _this.state = {
+      query: "",
+      location: "New York City",
+      price_range: ""
+    };
+    return _this;
   }
 
   _createClass(BusinessIndex, [{
@@ -344,7 +352,9 @@ var BusinessIndex = /*#__PURE__*/function (_React$Component) {
         });
       });
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_business_nav_business_nav__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        searchBusinesses: this.props.searchBusinesses
+        businesses: this.props.businesses,
+        searchBusinesses: this.props.searchBusinesses,
+        fetchBusinesses: this.props.fetchBusinesses
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "business-index-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
@@ -462,8 +472,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _sub_nav_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./sub_nav_container */ "./frontend/components/business_nav/sub_nav_container.js");
-/* harmony import */ var _search_search_bar_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../search/search_bar_container */ "./frontend/components/search/search_bar_container.js");
+/* harmony import */ var _sub_nav__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./sub_nav */ "./frontend/components/business_nav/sub_nav.jsx");
+/* harmony import */ var _search_search_bar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../search/search_bar */ "./frontend/components/search/search_bar.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -582,9 +592,16 @@ var BusinessNav = /*#__PURE__*/function (_React$Component) {
         className: "business-nav-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "business-nav-logo"
-      }, "Rater"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_search_search_bar_container__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      }, "Rater"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_search_search_bar__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        businesses: this.props.businesses,
+        searchBusinesses: this.props.searchBusinesses,
+        fetchBusinesses: this.props.fetchBusinesses,
         placeholder: "sushi, cheap eats, modern"
-      }), rightNav)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_sub_nav_container__WEBPACK_IMPORTED_MODULE_2__["default"], null));
+      }), rightNav)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_sub_nav__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        businesses: this.props.businesses,
+        searchBusinesses: this.props.searchBusinesses,
+        fetchBusinesses: this.props.fetchBusinesses
+      }));
     }
   }]);
 
@@ -692,15 +709,27 @@ var SubNav = /*#__PURE__*/function (_React$Component) {
   _createClass(SubNav, [{
     key: "update",
     value: function update(price_range) {
-      // this.props.searchBusinesses(price);
       this.setState({
         price_range: price_range
+      }); // this.props.searchBusinesses(this.state);
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.setState({
+        query: "",
+        location: "",
+        price_range: ""
       });
     }
   }, {
     key: "componentDidUpdate",
-    value: function componentDidUpdate() {
-      this.props.searchBusinesses(this.state);
+    value: function componentDidUpdate(prevProps, prevState) {
+      var currentState = this.state;
+
+      if (prevState !== currentState) {
+        this.props.searchBusinesses(currentState);
+      }
     }
   }, {
     key: "render",
@@ -715,8 +744,8 @@ var SubNav = /*#__PURE__*/function (_React$Component) {
         className: "sub-nav-left"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "sub-nav-businesses"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#/businesses"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/businesses"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-utensils"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Restaurants")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
@@ -757,34 +786,6 @@ var SubNav = /*#__PURE__*/function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (SubNav);
-
-/***/ }),
-
-/***/ "./frontend/components/business_nav/sub_nav_container.js":
-/*!***************************************************************!*\
-  !*** ./frontend/components/business_nav/sub_nav_container.js ***!
-  \***************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _sub_nav__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./sub_nav */ "./frontend/components/business_nav/sub_nav.jsx");
-/* harmony import */ var _actions_business_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/business_actions */ "./frontend/actions/business_actions.js");
-
-
-
-
-var mdp = function mdp(dispatch) {
-  return {
-    searchBusinesses: function searchBusinesses(query) {
-      return dispatch(Object(_actions_business_actions__WEBPACK_IMPORTED_MODULE_2__["searchBusinesses"])(query));
-    }
-  };
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(null, mdp)(_sub_nav__WEBPACK_IMPORTED_MODULE_1__["default"]));
 
 /***/ }),
 
@@ -1842,8 +1843,7 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     _this.state = {
       query: "",
-      location: "New York City",
-      price_range: ""
+      location: ""
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
@@ -1861,12 +1861,8 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
-      var _this3 = this;
-
       e.preventDefault();
-      this.props.searchBusinesses(this.state).then(function (res) {
-        return _this3.props.history.push("/businesses/search");
-      });
+      this.props.searchBusinesses(this.state);
     }
   }, {
     key: "render",
@@ -1902,40 +1898,6 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(SearchBar));
-
-/***/ }),
-
-/***/ "./frontend/components/search/search_bar_container.js":
-/*!************************************************************!*\
-  !*** ./frontend/components/search/search_bar_container.js ***!
-  \************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _search_bar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./search_bar */ "./frontend/components/search/search_bar.jsx");
-/* harmony import */ var _actions_business_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/business_actions */ "./frontend/actions/business_actions.js");
-
-
-
-
-var msp = function msp(state, ownProps) {
-  return {
-    placeholder: ownProps.placeholder
-  };
-};
-
-var mdp = function mdp(dispatch) {
-  return {
-    searchBusinesses: function searchBusinesses(query) {
-      return dispatch(Object(_actions_business_actions__WEBPACK_IMPORTED_MODULE_2__["searchBusinesses"])(query));
-    }
-  };
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp, mdp)(_search_bar__WEBPACK_IMPORTED_MODULE_1__["default"]));
 
 /***/ }),
 

@@ -14,12 +14,23 @@ class SubNav extends React.Component {
   }
 
   update(price_range) {
-    // this.props.searchBusinesses(price);
     this.setState({ price_range: price_range });
+    // this.props.searchBusinesses(this.state);
   }
 
-  componentDidUpdate() {
-    this.props.searchBusinesses(this.state);
+  componentDidMount() {
+    this.setState({
+      query: "",
+      location: "",
+      price_range: "",
+    });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const currentState = this.state;
+    if (prevState !== currentState) {
+      this.props.searchBusinesses(currentState);
+    }
   }
 
   render() {
@@ -29,10 +40,10 @@ class SubNav extends React.Component {
           <ul className="sub-nav-left">
             <div className="sub-nav-businesses">
               <li>
-                <a href="#/businesses">
+                <Link to="/businesses">
                   <i className="fas fa-utensils"></i>
                   <span>Restaurants</span>
-                </a>
+                </Link>
               </li>
             </div>
             <li className="sub-nav-sites">

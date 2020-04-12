@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import SubNavContainer from "./sub_nav_container";
-import SearchBarContainer from "../search/search_bar_container";
+import SubNav from "./sub_nav";
+import SearchBar from "../search/search_bar";
 
 class BusinessNav extends React.Component {
   constructor(props) {
@@ -80,11 +80,20 @@ class BusinessNav extends React.Component {
         <div className="business-nav">
           <div className="business-nav-container">
             <div className="business-nav-logo">Rater</div>
-            <SearchBarContainer placeholder="sushi, cheap eats, modern" />
+            <SearchBar
+              businesses={this.props.businesses}
+              searchBusinesses={this.props.searchBusinesses}
+              fetchBusinesses={this.props.fetchBusinesses}
+              placeholder="sushi, cheap eats, modern"
+            />
             {rightNav}
           </div>
         </div>
-        <SubNavContainer />
+        <SubNav
+          businesses={this.props.businesses}
+          searchBusinesses={this.props.searchBusinesses}
+          fetchBusinesses={this.props.fetchBusinesses}
+        />
       </div>
     );
   }
