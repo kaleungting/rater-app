@@ -35,9 +35,22 @@ class Business < ApplicationRecord
     has_many_attached :photos
     has_one_attached :profile_picture
 
-    def self.search(query,location)
-        where("lower(categories.category) LIKE :query OR lower(businesses.name) LIKE :query AND lower(businesses.city) LIKE :location", query: "%#{query.downcase}%", location: "%#{location.downcase}%").uniq   
+    # def self.search(query,location)
+    #     where(("lower(categories.category) LIKE :query OR lower(businesses.name) LIKE :query) AND (lower(businesses.city) LIKE :location"), query: "%#{query.downcase}%", location: "%#{location.downcase}%").uniq   
+    # end
+
+    def self.search(query,location,price_range="$")
+        where("(lower(categories.category) LIKE :query OR lower(businesses.name) LIKE :query) AND (lower(businesses.city) LIKE :location) AND (lower(businesses.price_range) LIKE :price_range)", query: "%#{query.downcase}%", location: "%#{location.downcase}%", price_range: "#{price_range}").uniq   
     end
+
+    # def self.search(query,location)
+    #     where("(lower(categories.category) LIKE :query OR lower(businesses.name) LIKE :query) AND (lower(businesses.city) LIKE :location)", query: "%#{query.downcase}%", location: "%#{location.downcase}%").uniq   
+    # end
+
+    # def self.search_price(price_range)
+    #     where("(lower(businesses.price_range) LIKE :price_range)", price_range: "#{price_range}").uniq
+    # end
+
 end
 
 

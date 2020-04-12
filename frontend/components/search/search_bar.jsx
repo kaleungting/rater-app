@@ -7,6 +7,7 @@ class SearchBar extends React.Component {
     this.state = {
       query: "",
       location: "New York City",
+      price_range: "",
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -18,7 +19,6 @@ class SearchBar extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    debugger;
     this.props
       .searchBusinesses(this.state)
       .then((res) => this.props.history.push("/businesses/search"));

@@ -19,13 +19,17 @@ class Api::BusinessesController < ApplicationController
     end
 
     def index
-        @businesses = Business.all
+        if (params[:search])
+            @businesses = Business.joins(:categories).search(params[:search][:query],params[:search][:location],params[:search][:price_range])
+        else 
+            @businesses = Business.all
+        end
     end
 
-    def search
-        @businesses = Business.joins(:categories).search(params[:search][:query],params[:search][:location])
-        render '/api/businesses/index'
-    end
+    # def search
+    #     @businesses = Business.joins(:categories).search(params[:search][:query],params[:search][:location])
+    #     render '/api/businesses/index'
+    # end
 
     private
     def business_params

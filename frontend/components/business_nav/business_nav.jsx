@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import SubNav from "./sub_nav";
+import SubNavContainer from "./sub_nav_container";
 import SearchBarContainer from "../search/search_bar_container";
 
 class BusinessNav extends React.Component {
@@ -84,7 +84,7 @@ class BusinessNav extends React.Component {
             {rightNav}
           </div>
         </div>
-        <SubNav />
+        <SubNavContainer />
       </div>
     );
   }
