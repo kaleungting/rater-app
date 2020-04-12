@@ -18,20 +18,7 @@ class SubNav extends React.Component {
     this.setState({ price_range: price_range });
   }
 
-  componentDidUpdate(prevState) {
-    // const currentState = {
-    //   query: "",
-    //   location: "",
-    //   price_range: "",
-    // };
-    // debugger;
-    // if (prevState !== currentState) {
-    //   this.setState({
-    //     query: "",
-    //     location: "",
-    //     price_range: "",
-    //   });
-    // }
+  componentDidUpdate() {
     this.props.searchBusinesses(this.state);
   }
 

@@ -699,20 +699,7 @@ var SubNav = /*#__PURE__*/function (_React$Component) {
     }
   }, {
     key: "componentDidUpdate",
-    value: function componentDidUpdate(prevState) {
-      // const currentState = {
-      //   query: "",
-      //   location: "",
-      //   price_range: "",
-      // };
-      // debugger;
-      // if (prevState !== currentState) {
-      //   this.setState({
-      //     query: "",
-      //     location: "",
-      //     price_range: "",
-      //   });
-      // }
+    value: function componentDidUpdate() {
       this.props.searchBusinesses(this.state);
     }
   }, {
