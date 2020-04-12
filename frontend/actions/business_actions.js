@@ -25,7 +25,10 @@ export const fetchBusiness = (businessId) => (dispatch) =>
     dispatch(receiveBusiness(business))
   );
 
-export const searchBusinesses = (search) => (dispatch) =>
-  BusinessApiUtil.searchBusinesses(search).then((businesses) =>
-    dispatch(receiveAllBusinesses(businesses))
-  );
+export const searchBusinesses = (search) => {
+  return (dispatch) => {
+    BusinessApiUtil.searchBusinesses(search).then((businesses) => {
+      dispatch(receiveAllBusinesses(businesses));
+    });
+  };
+};

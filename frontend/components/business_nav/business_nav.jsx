@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import SubNav from "./sub_nav";
+import SubNavContainer from "./sub_nav_container";
+import SearchBarContainer from "../search/search_bar_container";
 
 class BusinessNav extends React.Component {
   constructor(props) {
@@ -79,11 +80,11 @@ class BusinessNav extends React.Component {
         <div className="business-nav">
           <div className="business-nav-container">
             <div className="business-nav-logo">Rater</div>
-            {searchBar}
+            <SearchBarContainer placeholder="sushi, cheap eats, modern" />
             {rightNav}
           </div>
         </div>
-        <SubNav />
+        <SubNavContainer />
       </div>
     );
   }

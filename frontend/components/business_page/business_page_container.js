@@ -3,6 +3,7 @@ import { fetchBusiness } from "../../actions/business_actions";
 import BusinessPage from "./business_page";
 
 const msp = (state, ownProps) => {
+  debugger;
   return {
     business: state.entities.businesses[ownProps.match.params.businessId],
   };
