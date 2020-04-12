@@ -1,7 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 
-class SearchBar extends React.Component {
+class HomeSearchBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -18,17 +18,16 @@ class SearchBar extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    debugger;
     this.props
       .searchBusinesses(this.state)
-      .then((res) => this.props.history.push("/businesses/search"));
+      .then(() => this.props.history.push("/businesses/search"));
   }
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit} className="search-bar-nav">
-          <div className="search-container">
+      <div className="home-page-search-container">
+        <form onSubmit={this.handleSubmit} className="home-search-bar-nav">
+          <div className="home-search-container">
             <span>Find</span>
             <input
               type="text"
@@ -37,7 +36,7 @@ class SearchBar extends React.Component {
               placeholder={this.props.placeholder}
             />
           </div>
-          <div className="search-container">
+          <div className="home-search-container">
             <span>Near</span>
             <input
               type="text"
@@ -45,8 +44,8 @@ class SearchBar extends React.Component {
               value={this.state.location}
               placeholder="address or city"
             />
-            <div className="search-submit">
-              <button className="btn-search-submit">
+            <div className="home-search-submit">
+              <button className="home-btn-search-submit">
                 <i className="fas fa-search fa-2x"></i>
               </button>
             </div>
@@ -57,4 +56,4 @@ class SearchBar extends React.Component {
   }
 }
 
-export default withRouter(SearchBar);
+export default withRouter(HomeSearchBar);

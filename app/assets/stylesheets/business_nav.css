@@ -19,12 +19,14 @@
 .search-bar-nav {
   display: flex;
   height: 36px;
+  margin: 0 auto;
 }
 
 .search-container {
   display: flex;
   align-items: center;
   background-color: white;
+  width: 100%;
 }
 
 .search-container span {
@@ -35,10 +37,11 @@
 }
 
 .search-container input {
-  width: 40%;
+  width: 100%;
   border: none;
   outline: none;
   font-size: 14px;
+  color: #8b8b8b;
 }
 
 .business-right-nav a {
