@@ -22,8 +22,13 @@ class Api::BusinessesController < ApplicationController
         @businesses = Business.all
     end
 
+    def search
+        @businesses = Business.joins(:categories).search(params[:search][:query],params[:search][:location])
+        render '/api/businesses/index'
+    end
+
     private
     def business_params
-        params.require(:business).permit(:name, :address, :city, :state, :zipcode, :phone, :price_range, :opening_hours, :lat, :lng, :url)
+        params.require(:business).permit(:name, :address, :city, :state, :zipcode, :phone, :price_range, :opening_hours, :lat, :lng, :url, photos: [])
     end
 end
