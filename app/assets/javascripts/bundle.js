@@ -1692,9 +1692,12 @@ var HomeSearchBar = /*#__PURE__*/function (_React$Component) {
     value: function handleSubmit(e) {
       var _this3 = this;
 
-      e.preventDefault();
-      this.props.searchBusinesses(this.state).then(function () {
-        return _this3.props.history.push("/businesses/search");
+      e.preventDefault(); // this.props
+      //   .searchBusinesses(this.state)
+      //   .then(() => this.props.history.push("/businesses/search"));
+
+      this.props.history.push("/businesses").then(function () {
+        return _this3.props.searchBusinesses(_this3.state);
       });
     }
   }, {

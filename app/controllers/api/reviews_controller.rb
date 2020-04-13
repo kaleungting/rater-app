@@ -5,7 +5,7 @@ class Api::ReviewsController < ApplicationController
             @review.save
             render "/api/businesses/show"
         else
-            render @reviews.errors.full_messages, status 422
+            render @reviews.errors.full_messages, status: 422
         end
     end
 
