@@ -170,9 +170,8 @@
   cursor: pointer;
 }
 
-.business-nav-logo {
+.business-nav-logo a {
   color: white;
-  /* font-family: sans-serif; */
   font-size: 20px;
   margin-right: 30px;
 }

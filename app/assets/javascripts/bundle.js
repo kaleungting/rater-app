@@ -592,7 +592,9 @@ var BusinessNav = /*#__PURE__*/function (_React$Component) {
         className: "business-nav-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "business-nav-logo"
-      }, "Rater"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_search_search_bar__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/"
+      }, "Rater")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_search_search_bar__WEBPACK_IMPORTED_MODULE_3__["default"], {
         businesses: this.props.businesses,
         searchBusinesses: this.props.searchBusinesses,
         fetchBusinesses: this.props.fetchBusinesses,
@@ -725,8 +727,10 @@ var SubNav = /*#__PURE__*/function (_React$Component) {
         className: "fas fa-utensils"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Restaurants")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "sub-nav-sites"
-      }, "Price Range", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "sites-popup"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        "class": "fas fa-dollar-sign"
+      }), "Price Range", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "price-popup"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         onClick: function onClick() {
           return _this2.update("$");
@@ -1696,8 +1700,8 @@ var HomeSearchBar = /*#__PURE__*/function (_React$Component) {
       //   .searchBusinesses(this.state)
       //   .then(() => this.props.history.push("/businesses/search"));
 
-      this.props.history.push("/businesses").then(function () {
-        return _this3.props.searchBusinesses(_this3.state);
+      this.props.searchBusinesses(this.state).then(function () {
+        return _this3.props.history.push("/businesses");
       });
     }
   }, {
@@ -1844,8 +1848,14 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
-      e.preventDefault();
-      this.props.searchBusinesses(this.state);
+      var _this3 = this;
+
+      e.preventDefault(); // debugger;
+
+      this.props.searchBusinesses(this.state).then(function (res) {
+        // debugger;
+        _this3.props.history.push("/businesses/");
+      });
     }
   }, {
     key: "render",

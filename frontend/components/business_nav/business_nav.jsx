@@ -79,7 +79,9 @@ class BusinessNav extends React.Component {
       <div>
         <div className="business-nav">
           <div className="business-nav-container">
-            <div className="business-nav-logo">Rater</div>
+            <div className="business-nav-logo">
+              <Link to="/">Rater</Link>
+            </div>
             <SearchBar
               businesses={this.props.businesses}
               searchBusinesses={this.props.searchBusinesses}

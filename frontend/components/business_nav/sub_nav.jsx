@@ -57,8 +57,9 @@ class SubNav extends React.Component {
               </li>
             </div>
             <li className="sub-nav-sites">
+              <i class="fas fa-dollar-sign"></i>
               Price Range
-              <ul className="sites-popup">
+              <ul className="price-popup">
                 <li onClick={() => this.update("$")}>$</li>
                 <li onClick={() => this.update("$$")}>$$</li>
                 <li onClick={() => this.update("$$$")}>$$$</li>

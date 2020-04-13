@@ -19,7 +19,11 @@ class SearchBar extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.searchBusinesses(this.state);
+    // debugger;
+    this.props.searchBusinesses(this.state).then((res) => {
+      // debugger;
+      this.props.history.push("/businesses/");
+    });
   }
 
   render() {

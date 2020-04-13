@@ -21,9 +21,9 @@ class HomeSearchBar extends React.Component {
     // this.props
     //   .searchBusinesses(this.state)
     //   .then(() => this.props.history.push("/businesses/search"));
-    this.props.history
-      .push("/businesses")
-      .then(() => this.props.searchBusinesses(this.state));
+    this.props
+      .searchBusinesses(this.state)
+      .then(() => this.props.history.push("/businesses"));
   }
 
   render() {
