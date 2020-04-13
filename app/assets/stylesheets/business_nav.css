@@ -170,6 +170,10 @@
   cursor: pointer;
 }
 
+.business-nav-logo img {
+  width: 90px;
+}
+
 .business-nav-logo a {
   color: white;
   font-size: 20px;

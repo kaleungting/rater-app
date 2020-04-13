@@ -75,3 +75,8 @@ ul.business-price-category {
   margin-top: 15px;
   font-size: 5px;
 }
+
+.business-address ul {
+  padding: 0;
+  width: 150px;
+}

@@ -30,16 +30,16 @@ class HomeSearchBar extends React.Component {
     return (
       <div className="home-page-search-container">
         <form onSubmit={this.handleSubmit} className="home-search-bar-nav">
-          <div className="home-search-container">
+          <div className="home-query-container">
             <span>Find</span>
             <input
               type="text"
               value={this.state.query}
               onChange={this.update("query")}
-              placeholder={this.props.placeholder}
+              placeholder="sushi, tapas, noodles..."
             />
           </div>
-          <div className="home-search-container">
+          <div className="home-location-container">
             <span>Near</span>
             <input
               type="text"

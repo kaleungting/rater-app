@@ -4,7 +4,7 @@
     <title>Rater</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= favicon_link_tag '/favicon.ico' %>
+    <%= favicon_link_tag asset_path('icon.png') %>
     <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['MAPS_API_KEY']}" %>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -21,6 +21,9 @@
     </script>
     <script type="text/javascript">
       window.signupIllustration = "<%= image_url('signup_illustration.png') %>";
+    </script>
+    <script type="text/javascript">
+      window.logo = "<%= image_url('rater_logo.png') %>";
     </script>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
