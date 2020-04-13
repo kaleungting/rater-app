@@ -8,7 +8,7 @@ class BusinessIndex extends React.Component {
     super(props);
     this.state = {
       query: "",
-      location: "New York City",
+      location: "",
       price_range: "",
     };
   }

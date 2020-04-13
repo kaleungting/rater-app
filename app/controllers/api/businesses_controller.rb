@@ -20,7 +20,11 @@ class Api::BusinessesController < ApplicationController
 
     def index
         if (params[:search])
-            @businesses = Business.joins(:categories).search(params[:search][:query],params[:search][:location],params[:search][:price_range])
+            if (params[:search][:price_range] == "")
+                @businesses = Business.joins(:categories).search(params[:search][:query],params[:search][:location])
+            else
+                @businesses = Business.joins(:categories).search_price(params[:search][:price_range])
+            end
         else 
             @businesses = Business.all
         end

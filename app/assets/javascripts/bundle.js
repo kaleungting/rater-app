@@ -330,7 +330,7 @@ var BusinessIndex = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     _this.state = {
       query: "",
-      location: "New York City",
+      location: "",
       price_range: ""
     };
     return _this;
@@ -612,42 +612,6 @@ var BusinessNav = /*#__PURE__*/function (_React$Component) {
 
 /***/ }),
 
-/***/ "./frontend/components/business_nav/business_nav_container.js":
-/*!********************************************************************!*\
-  !*** ./frontend/components/business_nav/business_nav_container.js ***!
-  \********************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _business_nav__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./business_nav */ "./frontend/components/business_nav/business_nav.jsx");
-/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
-
-
-
-
-var msp = function msp(_ref) {
-  var entities = _ref.entities,
-      session = _ref.session;
-  return {
-    currentUser: entities.users[session.id]
-  };
-};
-
-var mdp = function mdp(dispatch) {
-  return {
-    logout: function logout() {
-      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["logout"])());
-    }
-  };
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp, mdp)(_business_nav__WEBPACK_IMPORTED_MODULE_1__["default"]));
-
-/***/ }),
-
 /***/ "./frontend/components/business_nav/sub_nav.jsx":
 /*!******************************************************!*\
   !*** ./frontend/components/business_nav/sub_nav.jsx ***!
@@ -703,6 +667,7 @@ var SubNav = /*#__PURE__*/function (_React$Component) {
     }; // this.filter = this.filter.bind(this);
 
     _this.update = _this.update.bind(_assertThisInitialized(_this));
+    _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -712,16 +677,14 @@ var SubNav = /*#__PURE__*/function (_React$Component) {
       this.setState({
         price_range: price_range
       }); // this.props.searchBusinesses(this.state);
-    }
-  }, {
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.setState({
-        query: "",
-        location: "",
-        price_range: ""
-      });
-    }
+    } // componentDidMount() {
+    //   this.setState({
+    //     query: "",
+    //     location: "",
+    //     price_range: "",
+    //   });
+    // }
+
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps, prevState) {
@@ -730,6 +693,16 @@ var SubNav = /*#__PURE__*/function (_React$Component) {
       if (prevState !== currentState) {
         this.props.searchBusinesses(currentState);
       }
+    }
+  }, {
+    key: "handleClick",
+    value: function handleClick() {
+      // this.setState({
+      //   query: "",
+      //   location: "",
+      //   price_range: "",
+      // });
+      this.props.fetchBusinesses();
     }
   }, {
     key: "render",
@@ -744,7 +717,9 @@ var SubNav = /*#__PURE__*/function (_React$Component) {
         className: "sub-nav-left"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "sub-nav-businesses"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        onClick: this.handleClick
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/businesses"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-utensils"
@@ -800,7 +775,7 @@ var SubNav = /*#__PURE__*/function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _business_nav_business_nav_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../business_nav/business_nav_container */ "./frontend/components/business_nav/business_nav_container.js");
+/* harmony import */ var _business_nav_business_nav__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../business_nav/business_nav */ "./frontend/components/business_nav/business_nav.jsx");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _fake_side_bar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./fake_side_bar */ "./frontend/components/business_page/fake_side_bar.jsx");
 /* harmony import */ var _map_business_map__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../map/business_map */ "./frontend/components/map/business_map.jsx");
@@ -864,7 +839,9 @@ var BusinessPage = /*#__PURE__*/function (_React$Component) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
       }
 
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_business_nav_business_nav_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_business_nav_business_nav__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        searchBusinesses: this.props.searchBusinesses
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "business-top-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "business-header"
@@ -973,7 +950,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var msp = function msp(state, ownProps) {
-  debugger;
   return {
     business: state.entities.businesses[ownProps.match.params.businessId]
   };
@@ -983,6 +959,9 @@ var mdp = function mdp(dispatch) {
   return {
     fetchBusiness: function fetchBusiness(businessId) {
       return dispatch(Object(_actions_business_actions__WEBPACK_IMPORTED_MODULE_1__["fetchBusiness"])(businessId));
+    },
+    searchBusinesses: function searchBusinesses(query) {
+      return dispatch(Object(_actions_business_actions__WEBPACK_IMPORTED_MODULE_1__["searchBusinesses"])(query));
     }
   };
 };
@@ -1843,7 +1822,8 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     _this.state = {
       query: "",
-      location: ""
+      location: "",
+      price_range: ""
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;

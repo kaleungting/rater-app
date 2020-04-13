@@ -11,6 +11,7 @@ class SubNav extends React.Component {
     };
     // this.filter = this.filter.bind(this);
     this.update = this.update.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   update(price_range) {
@@ -18,13 +19,13 @@ class SubNav extends React.Component {
     // this.props.searchBusinesses(this.state);
   }
 
-  componentDidMount() {
-    this.setState({
-      query: "",
-      location: "",
-      price_range: "",
-    });
-  }
+  // componentDidMount() {
+  //   this.setState({
+  //     query: "",
+  //     location: "",
+  //     price_range: "",
+  //   });
+  // }
 
   componentDidUpdate(prevProps, prevState) {
     const currentState = this.state;
@@ -33,13 +34,22 @@ class SubNav extends React.Component {
     }
   }
 
+  handleClick() {
+    // this.setState({
+    //   query: "",
+    //   location: "",
+    //   price_range: "",
+    // });
+    this.props.fetchBusinesses();
+  }
+
   render() {
     return (
       <div className="sub-nav-container">
         <div className="sub-nav-content">
           <ul className="sub-nav-left">
             <div className="sub-nav-businesses">
-              <li>
+              <li onClick={this.handleClick}>
                 <Link to="/businesses">
                   <i className="fas fa-utensils"></i>
                   <span>Restaurants</span>

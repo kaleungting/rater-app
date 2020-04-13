@@ -1,5 +1,5 @@
 import React from "react";
-import BusinessNavContainer from "../business_nav/business_nav_container";
+import BusinessNav from "../business_nav/business_nav";
 import { Link } from "react-router-dom";
 import FakeSidebar from "./fake_side_bar";
 import BusinessMap from "../map/business_map";
@@ -27,7 +27,7 @@ class BusinessPage extends React.Component {
     }
     return (
       <div>
-        <BusinessNavContainer />
+        <BusinessNav searchBusinesses={this.props.searchBusinesses} />
         <div className="business-top-container">
           <div className="business-header">
             <div className="business-page-container">

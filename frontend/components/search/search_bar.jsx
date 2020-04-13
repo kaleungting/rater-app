@@ -7,6 +7,7 @@ class SearchBar extends React.Component {
     this.state = {
       query: "",
       location: "",
+      price_range: "",
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
