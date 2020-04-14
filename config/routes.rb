@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
     # get 'businesses/search', to: 'businesses#search'
     resources :businesses, only: [:create, :index, :show] do
-      resources :reviews, only: [:create, :update, :destroy]
+      resources :reviews, only: [:index, :create, :update, :destroy]
     end
   end
 

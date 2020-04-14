@@ -20,10 +20,9 @@ class SearchBar extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     // debugger;
-    this.props.searchBusinesses(this.state).then((res) => {
-      // debugger;
-      this.props.history.push("/businesses/");
-    });
+    this.props
+      .searchBusinesses(this.state)
+      .then(() => this.props.history.push("/businesses-search"));
   }
 
   render() {
@@ -36,7 +35,7 @@ class SearchBar extends React.Component {
               type="text"
               value={this.state.query}
               onChange={this.update("query")}
-              placeholder={this.props.placeholder}
+              placeholder="sushi, tacos, chicken"
             />
           </div>
           <div className="search-container">

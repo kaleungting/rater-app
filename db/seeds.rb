@@ -11,6 +11,7 @@ User.destroy_all
 Business.destroy_all
 Category.destroy_all
 BusinessCategory.destroy_all
+Review.destroy_all
 
 
 
@@ -105,6 +106,14 @@ bc42 = BusinessCategory.create!({business_id: b20.id, category_id:c2.id})
 bc43 = BusinessCategory.create!({business_id: b20.id, category_id:c12.id})
 bc44 = BusinessCategory.create!({business_id: b20.id, category_id:c8.id})
 bc45 = BusinessCategory.create!({business_id: b20.id, category_id:c19.id})
+
+
+r1 = Review.create!(body: "Had a delicious meal there! Would totally come back.", author_id: u1.id, business_id: b2.id, rating: 4)
+r2 = Review.create!(body: "The meal was just okay, the chicken was dry", author_id: u2.id, business_id: b1.id, rating: 2)
+r3 = Review.create!(body: "MEH.", author_id: u2.id, business_id: b2.id, rating: 1)
+r4 = Review.create!(body: "GOOD.", author_id: u3.id, business_id: b5.id, rating: 5)
+r5 = Review.create!(body: "BAD.", author_id: u4.id, business_id: b6.id, rating: 1)
+
 
 cl_pp = open('https://rater-app-seed.s3.amazonaws.com/businesses/curry_lane/curry_lane_profile_pic.jpg')
 cl_p1 = open('https://rater-app-seed.s3.amazonaws.com/businesses/curry_lane/curry_lane_photo1.jpg')

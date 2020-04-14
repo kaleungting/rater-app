@@ -6,15 +6,17 @@ import BusinessMap from "../map/business_map";
 class BusinessIndex extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      query: "",
-      location: "",
-      price_range: "",
-    };
+    // this.state = {
+    //   query: "",
+    //   location: "",
+    //   price_range: "",
+    // };
   }
 
   componentDidMount() {
-    this.props.fetchBusinesses();
+    if (this.props.location.pathname !== "/businesses-search") {
+      this.props.fetchBusinesses();
+    }
   }
 
   render() {
@@ -30,7 +32,6 @@ class BusinessIndex extends React.Component {
     return (
       <>
         <BusinessNav
-          businesses={this.props.businesses}
           searchBusinesses={this.props.searchBusinesses}
           fetchBusinesses={this.props.fetchBusinesses}
         />

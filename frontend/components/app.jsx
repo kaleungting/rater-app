@@ -16,8 +16,13 @@ const App = () => (
     <AuthRoute path="/login" component={LoginFormContainer} />
     <AuthRoute path="/signup" component={SignupFormContainer} />
     <Switch>
-      <Route exact path="/businesses" component={BusinessIndexContainer} />
-      <Route path="/businesses/:businessId" component={BusinessPageContainer} />
+      <Route
+        exact
+        path="/businesses/:businessId"
+        component={BusinessPageContainer}
+      />
+      <Route path="/businesses-search" component={BusinessIndexContainer} />
+      <Route path="/businesses" component={BusinessIndexContainer} />
     </Switch>
     <Footer />
   </div>

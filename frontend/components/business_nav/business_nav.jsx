@@ -56,25 +56,25 @@ class BusinessNav extends React.Component {
       </div>
     );
 
-    const searchBar = (
-      <div>
-        <form className="search-bar-nav">
-          <div className="search-container">
-            <span>Find</span>
-            <input type="text" placeholder="sushi, cafes, noodles" />
-          </div>
-          <div className="search-container">
-            <span>Near</span>
-            <input type="text" placeholder="address or city" />
-            <div className="search-submit">
-              <button className="btn-search-submit">
-                <i className="fas fa-search fa-2x"></i>
-              </button>
-            </div>
-          </div>
-        </form>
-      </div>
-    );
+    // const searchBar = (
+    //   <div>
+    //     <form className="search-bar-nav">
+    //       <div className="search-container">
+    //         <span>Find</span>
+    //         <input type="text" placeholder="sushi, cafes, noodles" />
+    //       </div>
+    //       <div className="search-container">
+    //         <span>Near</span>
+    //         <input type="text" placeholder="address or city" />
+    //         <div className="search-submit">
+    //           <button className="btn-search-submit">
+    //             <i className="fas fa-search fa-2x"></i>
+    //           </button>
+    //         </div>
+    //       </div>
+    //     </form>
+    //   </div>
+    // );
     return (
       <div>
         <div className="business-nav">
@@ -85,16 +85,15 @@ class BusinessNav extends React.Component {
               </Link>
             </div>
             <SearchBar
-              businesses={this.props.businesses}
+              // businesses={this.props.businesses}
               searchBusinesses={this.props.searchBusinesses}
               fetchBusinesses={this.props.fetchBusinesses}
-              placeholder="sushi, cheap eats, modern"
             />
             {rightNav}
           </div>
         </div>
         <SubNav
-          businesses={this.props.businesses}
+          // businesses={this.props.businesses}
           searchBusinesses={this.props.searchBusinesses}
           fetchBusinesses={this.props.fetchBusinesses}
         />

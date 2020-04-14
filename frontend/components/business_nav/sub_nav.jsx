@@ -9,23 +9,12 @@ class SubNav extends React.Component {
       location: "",
       price_range: "",
     };
-    // this.filter = this.filter.bind(this);
     this.update = this.update.bind(this);
-    this.handleClick = this.handleClick.bind(this);
   }
 
   update(price_range) {
     this.setState({ price_range: price_range });
-    // this.props.searchBusinesses(this.state);
   }
-
-  // componentDidMount() {
-  //   this.setState({
-  //     query: "",
-  //     location: "",
-  //     price_range: "",
-  //   });
-  // }
 
   componentDidUpdate(prevProps, prevState) {
     const currentState = this.state;
@@ -34,22 +23,13 @@ class SubNav extends React.Component {
     }
   }
 
-  handleClick() {
-    // this.setState({
-    //   query: "",
-    //   location: "",
-    //   price_range: "",
-    // });
-    this.props.fetchBusinesses();
-  }
-
   render() {
     return (
       <div className="sub-nav-container">
         <div className="sub-nav-content">
           <ul className="sub-nav-left">
             <div className="sub-nav-businesses">
-              <li onClick={this.handleClick}>
+              <li>
                 <Link to="/businesses">
                   <i className="fas fa-utensils"></i>
                   <span>Restaurants</span>
@@ -57,7 +37,7 @@ class SubNav extends React.Component {
               </li>
             </div>
             <li className="sub-nav-sites">
-              <i class="fas fa-dollar-sign"></i>
+              <i className="fas fa-dollar-sign"></i>
               Price Range
               <ul className="price-popup">
                 <li onClick={() => this.update("$")}>$</li>

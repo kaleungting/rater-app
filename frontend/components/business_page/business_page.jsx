@@ -25,6 +25,24 @@ class BusinessPage extends React.Component {
     if (!business) {
       return <div></div>;
     }
+
+    let photosList;
+    if (business.photos) {
+      photosList = business.photos.map((photo, idx) => {
+        return (
+          <li key={`${photo}+${idx}`}>
+            <img
+              className="business-photos"
+              id={`photo${idx}`}
+              src={photo}
+            ></img>
+          </li>
+        );
+      });
+    } else {
+      photosList = "";
+    }
+
     return (
       <div>
         <BusinessNav searchBusinesses={this.props.searchBusinesses} />
@@ -102,19 +120,7 @@ class BusinessPage extends React.Component {
                     </div>
                   </div>
                   <div className="business-photos-container">
-                    <ul>
-                      {business.photos.map((photo, idx) => {
-                        return (
-                          <li key={`${photo}+${idx}`}>
-                            <img
-                              className="business-photos"
-                              id={`photo${idx}`}
-                              src={photo}
-                            ></img>
-                          </li>
-                        );
-                      })}
-                    </ul>
+                    <ul>{photosList}</ul>
                   </div>
                 </div>
               </div>

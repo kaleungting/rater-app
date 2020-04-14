@@ -44,7 +44,7 @@ class Business < ApplicationRecord
     # end
 
     def self.search(query,location)
-        where("(lower(categories.category) LIKE :query OR lower(businesses.name) LIKE :query) AND (lower(businesses.city) LIKE :location)", query: "%#{query.downcase}%", location: "%#{location.downcase}%").uniq   
+        where("(lower(categories.category) LIKE :query OR lower(businesses.name) LIKE :query) AND (lower(businesses.city) LIKE :location OR (lower(businesses.state) LIKE :location))", query: "%#{query.downcase}%", location: "%#{location.downcase}%").uniq   
     end
 
     def self.search_price(price_range)
