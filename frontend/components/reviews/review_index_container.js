@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import ReviewIndex from "./review_index";
 
 const msp = (state, ownProps) => {
-//   debugger;
+  //   debugger;
   return {
     // reviews: Object.values(state.entities.reviews),
     // reviewers: Object.values(ownProps.business.reviewers),

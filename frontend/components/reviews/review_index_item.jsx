@@ -6,8 +6,13 @@ class ReviewIndexItem extends React.Component {
   }
 
   render() {
-    // debugger;
-    return <div>{this.props.review.body}</div>;
+    return (
+      <div>
+        <div>{this.props.review.body}</div>
+        <div>{this.props.reviewer.first_name}</div>
+        <div>{this.props.reviewer.last_name}</div>
+      </div>
+    );
   }
 }
 

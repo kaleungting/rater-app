@@ -1053,11 +1053,12 @@ var BusinessPage = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      // debugger;
+      debugger;
       var _this$props = this.props,
           business = _this$props.business,
           categories = _this$props.categories,
-          reviews = _this$props.reviews;
+          reviews = _this$props.reviews,
+          reviewers = _this$props.reviewers;
 
       if (!business) {
         return null;
@@ -1151,7 +1152,8 @@ var BusinessPage = /*#__PURE__*/function (_React$Component) {
         className: "business-main-content"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reviews_review_index__WEBPACK_IMPORTED_MODULE_5__["default"], {
         business: business,
-        reviews: reviews
+        reviews: reviews,
+        reviewers: reviewers
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "business-side-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fake_side_bar__WEBPACK_IMPORTED_MODULE_3__["default"], {
@@ -1187,13 +1189,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var msp = function msp(state, ownProps) {
+  debugger;
   var business = state.entities.businesses[ownProps.match.params.businessId];
   return {
     business: business,
     // categories: Object.values(state.entities.categories),
     // reviews: Object.values(state.entities.reviews),
     categories: Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_2__["selectCategoriesForBusiness"])(state, business),
-    reviews: Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_2__["selectReviewsForBusiness"])(state, business)
+    reviews: Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_2__["selectReviewsForBusiness"])(state, business),
+    reviewers: state.entities.reviews.reviewers // reviewers: selectReviewersForBusiness(state, business),
+
   };
 };
 
@@ -1893,16 +1898,16 @@ var ReviewIndex = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this = this;
+      var reviewers = this.props.reviewers; // debugger;
 
-      // const { reviewers } = this.props;
-      // debugger;
       var reviews = this.props.reviews.reverse().map(function (review, idx) {
+        //   review.author_id;
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_review_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: idx,
           review: review,
-          fetchReview: _this.props.fetchReviews,
-          businessId: review.business_id //   reviewer={reviewers[review.author_id]}
+          reviewer: reviewers[review.author_id] //   fetchReview={this.props.fetchReviews}
+          //   businessId={review.business_id}
+          //   reviewer={reviewers[review.author_id]}
 
         });
       });
@@ -1966,8 +1971,7 @@ var ReviewIndexItem = /*#__PURE__*/function (_React$Component) {
   _createClass(ReviewIndexItem, [{
     key: "render",
     value: function render() {
-      // debugger;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.review.body);
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.review.body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.reviewer.first_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.reviewer.last_name));
     }
   }]);
 
@@ -3170,13 +3174,14 @@ var rootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])(
 /*!****************************************!*\
   !*** ./frontend/reducers/selectors.js ***!
   \****************************************/
-/*! exports provided: selectBusiness, selectReviewsForBusiness, selectCategoriesForBusiness, asArray */
+/*! exports provided: selectBusiness, selectReviewsForBusiness, selectReviewersForBusiness, selectCategoriesForBusiness, asArray */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectBusiness", function() { return selectBusiness; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectReviewsForBusiness", function() { return selectReviewsForBusiness; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectReviewersForBusiness", function() { return selectReviewersForBusiness; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectCategoriesForBusiness", function() { return selectCategoriesForBusiness; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "asArray", function() { return asArray; });
 var selectBusiness = function selectBusiness(_ref, businessId) {
@@ -3194,7 +3199,12 @@ var selectBusiness = function selectBusiness(_ref, businessId) {
 
 var selectReviewsForBusiness = function selectReviewsForBusiness(state, business) {
   return business ? business.reviewIds.map(function (id) {
-    return state.entities.reviews[id];
+    return state.entities.reviews.reviews[id];
+  }) : [];
+};
+var selectReviewersForBusiness = function selectReviewersForBusiness(state, business) {
+  return business ? Object.keys(state.entities.reviews.reviewers).map(function (key) {
+    return state.entities.reviews.reviewers[key];
   }) : [];
 };
 var selectCategoriesForBusiness = function selectCategoriesForBusiness(state, business) {

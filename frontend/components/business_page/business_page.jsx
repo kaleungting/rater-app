@@ -26,8 +26,8 @@ class BusinessPage extends React.Component {
   }
 
   render() {
-    // debugger;
-    const { business, categories, reviews } = this.props;
+    debugger;
+    const { business, categories, reviews, reviewers } = this.props;
     if (!business) {
       return null;
     }
@@ -132,7 +132,11 @@ class BusinessPage extends React.Component {
               </div>
               <div className="business-main-container">
                 <div className="business-main-content">
-                  <ReviewIndex business={business} reviews={reviews} />
+                  <ReviewIndex
+                    business={business}
+                    reviews={reviews}
+                    reviewers={reviewers}
+                  />
                 </div>
                 <div className="business-side-container">
                   <FakeSidebar
