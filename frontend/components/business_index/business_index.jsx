@@ -1,6 +1,6 @@
 import React from "react";
 import BusinessIndexItemContainer from "./business_index_item_container";
-import BusinessNav from "../business_nav/business_nav";
+import BusinessNavContainer from "../business_nav/business_nav_container";
 import BusinessMap from "../map/business_map";
 
 class BusinessIndex extends React.Component {
@@ -15,9 +15,9 @@ class BusinessIndex extends React.Component {
 
   componentDidMount() {
     // this.props.fetchCategories(this.props.business.id);
-    // if (this.props.location.pathname !== "/businesses-search") {
-    this.props.fetchBusinesses();
-    // }
+    if (this.props.location.pathname !== "/businesses-search") {
+      this.props.fetchBusinesses();
+    }
   }
 
   render() {
@@ -32,7 +32,7 @@ class BusinessIndex extends React.Component {
     });
     return (
       <>
-        <BusinessNav
+        <BusinessNavContainer
           searchBusinesses={this.props.searchBusinesses}
           fetchBusinesses={this.props.fetchBusinesses}
         />

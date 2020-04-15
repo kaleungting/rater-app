@@ -19,17 +19,3 @@ export const searchBusinesses = (search) => {
     data: { search },
   });
 };
-
-export const fetchCategories = (businessId) => {
-  return $.ajax({
-    method: "GET",
-    url: `api/businesses/${businessId}/categories`,
-  });
-};
-
-export const fetchAllCategories = () => {
-  return $.ajax({
-    method: "GET",
-    url: "/api/categories",
-  });
-};

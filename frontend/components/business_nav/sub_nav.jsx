@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 class SubNav extends React.Component {
   constructor(props) {
@@ -10,6 +10,7 @@ class SubNav extends React.Component {
       price_range: "",
     };
     this.update = this.update.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   update(price_range) {
@@ -19,8 +20,16 @@ class SubNav extends React.Component {
   componentDidUpdate(prevProps, prevState) {
     const currentState = this.state;
     if (prevState !== currentState) {
-      this.props.searchBusinesses(currentState);
+      this.props
+        .searchBusinesses(currentState)
+        .then(() => this.props.history.push("/businesses"));
     }
+  }
+
+  handleClick() {
+    this.props
+      .fetchBusinesses()
+      .then(() => this.props.history.push("/businesses"));
   }
 
   render() {
@@ -29,11 +38,9 @@ class SubNav extends React.Component {
         <div className="sub-nav-content">
           <ul className="sub-nav-left">
             <div className="sub-nav-businesses">
-              <li>
-                <Link to="/businesses">
-                  <i className="fas fa-utensils"></i>
-                  <span>Restaurants</span>
-                </Link>
+              <li onClick={this.handleClick}>
+                <i className="fas fa-utensils"></i>
+                <span>Restaurants</span>
               </li>
             </div>
             <li className="sub-nav-sites">
@@ -67,4 +74,4 @@ class SubNav extends React.Component {
   }
 }
 
-export default SubNav;
+export default withRouter(SubNav);

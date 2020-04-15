@@ -1,0 +1,55 @@
+.business-review-container {
+  display: flex;
+}
+
+.review-sidebar {
+  width: 225px;
+}
+
+.reviewer-photo {
+  width: 60px;
+  height: 60px;
+  background-color: grey;
+}
+
+.reviewer-profile {
+  display: flex;
+}
+.review-content {
+  width: 100%;
+  position: relative;
+}
+
+.review-links {
+  padding: 0;
+}
+
+.review-content-top {
+  display: flex;
+}
+
+.delete-review {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 10px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  color: #666666;
+  cursor: pointer;
+}
+
+.delete-review .material-icons {
+  font-size: 18px;
+}
+
+.delete-review .material-icons:hover {
+  font-size: 18px;
+  color: black;
+}
+
+.delete-review:hover {
+  color: black;
+  background-color: rgb(238, 238, 238);
+}

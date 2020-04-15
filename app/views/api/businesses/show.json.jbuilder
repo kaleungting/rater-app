@@ -1,6 +1,7 @@
 json.business do
     json.partial! "api/businesses/business", business: @business
 end
+
 json.categories do 
     @business.categories.each do |category|
         json.set! category.id do
@@ -8,7 +9,6 @@ json.categories do
         end
     end
 end
-# debugger
 
 @business.reviews.includes(:reviewer).each do |review|
     json.reviews do

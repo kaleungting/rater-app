@@ -1,5 +1,5 @@
 import React from "react";
-import BusinessNav from "../business_nav/business_nav";
+import BusinessNavContainer from "../business_nav/business_nav_container";
 import { Link } from "react-router-dom";
 import FakeSidebar from "./fake_side_bar";
 import BusinessMap from "../map/business_map";
@@ -25,11 +25,16 @@ class BusinessPage extends React.Component {
   }
 
   render() {
-    const { business, categories, reviews, reviewers } = this.props;
+    const {
+      business,
+      categories,
+      reviews,
+      reviewers,
+      currentUser,
+    } = this.props;
     if (!business) {
       return null;
     }
-
     let photosList;
     if (business.photos) {
       photosList = business.photos.map((photo, idx) => {
@@ -49,7 +54,7 @@ class BusinessPage extends React.Component {
 
     return (
       <div>
-        <BusinessNav searchBusinesses={this.props.searchBusinesses} />
+        <BusinessNavContainer searchBusinesses={this.props.searchBusinesses} />
         <div className="business-top-container">
           <div className="business-header">
             <div className="business-page-container">
@@ -134,6 +139,7 @@ class BusinessPage extends React.Component {
                     business={business}
                     reviews={reviews}
                     reviewers={reviewers}
+                    currentUser={currentUser}
                   />
                 </div>
                 <div className="business-side-container">

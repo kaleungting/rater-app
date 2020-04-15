@@ -6,15 +6,15 @@ class ReviewIndex extends React.Component {
     super(props);
   }
 
-
   render() {
-    const { reviewers } = this.props;
+    const { reviewers, currentUser } = this.props;
     const reviews = this.props.reviews.reverse().map((review, idx) => {
       return (
         <ReviewIndexItem
           key={idx}
           review={review}
           reviewer={reviewers[review.author_id]}
+          currentUser={currentUser}
         />
       );
     });

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import SubNav from "./sub_nav";
+import SubNavContainer from "./sub_nav_container";
 import SearchBar from "../search/search_bar";
 
 class BusinessNav extends React.Component {
@@ -16,6 +16,7 @@ class BusinessNav extends React.Component {
 
   render() {
     const { currentUser, logout } = this.props;
+
     const userPic = <i className="fas fa-meh fa-2x"></i>;
     const rightNav = currentUser ? (
       <div className="business-right-nav">
@@ -92,11 +93,7 @@ class BusinessNav extends React.Component {
             {rightNav}
           </div>
         </div>
-        <SubNav
-          // businesses={this.props.businesses}
-          searchBusinesses={this.props.searchBusinesses}
-          fetchBusinesses={this.props.fetchBusinesses}
-        />
+        <SubNavContainer />
       </div>
     );
   }
