@@ -3,11 +3,20 @@ import {
   fetchBusiness,
   searchBusinesses,
 } from "../../actions/business_actions";
+import {
+  selectCategoriesForBusiness,
+  selectReviewsForBusiness,
+} from "../../reducers/selectors";
 import BusinessPage from "./business_page";
 
 const msp = (state, ownProps) => {
+  const business = state.entities.businesses[ownProps.match.params.businessId];
   return {
-    business: state.entities.businesses[ownProps.match.params.businessId],
+    business,
+    // categories: Object.values(state.entities.categories),
+    // reviews: Object.values(state.entities.reviews),
+    categories: selectCategoriesForBusiness(state, business),
+    reviews: selectReviewsForBusiness(state, business),
   };
 };
 

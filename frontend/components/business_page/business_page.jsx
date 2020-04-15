@@ -3,6 +3,7 @@ import BusinessNav from "../business_nav/business_nav";
 import { Link } from "react-router-dom";
 import FakeSidebar from "./fake_side_bar";
 import BusinessMap from "../map/business_map";
+import ReviewIndex from "../reviews/review_index";
 class BusinessPage extends React.Component {
   constructor(props) {
     super(props);
@@ -12,7 +13,11 @@ class BusinessPage extends React.Component {
     this.props.fetchBusiness(this.props.match.params.businessId);
   }
 
+  // componentDidUpdate() {
+  //   this.props.fetchBusiness(this.props.match.params.businessId);
+  // }
   componentDidUpdate(prevProps) {
+    // debugger;
     if (
       prevProps.match.params.businessId !== this.props.match.params.businessId
     ) {
@@ -21,9 +26,10 @@ class BusinessPage extends React.Component {
   }
 
   render() {
-    const { business } = this.props;
+    // debugger;
+    const { business, categories, reviews } = this.props;
     if (!business) {
-      return <div></div>;
+      return null;
     }
 
     let photosList;
@@ -63,7 +69,7 @@ class BusinessPage extends React.Component {
                       <li>
                         <i className="fas fa-circle"></i>
                       </li>
-                      {business.categories.map((category) => {
+                      {categories.map((category) => {
                         return <li key={category.id}>{category.category}</li>;
                       })}
                     </ul>
@@ -125,7 +131,9 @@ class BusinessPage extends React.Component {
                 </div>
               </div>
               <div className="business-main-container">
-                <div className="business-main-content"></div>
+                <div className="business-main-content">
+                  <ReviewIndex business={business} reviews={reviews} />
+                </div>
                 <div className="business-side-container">
                   <FakeSidebar
                     business={business}

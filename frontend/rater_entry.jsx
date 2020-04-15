@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import Root from "./components/root";
 import configureStore from "./store/store";
 import { signup, login, logout } from "./util/session_api_util";
+import { fetchReviews } from "./actions/review_actions";
 
 document.addEventListener("DOMContentLoaded", () => {
   let store;
@@ -11,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // window.login = login;
   // window.logout = logout;
   //Testing end
+  window.fetchReviews = fetchReviews;
 
   window.onclick = function (event) {
     if (!event.target.matches(".dropbtn")) {

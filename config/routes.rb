@@ -8,7 +8,9 @@ Rails.application.routes.draw do
     # get 'businesses/search', to: 'businesses#search'
     resources :businesses, only: [:create, :index, :show] do
       resources :reviews, only: [:index, :create, :update, :destroy]
+      # resources :categories, only: [:index]
     end
+    resources :categories, only: [:index]
   end
 
 end

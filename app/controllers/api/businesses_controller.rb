@@ -11,6 +11,7 @@ class Api::BusinessesController < ApplicationController
 
     def show
         @business = Business.find(params[:id])
+        #address n+1 query
         if @business
             render :show
         else
@@ -28,6 +29,8 @@ class Api::BusinessesController < ApplicationController
         else 
             @businesses = Business.all
         end
+        @categories = Category.all
+        @reviews = Review.all
     end
 
     # def search

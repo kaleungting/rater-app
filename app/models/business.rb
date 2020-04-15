@@ -35,6 +35,9 @@ class Business < ApplicationRecord
     has_many_attached :photos
     has_one_attached :profile_picture
 
+    def average_rating
+        reviews.average(:rating)
+    end
     # def self.search(query,location)
     #     where(("lower(categories.category) LIKE :query OR lower(businesses.name) LIKE :query) AND (lower(businesses.city) LIKE :location"), query: "%#{query.downcase}%", location: "%#{location.downcase}%").uniq   
     # end

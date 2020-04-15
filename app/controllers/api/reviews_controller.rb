@@ -1,35 +1,40 @@
 class Api::ReviewsController < ApplicationController
+    before_action :ensure_logged_in
+
+    def index
+        @reviews = Review.all
+    end
 
     def create 
-        @review = Review.new(review_params)
+        @review = current_user.reviews.new(review_params)
         if @review
             @review.save
-            render "/api/businesses/show"
+            render :show
         else
-            render @reviews.errors.full_messages, status: 422
+            render @review.errors.full_messages, status: 422
         end
     end
 
     def edit
-        @review = Review.find(params[:id])
+        @review = current_user.reviews.find(params[:id])
         if @review.update(review_params)
-            render "/api/businesses/show"
+            render "/api/reviews/show"
         else
-            render @reviews.errors.full_messages
+            render json: ["Cannot update review"]
         end
     end
 
     def destroy
-        @review = Review.find(params[:id])
+        @review = current_user.reviews.find(params[:id])
         if @review && @review.delete!
-            render "/api/businesses/show"
+            render "/api/reviews/show"
         else
-            render json: ["Review cannot be deleted"]
+            render json: ["Review cannot be deleted"], status: 422
         end
     end
 
     private
     def review_params
-        params.require(:review).permit(:body,:rating)
+        params.require(:review).permit(:body,:rating, :business_id)
     end
 end

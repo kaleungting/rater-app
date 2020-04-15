@@ -14,7 +14,7 @@ class Review < ApplicationRecord
 
     validates :body, :author_id, :business_id, presence: true
     validates :author_id, uniqueness: { scope: :business_id }
-    validates :rating, inclusion: 1..5
+    validates :rating, inclusion: { in: 1..5}
 
     belongs_to :reviewer,
     foreign_key: :author_id,

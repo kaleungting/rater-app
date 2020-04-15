@@ -1,5 +1,5 @@
 import React from "react";
-import BusinessIndexItem from "./business_index_item";
+import BusinessIndexItemContainer from "./business_index_item_container";
 import BusinessNav from "../business_nav/business_nav";
 import BusinessMap from "../map/business_map";
 
@@ -14,15 +14,16 @@ class BusinessIndex extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.location.pathname !== "/businesses-search") {
-      this.props.fetchBusinesses();
-    }
+    // this.props.fetchCategories(this.props.business.id);
+    // if (this.props.location.pathname !== "/businesses-search") {
+    this.props.fetchBusinesses();
+    // }
   }
 
   render() {
     const businesses = this.props.businesses.map((business, idx) => {
       return (
-        <BusinessIndexItem
+        <BusinessIndexItemContainer
           key={business.id}
           business={business}
           idx={idx + 1}
