@@ -2,7 +2,6 @@ export const RECEIVE_REVIEW = "RECEIVE_REVIEW";
 export const REMOVE_REVIEW = "REMOVE_REVIEW";
 import * as ReviewApiUtil from "../util/review_api_util";
 
-
 export const receiveReview = (review) => ({
   type: RECEIVE_REVIEW,
   review,
@@ -10,7 +9,7 @@ export const receiveReview = (review) => ({
 
 export const removeReview = (review) => ({
   type: REMOVE_REVIEW,
-  reviewId: review.id
+  reviewId: review.id,
 });
 
 export const createReview = (review) => (dispatch) =>
@@ -23,7 +22,7 @@ export const updateReview = (review) => (dispatch) =>
     dispatch(receiveReview(review))
   );
 
-export const deleteReview = (reviewId) => (dispatch) =>
-  ReviewApiUtil.deleteReview(reviewId).then((review) =>
+export const deleteReview = (review) => (dispatch) =>
+  ReviewApiUtil.deleteReview(review).then((review) =>
     dispatch(removeReview(review))
   );

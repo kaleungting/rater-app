@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import BusinessIndexItem from "./business_index_item";
-import { fetchCategories } from "../../actions/business_actions";
+import { searchBusinesses } from "../../util/business_api_util";
 
 const msp = (state) => ({
   categories: Object.values(state.entities.categories),
@@ -8,7 +8,7 @@ const msp = (state) => ({
 });
 
 const mdp = (dispatch) => ({
-  fetchCategories: (businessId) => dispatch(fetchCategories(businessId)),
+  searchBusinesses: (query) => dispatch(searchBusinesses(query)),
 });
 
 export default connect(msp, mdp)(BusinessIndexItem);

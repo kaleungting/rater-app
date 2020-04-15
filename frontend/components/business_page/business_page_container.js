@@ -4,10 +4,10 @@ import {
   fetchBusinesses,
   searchBusinesses,
 } from "../../actions/business_actions";
+import { deleteReview } from "../../actions/review_actions";
 import {
   selectCategoriesForBusiness,
   selectReviewsForBusiness,
-  selectReviewersForBusiness,
 } from "../../reducers/selectors";
 import BusinessPage from "./business_page";
 
@@ -31,6 +31,7 @@ const mdp = (dispatch) => {
     fetchBusiness: (businessId) => dispatch(fetchBusiness(businessId)),
     fetchBusinesses: () => dispatch(fetchBusinesses()),
     searchBusinesses: (query) => dispatch(searchBusinesses(query)),
+    deleteReview: (reviewId) => dispatch(deleteReview(reviewId)),
   };
 };
 

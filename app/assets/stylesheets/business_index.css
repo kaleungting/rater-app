@@ -66,6 +66,14 @@ div.business-img img {
   font-weight: bold;
 }
 
+.business-rating {
+  margin-top: 10px;
+  display: flex;
+  align-content: center;
+  font-size: 14px;
+  color: #666666;
+}
+
 ul.business-price-category {
   display: flex;
   align-items: center;
@@ -74,6 +82,10 @@ ul.business-price-category {
 .fa-circle {
   margin-top: 15px;
   font-size: 5px;
+}
+
+ul.business-price-category li {
+  padding: 0px 2px;
 }
 
 .business-address ul {

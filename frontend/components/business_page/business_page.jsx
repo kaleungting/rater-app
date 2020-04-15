@@ -10,6 +10,8 @@ class BusinessPage extends React.Component {
   }
 
   componentDidMount() {
+    window.scrollTo(0, 0);
+
     this.props.fetchBusiness(this.props.match.params.businessId);
   }
 
@@ -78,7 +80,7 @@ class BusinessPage extends React.Component {
                     </ul>
                   </div>
                   <div className="top-header-right">
-                    <Link to="/businesses/:businessId/reviews">
+                    <Link to={`/businesses/${business.id}/reviews/new`}>
                       <i className="fas fa-star"></i>
                       Write a Review
                     </Link>
@@ -140,6 +142,8 @@ class BusinessPage extends React.Component {
                     reviews={reviews}
                     reviewers={reviewers}
                     currentUser={currentUser}
+                    deleteReview={this.props.deleteReview}
+                    fetchBusiness={this.props.fetchBusiness}
                   />
                 </div>
                 <div className="business-side-container">

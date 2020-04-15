@@ -15,6 +15,8 @@ class ReviewIndex extends React.Component {
           review={review}
           reviewer={reviewers[review.author_id]}
           currentUser={currentUser}
+          deleteReview={this.props.deleteReview}
+          fetchBusiness={this.props.fetchBusiness}
         />
       );
     });

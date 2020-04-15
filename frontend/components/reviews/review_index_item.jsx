@@ -1,8 +1,15 @@
 import React from "react";
-
+import { Link, withRouter } from "react-router-dom";
 class ReviewIndexItem extends React.Component {
   constructor(props) {
     super(props);
+    this.deleteReview = this.deleteReview.bind(this);
+  }
+
+  deleteReview() {
+    this.props
+      .deleteReview(this.props.review)
+      .then(() => this.props.fetchBusiness(this.props.review.business_id));
   }
 
   render() {
@@ -13,7 +20,11 @@ class ReviewIndexItem extends React.Component {
       review.author_id === parseInt(Object.keys(currentUser)) ? (
         <li className="edit-review">
           <i className="material-icons">create</i>
-          <span>Edit review</span>
+          <Link
+            to={`/businesses/${review.business_id}/reviews/${review.id}/edit`}
+          >
+            Edit Review
+          </Link>
         </li>
       ) : (
         <li></li>
@@ -21,7 +32,7 @@ class ReviewIndexItem extends React.Component {
 
     const deleteReview =
       review.author_id === parseInt(Object.keys(currentUser)) ? (
-        <button className="delete-review">
+        <button onClick={this.deleteReview} className="delete-review">
           <i className="material-icons">delete</i>
         </button>
       ) : (
@@ -53,7 +64,10 @@ class ReviewIndexItem extends React.Component {
         </div>
         <div className="review-content">
           <div className="review-content-top">
-            <div className="review-stars">Rating Goes Here</div>
+            <img
+              className={`stars-medium-${review.rating * 2}` + " stars-medium"}
+              src="https://i.imgur.com/UkZkm0D.png"
+            ></img>
             <div className="review-date">{date}</div>
           </div>
           <div className="review-body">{review.body}</div>
@@ -64,4 +78,4 @@ class ReviewIndexItem extends React.Component {
   }
 }
 
-export default ReviewIndexItem;
+export default withRouter(ReviewIndexItem);

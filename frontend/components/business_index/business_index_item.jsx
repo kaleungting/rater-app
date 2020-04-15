@@ -6,7 +6,6 @@ class BusinessIndexItem extends React.Component {
     super(props);
   }
 
-
   render() {
     const { business, idx, categories } = this.props;
     const categoriesList = categories.map((category, idx) => {
@@ -21,6 +20,10 @@ class BusinessIndexItem extends React.Component {
       }
     });
 
+    const reviewText =
+      business.reviewIds.length > 1
+        ? `${business.reviewIds.length} reviews`
+        : `${business.reviewIds.length} review`;
     return (
       <li className="business-index-item">
         <div className="business-img">
@@ -31,6 +34,16 @@ class BusinessIndexItem extends React.Component {
             <div className="business-name">
               {idx}.{" "}
               <Link to={`/businesses/${business.id}`}>{business.name}</Link>
+            </div>
+            <div className="business-rating">
+              <img
+                className={
+                  `stars-medium-${business.average_rating * 2}` +
+                  " stars-medium"
+                }
+                src="https://i.imgur.com/UkZkm0D.png"
+              ></img>
+              <span>{reviewText}</span>
             </div>
             <ul className="business-price-category">
               <li>{business.price_range}</li>

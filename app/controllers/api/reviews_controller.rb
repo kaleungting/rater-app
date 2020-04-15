@@ -15,7 +15,7 @@ class Api::ReviewsController < ApplicationController
         end
     end
 
-    def edit
+    def update
         @review = current_user.reviews.find(params[:id])
         if @review.update(review_params)
             render :show
@@ -26,7 +26,7 @@ class Api::ReviewsController < ApplicationController
 
     def destroy
         @review = current_user.reviews.find(params[:id])
-        if @review && @review.delete!
+        if @review && @review.delete
             render :show
         else
             render json: ["Review cannot be deleted"], status: 422

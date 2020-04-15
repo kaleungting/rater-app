@@ -3,7 +3,6 @@ import BusinessIndex from "./business_index";
 import {
   fetchBusinesses,
   searchBusinesses,
-  fetchAllCategories,
 } from "../../actions/business_actions";
 
 const msp = (state) => ({
@@ -14,7 +13,6 @@ const msp = (state) => ({
 const mdp = (dispatch) => ({
   fetchBusinesses: () => dispatch(fetchBusinesses()),
   searchBusinesses: (query) => dispatch(searchBusinesses(query)),
-  fetchAllCategories: () => dispatch(fetchAllCategories()),
 });
 
 export default connect(msp, mdp)(BusinessIndex);
