@@ -17,7 +17,6 @@ class BusinessPage extends React.Component {
   //   this.props.fetchBusiness(this.props.match.params.businessId);
   // }
   componentDidUpdate(prevProps) {
-    // debugger;
     if (
       prevProps.match.params.businessId !== this.props.match.params.businessId
     ) {
@@ -26,7 +25,6 @@ class BusinessPage extends React.Component {
   }
 
   render() {
-    debugger;
     const { business, categories, reviews, reviewers } = this.props;
     if (!business) {
       return null;

@@ -121,7 +121,6 @@ var receiveAllBusinesses = function receiveAllBusinesses(response) {
 };
 
 var receiveBusiness = function receiveBusiness(response) {
-  // debugger;
   return {
     type: RECEIVE_BUSINESS,
     business: response.business,
@@ -151,7 +150,6 @@ var fetchBusinesses = function fetchBusinesses() {
 var fetchBusiness = function fetchBusiness(businessId) {
   return function (dispatch) {
     return _util_business_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchBusiness"](businessId).then(function (response) {
-      // debugger;
       return dispatch(receiveBusiness(response));
     });
   };
@@ -572,31 +570,12 @@ var BusinessIndexItem = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(BusinessIndexItem, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {// // debugger;
-      // this.props.fetchCategories(this.props.business.id);
-    }
-  }, {
     key: "render",
     value: function render() {
       var _this$props = this.props,
           business = _this$props.business,
           idx = _this$props.idx,
-          categories = _this$props.categories; // debugger;
-      // let categoriesList;
-      // categories.map((category) => {
-      //     if (business.categoriesId.includes(category.id)){
-      //       categoriesList =
-      // <li key={category.id}>
-      //   <a href="">{category.category}</a>
-      // </li>
-      //       );
-      //     } else {
-      //       categoriesList = <div></div>
-      //     }
-      //   })
-      // }
-
+          categories = _this$props.categories;
       var categoriesList = categories.map(function (category, idx) {
         if (business.categoryIds && business.categoryIds.includes(category.id)) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
@@ -609,21 +588,7 @@ var BusinessIndexItem = /*#__PURE__*/function (_React$Component) {
             key: idx
           });
         }
-      }); // console.log(this.props);
-      // const categoriesList = business.categoryIds.map((id) => {
-      //   debugger;
-      //   if (categories.length !== 0) {
-      //     const category = categories[id];
-      //     return (
-      //       <li key={id}>
-      //         <a href="">{category.category}</a>
-      //       </li>
-      //     );
-      //   } else {
-      //     return <div key={id}></div>;
-      //   }
-      // });
-
+      });
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "business-index-item"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1045,7 +1010,6 @@ var BusinessPage = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
-      // debugger;
       if (prevProps.match.params.businessId !== this.props.match.params.businessId) {
         this.props.fetchBusiness(this.props.match.params.businessId);
       }
@@ -1053,7 +1017,6 @@ var BusinessPage = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      debugger;
       var _this$props = this.props,
           business = _this$props.business,
           categories = _this$props.categories,
@@ -1189,16 +1152,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var msp = function msp(state, ownProps) {
-  debugger;
   var business = state.entities.businesses[ownProps.match.params.businessId];
   return {
     business: business,
-    // categories: Object.values(state.entities.categories),
-    // reviews: Object.values(state.entities.reviews),
     categories: Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_2__["selectCategoriesForBusiness"])(state, business),
     reviews: Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_2__["selectReviewsForBusiness"])(state, business),
-    reviewers: state.entities.reviews.reviewers // reviewers: selectReviewersForBusiness(state, business),
-
+    reviewers: state.entities.reviews.reviewers
   };
 };
 
@@ -1891,24 +1850,14 @@ var ReviewIndex = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(ReviewIndex, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {// debugger;
-      // this.props.fetchReviews(this.props.business.id);
-    }
-  }, {
     key: "render",
     value: function render() {
-      var reviewers = this.props.reviewers; // debugger;
-
+      var reviewers = this.props.reviewers;
       var reviews = this.props.reviews.reverse().map(function (review, idx) {
-        //   review.author_id;
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_review_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: idx,
           review: review,
-          reviewer: reviewers[review.author_id] //   fetchReview={this.props.fetchReviews}
-          //   businessId={review.business_id}
-          //   reviewer={reviewers[review.author_id]}
-
+          reviewer: reviewers[review.author_id]
         });
       });
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, reviews);
@@ -2085,8 +2034,7 @@ var HomeSearchBar = /*#__PURE__*/function (_React$Component) {
     value: function handleSubmit(e) {
       var _this3 = this;
 
-      e.preventDefault(); // debugger;
-
+      e.preventDefault();
       this.props.searchBusinesses(this.state).then(function () {
         return _this3.props.history.push("/businesses-search");
       });
@@ -2237,8 +2185,7 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
     value: function handleSubmit(e) {
       var _this3 = this;
 
-      e.preventDefault(); // debugger;
-
+      e.preventDefault();
       this.props.searchBusinesses(this.state).then(function () {
         return _this3.props.history.push("/businesses-search");
       });

@@ -19,7 +19,6 @@ class HomeSearchBar extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    // debugger;
     this.props
       .searchBusinesses(this.state)
       .then(() => this.props.history.push("/businesses-search"));

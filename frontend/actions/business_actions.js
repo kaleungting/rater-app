@@ -12,7 +12,6 @@ const receiveAllBusinesses = (response) => ({
 });
 
 const receiveBusiness = (response) => {
-  // debugger;
   return {
     type: RECEIVE_BUSINESS,
     business: response.business,
@@ -40,7 +39,6 @@ export const fetchBusinesses = () => {
 export const fetchBusiness = (businessId) => {
   return (dispatch) => {
     return BusinessApiUtil.fetchBusiness(businessId).then((response) => {
-      // debugger;
       return dispatch(receiveBusiness(response));
     });
   };

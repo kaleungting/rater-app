@@ -6,27 +6,9 @@ class BusinessIndexItem extends React.Component {
     super(props);
   }
 
-  componentDidMount() {
-    // // debugger;
-    // this.props.fetchCategories(this.props.business.id);
-  }
 
   render() {
     const { business, idx, categories } = this.props;
-    // debugger;
-    // let categoriesList;
-    // categories.map((category) => {
-    //     if (business.categoriesId.includes(category.id)){
-    //       categoriesList =
-    // <li key={category.id}>
-    //   <a href="">{category.category}</a>
-    // </li>
-    //       );
-    //     } else {
-    //       categoriesList = <div></div>
-    //     }
-    //   })
-    // }
     const categoriesList = categories.map((category, idx) => {
       if (business.categoryIds && business.categoryIds.includes(category.id)) {
         return (
@@ -38,20 +20,6 @@ class BusinessIndexItem extends React.Component {
         return <div key={idx}></div>;
       }
     });
-    // console.log(this.props);
-    // const categoriesList = business.categoryIds.map((id) => {
-    //   debugger;
-    //   if (categories.length !== 0) {
-    //     const category = categories[id];
-    //     return (
-    //       <li key={id}>
-    //         <a href="">{category.category}</a>
-    //       </li>
-    //     );
-    //   } else {
-    //     return <div key={id}></div>;
-    //   }
-    // });
 
     return (
       <li className="business-index-item">

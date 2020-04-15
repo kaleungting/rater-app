@@ -11,16 +11,12 @@ import {
 import BusinessPage from "./business_page";
 
 const msp = (state, ownProps) => {
-  debugger;
   const business = state.entities.businesses[ownProps.match.params.businessId];
   return {
     business,
-    // categories: Object.values(state.entities.categories),
-    // reviews: Object.values(state.entities.reviews),
     categories: selectCategoriesForBusiness(state, business),
     reviews: selectReviewsForBusiness(state, business),
     reviewers: state.entities.reviews.reviewers,
-    // reviewers: selectReviewersForBusiness(state, business),
   };
 };
 
