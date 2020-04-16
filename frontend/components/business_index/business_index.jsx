@@ -20,7 +20,8 @@ class BusinessIndex extends React.Component {
   }
 
   render() {
-    const businesses = this.props.businesses.map((business, idx) => {
+    const { businesses } = this.props;
+    const businessList = this.props.businesses.map((business, idx) => {
       return (
         <BusinessIndexItemContainer
           key={business.id}
@@ -36,9 +37,9 @@ class BusinessIndex extends React.Component {
           fetchBusinesses={this.props.fetchBusinesses}
         />
         <div className="business-index-container">
-          <ul className="business-index-content">{businesses}</ul>
+          <ul className="business-index-content">{businessList}</ul>
           <div className="business-index-side">
-            <BusinessMap />
+            <BusinessMap businesses={businesses} />
           </div>
         </div>
       </>

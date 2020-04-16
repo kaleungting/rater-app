@@ -103,7 +103,10 @@ class BusinessPage extends React.Component {
                 <div className="top-sub-header">
                   <div className="map-container">
                     <div className="business-location">
-                      <BusinessMap />
+                      <BusinessMap
+                        business={business}
+                        updateBounds={this.props.updateBounds}
+                      />
                     </div>
                     <div>
                       <ul className="business-info">

@@ -10,6 +10,7 @@ import {
   selectReviewsForBusiness,
 } from "../../reducers/selectors";
 import BusinessPage from "./business_page";
+import { updateBounds } from "../../actions/filter_actions";
 
 const msp = (state, ownProps) => {
   let currentUser;
@@ -32,6 +33,7 @@ const mdp = (dispatch) => {
     fetchBusinesses: () => dispatch(fetchBusinesses()),
     searchBusinesses: (query) => dispatch(searchBusinesses(query)),
     deleteReview: (reviewId) => dispatch(deleteReview(reviewId)),
+    updateBounds: (bounds) => dispatch(updateBounds(bounds))
   };
 };
 

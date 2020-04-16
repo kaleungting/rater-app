@@ -19,20 +19,35 @@ class Api::BusinessesController < ApplicationController
         end
     end
 
-    def index
+    # def index
+    #     if (params[:search])
+    #         if (params[:search][:price_range] == "")
+    #             @businesses = Business.joins(:categories).search(params[:search][:query],params[:search][:location])
+    #         else
+    #             @businesses = Business.search_price(params[:search][:price_range])
+    #         end
+    #     else 
+    #         @businesses = Business.all
+    #     end
+    #     @categories = Category.all
+    #     @reviews = Review.all
+    # end
+
+    def index #takes bounds ?
+        # debugger;
         if (params[:search])
             if (params[:search][:price_range] == "")
                 @businesses = Business.joins(:categories).search(params[:search][:query],params[:search][:location])
             else
                 @businesses = Business.search_price(params[:search][:price_range])
             end
-        else 
+        else
             @businesses = Business.all
         end
         @categories = Category.all
         @reviews = Review.all
     end
-    
+
     private
     def business_params
         params.require(:business).permit(:name, :address, :city, :state, :zipcode, :phone, :price_range, :opening_hours, :lat, :lng, :url, photos: [])

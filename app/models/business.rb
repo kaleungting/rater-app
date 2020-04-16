@@ -38,20 +38,21 @@ class Business < ApplicationRecord
     def average_rating
         reviews.average(:rating)
     end
-    # def self.search(query,location)
-    #     where(("lower(categories.category) LIKE :query OR lower(businesses.name) LIKE :query) AND (lower(businesses.city) LIKE :location"), query: "%#{query.downcase}%", location: "%#{location.downcase}%").uniq   
-    # end
-
-    # def self.search(query,location,price_range)
-    #     where("(lower(categories.category) LIKE :query OR lower(businesses.name) LIKE :query) AND (lower(businesses.city) LIKE :location) OR (lower(businesses.price_range) LIKE :price_range)", query: "%#{query.downcase}%", location: "%#{location.downcase}%", price_range: "#{price_range}").uniq   
-    # end
 
     def self.search(query,location)
-        where("(lower(categories.category) LIKE :query OR lower(businesses.name) LIKE :query) AND (lower(businesses.city) LIKE :location OR (lower(businesses.state) LIKE :location))", query: "%#{query.downcase}%", location: "%#{location.downcase}%").uniq   
+        where("(lower(categories.category) LIKE :query OR lower(businesses.name) LIKE :query) AND (lower(businesses.city) LIKE :location OR (lower(businesses.state) LIKE :location))", query: "%#{query.downcase}%", location: "%#{location.downcase}%")   
     end
 
     def self.search_price(price_range)
-        where("(lower(businesses.price_range) LIKE :price_range)", price_range: "#{price_range}").uniq
+        where("(lower(businesses.price_range) LIKE :price_range)", price_range: "#{price_range}")
     end
+
+    def self.in_bounds(bounds)
+    self.where("lat < ?", bounds[:northEast][:lat])
+        .where("lat > ?", bounds[:southWest][:lat])
+        .where("lng > ?", bounds[:southWest][:lng])
+        .where("lng < ?", bounds[:northEast][:lng])
+    end
+
 
 end

@@ -1,4 +1,4 @@
-json.extract! business, :id, :name, :address, :city, :state, :zipcode, :phone, :price_range, :opening_hours, :url, :average_rating
+json.extract! business, :id, :name, :address, :city, :state, :zipcode, :phone, :price_range, :opening_hours, :url, :average_rating, :lat, :lng
 
 json.reviewIds business.review_ids
 json.categoryIds business.category_ids
