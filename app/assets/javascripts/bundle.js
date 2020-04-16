@@ -365,6 +365,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _business_index_item_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./business_index_item_container */ "./frontend/components/business_index/business_index_item_container.js");
 /* harmony import */ var _business_nav_business_nav_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../business_nav/business_nav_container */ "./frontend/components/business_nav/business_nav_container.js");
 /* harmony import */ var _map_business_map__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../map/business_map */ "./frontend/components/map/business_map.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -392,6 +393,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var BusinessIndex = /*#__PURE__*/function (_React$Component) {
   _inherits(BusinessIndex, _React$Component);
 
@@ -406,10 +408,9 @@ var BusinessIndex = /*#__PURE__*/function (_React$Component) {
   _createClass(BusinessIndex, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      window.scrollTo(0, 0); // debugger;
-      // this.props.fetchCategories(this.props.business.id);
+      window.scrollTo(0, 0);
 
-      if (this.props.location.pathname !== "/businesses-search") {
+      if (this.props.location.pathname !== "/businesses-search" && this.props.businesses.length === 0) {
         this.props.fetchBusinesses();
       }
     }
@@ -439,7 +440,7 @@ var BusinessIndex = /*#__PURE__*/function (_React$Component) {
   return BusinessIndex;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (BusinessIndex);
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["withRouter"])(BusinessIndex));
 
 /***/ }),
 
@@ -883,8 +884,6 @@ var SubNav = /*#__PURE__*/function (_React$Component) {
       if (prevState !== currentState) {
         this.props.searchBusinesses(currentState).then(function () {
           return _this2.props.history.push("/businesses");
-        }).then(function () {
-          return searchBusinesses(currentState);
         });
       }
     }
@@ -2038,14 +2037,6 @@ var ReviewForm = /*#__PURE__*/function (_React$Component) {
       if (preProps.review !== this.props.review) {
         this.setState(_objectSpread({}, this.props.review));
       }
-    }
-  }, {
-    key: "renderText",
-    value: function renderText() {
-      var printText;
-      var textArray = ["Woohoo! As good as it gets!", "Yay! I'm a fan.", "A-OK.", "Meh. I've experienced better.", "Eek! Methinks not.", "Select your rating"];
-      printText = textArray[this.state.rating];
-      return printText;
     }
   }, {
     key: "update",

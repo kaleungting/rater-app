@@ -53,4 +53,5 @@ class Business < ApplicationRecord
     def self.search_price(price_range)
         where("(lower(businesses.price_range) LIKE :price_range)", price_range: "#{price_range}").uniq
     end
+
 end

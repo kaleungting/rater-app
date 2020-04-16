@@ -2,6 +2,7 @@ import React from "react";
 import BusinessIndexItemContainer from "./business_index_item_container";
 import BusinessNavContainer from "../business_nav/business_nav_container";
 import BusinessMap from "../map/business_map";
+import { withRouter } from "react-router-dom";
 
 class BusinessIndex extends React.Component {
   constructor(props) {
@@ -10,9 +11,10 @@ class BusinessIndex extends React.Component {
 
   componentDidMount() {
     window.scrollTo(0, 0);
-    // debugger;
-    // this.props.fetchCategories(this.props.business.id);
-    if (this.props.location.pathname !== "/businesses-search") {
+    if (
+      this.props.location.pathname !== "/businesses-search" &&
+      this.props.businesses.length === 0
+    ) {
       this.props.fetchBusinesses();
     }
   }
@@ -44,4 +46,4 @@ class BusinessIndex extends React.Component {
   }
 }
 
-export default BusinessIndex;
+export default withRouter(BusinessIndex);

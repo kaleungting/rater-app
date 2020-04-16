@@ -28,19 +28,7 @@ class ReviewForm extends React.Component {
       this.setState({ ...this.props.review });
     }
   }
-  renderText() {
-    let printText;
-    const textArray = [
-      "Woohoo! As good as it gets!",
-      "Yay! I'm a fan.",
-      "A-OK.",
-      "Meh. I've experienced better.",
-      "Eek! Methinks not.",
-      "Select your rating",
-    ];
-    printText = textArray[this.state.rating];
-    return printText;
-  }
+
 
   update(field) {
     return (e) => this.setState({ [field]: e.currentTarget.value });
