@@ -2,7 +2,7 @@ import React from "react";
 import BusinessNavContainer from "../business_nav/business_nav_container";
 import { Link } from "react-router-dom";
 import BusinessMap from "../map/business_map";
-import ReviewIndex from "../reviews/review_index";
+import ReviewIndexContainer from "../reviews/review_index_container";
 
 class BusinessPage extends React.Component {
   constructor(props) {
@@ -11,7 +11,6 @@ class BusinessPage extends React.Component {
 
   componentDidMount() {
     window.scrollTo(0, 0);
-
     this.props.fetchBusiness(this.props.match.params.businessId);
   }
 
@@ -27,13 +26,7 @@ class BusinessPage extends React.Component {
   }
 
   render() {
-    const {
-      business,
-      categories,
-      reviews,
-      reviewers,
-      currentUser,
-    } = this.props;
+    const { business, categories } = this.props;
     if (!business) {
       return null;
     }
@@ -181,14 +174,7 @@ class BusinessPage extends React.Component {
                 </div>
               </div>
               <div className="business-main-content">
-                <ReviewIndex
-                  business={business}
-                  reviews={reviews}
-                  reviewers={reviewers}
-                  currentUser={currentUser}
-                  deleteReview={this.props.deleteReview}
-                  fetchBusiness={this.props.fetchBusiness}
-                />
+                <ReviewIndexContainer business={business} />
               </div>
             </div>
             <div className="business-right">

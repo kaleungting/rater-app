@@ -18,8 +18,6 @@ const reviewsReducer = (state = {}, action) => {
       return newState;
     case RECEIVE_BUSINESS:
       return Object.assign({}, state, action.reviews);
-    case RECEIVE_ALL_BUSINESSES:
-      return Object.assign({}, state, action.reviews);
     default:
       return state;
   }

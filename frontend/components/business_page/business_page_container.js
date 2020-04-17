@@ -21,8 +21,6 @@ const msp = (state, ownProps) => {
   return {
     business,
     categories: selectCategoriesForBusiness(state, business),
-    reviews: selectReviewsForBusiness(state, business),
-    reviewers: state.entities.reviews.reviewers,
     currentUser,
   };
 };
