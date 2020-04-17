@@ -7,9 +7,9 @@ class ReviewIndex extends React.Component {
   }
 
   render() {
+    // debugger;
     const { reviewers, currentUser } = this.props;
-    const reviews = this.props.reviews.reverse().map((review, idx) => {
-      return (
+    const reviews = this.props.reviews.reverse().map((review, idx) => (
         <ReviewIndexItem
           key={idx}
           review={review}
@@ -18,8 +18,7 @@ class ReviewIndex extends React.Component {
           deleteReview={this.props.deleteReview}
           fetchBusiness={this.props.fetchBusiness}
         />
-      );
-    });
+      ));
 
     return <div>{reviews}</div>;
   }

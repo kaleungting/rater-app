@@ -19,7 +19,6 @@ const receiveBusiness = (response) => {
   };
 };
 
-
 export const fetchBusinesses = () => {
   return (dispatch) => {
     return BusinessApiUtil.fetchBusinesses().then((response) => {

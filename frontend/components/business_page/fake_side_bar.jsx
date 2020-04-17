@@ -1,42 +1,8 @@
 import React from "react";
 
-const FakeSidebar = ({ opening_hours }) => {
+const FakeSidebar = () => {
   return (
     <div className="fake-sidebar-container">
-      <div className="sidebar-hours">
-        <div className="sidebar-sub-title">Hours</div>
-        <ul className="sidebar-list">
-          <li className="sidebar-hours-item">
-            <div className="sidebar-hours-day">Mon</div>
-            <div className="sidebar-hours-times">{opening_hours}</div>
-          </li>
-          <li className="sidebar-hours-item">
-            <div className="sidebar-hours-day">Tue</div>
-            <div className="sidebar-hours-times">{opening_hours}</div>
-          </li>
-          <li className="sidebar-hours-item">
-            <div className="sidebar-hours-day">Wed</div>
-            <div className="sidebar-hours-times">{opening_hours}</div>
-          </li>
-          <li className="sidebar-hours-item">
-            <div className="sidebar-hours-day">Thu</div>
-            <div className="sidebar-hours-times">{opening_hours}</div>
-          </li>
-          <li className="sidebar-hours-item">
-            <div className="sidebar-hours-day">Fri</div>
-            <div className="sidebar-hours-times">{opening_hours}</div>
-          </li>
-          <li className="sidebar-hours-item">
-            <div className="sidebar-hours-day">Sat</div>
-            <div className="sidebar-hours-times">{opening_hours}</div>
-          </li>
-          <li className="sidebar-hours-item">
-            <div className="sidebar-hours-day">Sun</div>
-            <div className="sidebar-hours-times">{opening_hours}</div>
-          </li>
-        </ul>
-      </div>
-
       <div className="sidebar-business-info">
         <div className="sidebar-sub-title">More business info</div>
         <ul className="sidebar-list">

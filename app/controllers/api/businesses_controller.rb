@@ -45,7 +45,6 @@ class Api::BusinessesController < ApplicationController
             @businesses = Business.all
         end
         @categories = Category.all
-        @reviews = Review.all
     end
 
     private

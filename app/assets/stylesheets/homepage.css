@@ -26,8 +26,8 @@
   align-items: center;
   background-color: white;
   width: 70%;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
 
 .home-query-container span {

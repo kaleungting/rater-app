@@ -21,6 +21,7 @@
   height: 36px;
   margin: 0 auto;
   width: 700px;
+  box-shadow: 2px 2px 5px 0px rgb(53, 53, 53);
 }
 
 .search-container {
@@ -53,6 +54,10 @@
   /* font-family: sans-serif; */
   font-weight: 700;
   margin: 0 5px 0 5px;
+}
+
+.btn-user-dropdown .material-icons {
+  font-size: 35px;
 }
 
 .btn-search-submit {
@@ -169,6 +174,8 @@
   color: white;
   opacity: 80%;
   cursor: pointer;
+  padding-top: 2px;
+  padding-bottom: 2px;
 }
 
 .business-nav-logo img {

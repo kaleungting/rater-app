@@ -13,7 +13,7 @@ class BusinessIndex extends React.Component {
     window.scrollTo(0, 0);
     if (
       this.props.location.pathname !== "/businesses-search" &&
-      this.props.businesses.length === 0
+      (this.props.businesses.length === 0 || this.props.businesses.length === 1)
     ) {
       this.props.fetchBusinesses();
     }

@@ -19,6 +19,7 @@ export default class MarkerManager {
       position: myLatLng,
       map: this.map,
       title: business.name,
+      url: `/businesses/${business.id}`,
     });
 
     marker.setMap(this.map);

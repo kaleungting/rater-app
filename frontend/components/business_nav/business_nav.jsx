@@ -17,7 +17,7 @@ class BusinessNav extends React.Component {
   render() {
     const { currentUser, logout } = this.props;
 
-    const userPic = <i className="fas fa-meh fa-2x"></i>;
+    const userPic = <i className="material-icons">account_box</i>;
     const rightNav = currentUser ? (
       <div className="business-right-nav">
         <div className="user-dropdown">

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
+
 class ReviewIndexItem extends React.Component {
   constructor(props) {
     super(props);
@@ -14,7 +15,7 @@ class ReviewIndexItem extends React.Component {
 
   render() {
     const { reviewer, review, currentUser } = this.props;
-    var date = review.created_at.slice(0, 10);
+    const date = review.created_at.slice(0, 10);
 
     const editReview =
       review.author_id === parseInt(Object.keys(currentUser)) ? (
@@ -45,8 +46,9 @@ class ReviewIndexItem extends React.Component {
           <div className="reviewer-profile">
             <div className="reviewer-photo">photo</div>
             <div className="reviewer-name">
-              <div>
-                {reviewer.first_name} {reviewer.last_name}
+              {reviewer.first_name} {reviewer.last_name}
+              <div className="reviewer-address">
+                {reviewer.city}, {reviewer.state}
               </div>
             </div>
           </div>
@@ -65,7 +67,10 @@ class ReviewIndexItem extends React.Component {
         <div className="review-content">
           <div className="review-content-top">
             <img
-              className={`stars-medium-${review.rating * 2}` + " stars-medium"}
+              className={
+                `stars-medium-${Math.round(review.rating * 2)}` +
+                " stars-medium"
+              }
               src="https://i.imgur.com/UkZkm0D.png"
             ></img>
             <div className="review-date">{date}</div>

@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import { AuthRoute, ProtectedRoute } from "../util/route_util";
 // import NavContainer from "./nav/nav_container";
-import Homepage from "../components/home_page/home_page";
+import HomepageContainer from "../components/home_page/home_page_container";
 import SignupFormContainer from "./session/signup_form_container";
 import LoginFormContainer from "./session/login_form_container";
 import BusinessIndexContainer from "./business_index/business_index_container";
@@ -13,7 +13,7 @@ import Footer from "./footer/footer";
 const App = () => (
   <div>
     <header>
-      <Route exact path="/" component={Homepage} />
+      <Route exact path="/" component={HomepageContainer} />
     </header>
     <AuthRoute path="/login" component={LoginFormContainer} />
     <AuthRoute path="/signup" component={SignupFormContainer} />
