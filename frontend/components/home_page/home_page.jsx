@@ -4,6 +4,7 @@ import HomeSearchBarContainer from "../search/home_search_bar_container";
 import HomePageCard from "./home_page_card";
 class HomePage extends React.Component {
   componentDidMount() {
+    window.scrollTo(0, 0);
     this.props.fetchBusinesses();
   }
 
@@ -30,6 +31,7 @@ class HomePage extends React.Component {
           </div>
         </div>
         <div className="discover-container">
+          <div className="discover-text">Discover New Restaurants</div>
           <ul className="discover-biz">{bizList}</ul>
         </div>
       </>

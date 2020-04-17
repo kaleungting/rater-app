@@ -68,13 +68,14 @@ div.business-img img {
   font-size: 18px;
   font-weight: bold;
   color: #2b273c;
+  margin: 0;
 }
 
 .business-name:hover {
   /* display: inline-block; */
   font-size: 18px;
   color: #2b273c;
-  text-decoration: underline || text-decoration-thickness: 3px;
+  text-decoration: underline;
 }
 
 .business-rating {
@@ -104,7 +105,7 @@ ul.business-price-category li:hover {
 
 .business-address ul {
   padding: 0;
-  width: 150px;
+  width: 160px;
   font-size: 14px;
   color: #666666;
 }

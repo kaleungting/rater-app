@@ -1492,6 +1492,7 @@ var HomePage = /*#__PURE__*/function (_React$Component) {
   _createClass(HomePage, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      window.scrollTo(0, 0);
       this.props.fetchBusinesses();
     }
   }, {
@@ -1520,7 +1521,9 @@ var HomePage = /*#__PURE__*/function (_React$Component) {
         src: logo
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_search_home_search_bar_container__WEBPACK_IMPORTED_MODULE_2__["default"], null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "discover-container"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "discover-text"
+      }, "Discover New Restaurants"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "discover-biz"
       }, bizList)));
     }
@@ -2148,6 +2151,7 @@ var ReviewForm = /*#__PURE__*/function (_React$Component) {
   _createClass(ReviewForm, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      window.scrollTo(0, 0);
       this.props.fetchBusiness(this.props.match.params.businessId);
       this.setState(_objectSpread({}, this.props.review));
     }
@@ -2357,6 +2361,7 @@ var ReviewIndex = /*#__PURE__*/function (_React$Component) {
   _createClass(ReviewIndex, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      window.scrollTo(0, 0);
       this.props.fetchBusiness(this.props.business[0].id);
     }
   }, {
@@ -3046,6 +3051,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "componentDidMount",
     value: function componentDidMount() {
+      window.scrollTo(0, 0);
       this.props.clearErrors();
     }
   }, {

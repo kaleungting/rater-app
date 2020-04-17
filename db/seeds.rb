@@ -19,7 +19,7 @@ ActiveRecord::Base.connection.tables.each do |t|
     ActiveRecord::Base.connection.reset_pk_sequence!(t)
 end
 
-demo = User.create!({first_name: "demo", last_name: "user", email: "demo-user@gmail.com", password: "password1", birthday: "1993-9-10", zip_code: "11010", })
+demo = User.create!({first_name: "Demo", last_name: "User", email: "demo-user@gmail.com", password: "password1", birthday: "1993-9-10", zip_code: "11010", city: "New York City", state: "NY" })
 # u2 = User.create!({first_name: "Ray", last_name: "Allen", email: "ra20@gmail.com", password: "password1", birthday: "1970-5-10", zip_code: "11010" })
 # u3 = User.create!({first_name: "Paul", last_name: "Pierce", email: "pp34@gmail.com", password: "password1", birthday: "1969-9-28", zip_code: "11373" })
 # u4 = User.create!({first_name: "Kevin", last_name: "Garnett", email: "kg5@gmail.com", password: "password1", birthday: "1968-2-15", zip_code: "10010" })
@@ -141,10 +141,10 @@ bc45 = BusinessCategory.create!({business_id: b20.id, category_id:c19.id})
 # r20 = Review.create!(body: Faker::Restaurant.review , author_id: u4.id, business_id: b6.id, rating: rand(1..5))
 
 
-i=1
-until i == 10 do
+i=2
+until i == 4 do
     y = 1
-    until y == 13 do
+    until y == 21 do
         Review.create!(
         body: Faker::Restaurant.review, 
         author_id: i, 
@@ -155,8 +155,24 @@ until i == 10 do
     i+=1
 end
 
+i=5
+until i == 9 do
+    y = 14
+    until y == 21 do
+        Review.create!(
+        body: Faker::Restaurant.review, 
+        author_id: i, 
+        business_id: y, 
+        rating: rand(3..5))
+        y+=1
+    end
+    i+=1
+end
+
+
+
 i=10
-until i == 20 do
+until i == 21 do
     y = 6
     until y == 21 do
         Review.create!(
@@ -174,7 +190,6 @@ end
 
 #currylane
 Business.find(1).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/curry_lane/curry_lane_profile_pic.jpg'), filename: 'cl_pp.jpg')
-Business.find(1).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/curry_lane/curry_lane_photo1.jpg'), filename: 'cl_p1.jpg')
 Business.find(1).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/curry_lane/cl_photo5.jpg'), filename: 'cl_p2.jpg')
 Business.find(1).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/curry_lane/cl_photo6.jpg'), filename: 'cl_p3.jpg')
 Business.find(1).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/curry_lane/cl_photo4.jpg'), filename: 'cl_p4.jpg')
@@ -194,104 +209,114 @@ Business.find(3).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com
 Business.find(3).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/thai_son/ts_photo3.jpg'), filename: 'ts3.jpg')
 Business.find(3).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/thai_son/ts_photo4.jpg'), filename: 'ts4.jpg')
 
+Business.find(4).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/xo/xo_profile.jpg'), filename: 'xo_profile.jpg')
+Business.find(4).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/xo/xo_1.jpg'), filename: 'xo_1.jpg')
+Business.find(4).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/xo/xo_2.jpg'), filename: 'xo_2.jpg')
+Business.find(4).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/xo/xo_3.jpg'), filename: 'xo_3.jpg')
+Business.find(4).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/xo/xo_4.jpg'), filename: 'xo_4.jpg')
+
+Business.find(5).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/astoria/a_profile.jpg'), filename: 'a_profile.jpg')
+Business.find(5).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/astoria/a_1.jpg'), filename: 'a_1.jpg')
+Business.find(5).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/astoria/a_2.jpg'), filename: 'a_2.jpg')
+Business.find(5).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/astoria/a_3.jpg'), filename: 'a_3.jpg')
+Business.find(5).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/astoria/a_4.jpg'), filename: 'a_4.jpg')
+
+
+Business.find(6).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/ocho/o_profile.jpg'), filename: 'o_pro.jpg')
+Business.find(6).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/ocho/o_1.jpg'), filename: 'o_1.jpg')
+Business.find(6).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/ocho/o_2.jpg'), filename: 'o_2.jpg')
+Business.find(6).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/ocho/o_3.jpg'), filename: 'o_3.jpg')
+Business.find(6).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/ocho/o_4.jpg'), filename: 'o_4.jpg')
 
 #avli
-Business.find(7).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/avli/avli_profile.jpg'), file_name: 'avli_profile.jpg')
-Business.find(7).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/avli/avli_1.jpg'), file_name: 'avli1.jpg')
-Business.find(7).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/avli/avli_2.jpg'), file_name: 'avli2.jpg')
-Business.find(7).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/avli/avli_3.jpg'), file_name: 'avli3.jpg')
-Business.find(7).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/avli/avli_4.jpg'), file_name: 'avli4.jpg')
+Business.find(7).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/avli/avli_profile.jpg'), filename: 'avli_profile.jpg')
+Business.find(7).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/avli/avli_1.jpg'), filename: 'avli1.jpg')
+Business.find(7).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/avli/avli_2.jpg'), filename: 'avli2.jpg')
+Business.find(7).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/avli/avli_3.jpg'), filename: 'avli3.jpg')
+Business.find(7).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/avli/avli_4.jpg'), filename: 'avli4.jpg')
 
 #bspizza
-Business.find(8).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/bspizza/bspizza_profile.jpg'), file_name: 'bspizza_pro.jpg')
-Business.find(8).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/bspizza/bspizza_1.jpg'), file_name: 'bspizza1.jpg')
-Business.find(8).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/bspizza/bspizza_2.jpg'), file_name: 'bspizza2.jpg')
-Business.find(8).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/bspizza/bspizza_3.jpg'), file_name: 'bspizza3.jpg')
-Business.find(8).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/bspizza/bspizza_4.jpg'), file_name: 'bspizza4.jpg')
+Business.find(8).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/bspizza/bspizza_profile.jpg'), filename: 'bspizza_pro.jpg')
+Business.find(8).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/bspizza/bspizza_1.jpg'), filename: 'bspizza1.jpg')
+Business.find(8).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/bspizza/bspizza_2.jpg'), filename: 'bspizza2.jpg')
+Business.find(8).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/bspizza/bspizza_3.jpg'), filename: 'bspizza3.jpg')
+Business.find(8).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/bspizza/bspizza_4.jpg'), filename: 'bspizza4.jpg')
 
-Business.find(4).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/canton_gourmet/cg_photo4.jpg'), file_name: 'cg4.jpg')
+Business.find(9).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/naka/n_profile.jpg'), filename: 'n_pro.jpg')
+Business.find(9).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/naka/n_1.jpg'), filename: 'n_1.jpg')
+Business.find(9).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/naka/n_2.jpg'), filename: 'n_2.jpg')
+Business.find(9).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/naka/n_3.jpg'), filename: 'n_3.jpg')
+Business.find(9).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/naka/n_4.jpg'), filename: 'n_4.jpg')
+
+
+Business.find(10).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/halal/h_profile.jpg'), filename: 'h_pro.jpg')
+Business.find(10).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/halal/h_1.jpg'), filename: 'h_1.jpg')
+Business.find(10).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/halal/h_2.jpg'), filename: 'h_2.jpg')
+Business.find(10).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/halal/h_3.jpg'), filename: 'h_3.jpg')
+Business.find(10).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/halal/h_4.jpg'), filename: 'h_4.jpg')
 
 #cast
-Business.find(11).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/castiron/cast_profile.jpg'), file_name: 'ci_pro.jpg')
-Business.find(11).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/castiron/cast_1.jpg'), file_name: 'ci_1.jpg')
-Business.find(11).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/castiron/cast_2.jpg'), file_name: 'ci_2.jpg')
-Business.find(11).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/castiron/cast_3.jpg'), file_name: 'ci_3.jpg')
-Business.find(11).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/castiron/cast_4.jpg'), file_name: 'ci_4.jpg')
+Business.find(11).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/castiron/cast_profile.jpg'), filename: 'ci_pro.jpg')
+Business.find(11).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/castiron/cast_1.jpg'), filename: 'ci_1.jpg')
+Business.find(11).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/castiron/cast_2.jpg'), filename: 'ci_2.jpg')
+Business.find(11).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/castiron/cast_3.jpg'), filename: 'ci_3.jpg')
+Business.find(11).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/castiron/cast_4.jpg'), filename: 'ci_4.jpg')
 
 #coffee
-Business.find(5).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/coffeehaus/ch_4.jpg'), file_name: 'ch_4.jpg')
+
+Business.find(12).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/tacos/t_profile.jpg'), filename: 't_pro.jpg')
+Business.find(12).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/tacos/t_1.jpg'), filename: 't_1.jpg')
+Business.find(12).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/tacos/t_2.jpg'), filename: 't_2.jpg')
+Business.find(12).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/tacos/t_3.jpg'), filename: 't_3.jpg')
+Business.find(12).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/tacos/t_4.jpg'), filename: 't_4.jpg')
+
+Business.find(13).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/wolfgang/w_profile.jpg'), filename: 'w_pro.jpg')
+Business.find(13).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/wolfgang/w_1.jpg'), filename: 'w_1.jpg')
+Business.find(13).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/wolfgang/w_2.jpg'), filename: 'w_2.jpg')
+Business.find(13).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/wolfgang/w_3.jpg'), filename: 'w_3.jpg')
+Business.find(13).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/wolfgang/w_4.jpg'), filename: 'w_4.jpg')
+
+Business.find(14).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/eleven/e_profile.jpg'), filename: 'e_pro.jpg')
+Business.find(14).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/eleven/e_1.jpg'), filename: 'e_1.jpg')
+Business.find(14).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/eleven/e_2.jpg'), filename: 'e_2.jpg')
+Business.find(14).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/eleven/e_3.jpg'), filename: 'e_3.jpg')
+Business.find(14).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/eleven/e_4.jpg'), filename: 'e_4.jpg')
+
+Business.find(15).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/sugarfish/s_profile.jpg'), filename: 's_pro.jpg')
+Business.find(15).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/sugarfish/s_1.jpg'), filename: 's_1.jpg')
+Business.find(15).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/sugarfish/s_2.jpg'), filename: 's_2.jpg')
+Business.find(15).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/sugarfish/s_3.jpg'), filename: 's_3.jpg')
+Business.find(15).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/sugarfish/s_4.jpg'), filename: 's_4.jpg')
 
 
 #devocion
-Business.find(16).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/devocion/d_profile.jpg'), file_name: 'd_pro.jpg')
-Business.find(16).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/devocion/d_1.jpg'), file_name: 'd_1.jpg')
-Business.find(16).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/devocion/d_2.jpg'), file_name: 'd_2.jpg')
-Business.find(16).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/devocion/d_3.jpg'), file_name: 'd_3.jpg')
-Business.find(16).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/devocion/d_4.jpg'), file_name: 'd_4.jpg')
+Business.find(16).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/devocion/d_profile.jpg'), filename: 'd_pro.jpg')
+Business.find(16).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/devocion/d_1.jpg'), filename: 'd_1.jpg')
+Business.find(16).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/devocion/d_2.jpg'), filename: 'd_2.jpg')
+Business.find(16).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/devocion/d_3.jpg'), filename: 'd_3.jpg')
+Business.find(16).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/devocion/d_4.jpg'), filename: 'd_4.jpg')
 
-Business.find(18).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/dunwell/d_pro.jpg'), file_name: 'd_pro.jpg')
-Business.find(18).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/dunwell/d_1.jpg'), file_name: 'd_1.jpg')
-Business.find(18).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/dunwell/d_2.jpg'), file_name: 'd_2.jpg')
-Business.find(18).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/dunwell/d_3.jpg'), file_name: 'd_3.jpg')
-Business.find(18).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/dunwell/d_4.jpg'), file_name: 'd_4.jpg')
+Business.find(17).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/westlight/w_profile.jpg'), filename: 'w_pro.jpg')
+Business.find(17).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/westlight/w_1.jpg'), filename: 'w_1.jpg')
+Business.find(17).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/westlight/w_2.jpg'), filename: 'w_2.jpg')
+Business.find(17).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/westlight/w_3.jpg'), filename: 'w_3.jpg')
+Business.find(17).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/westlight/w_4.jpg'), filename: 'w_4.jpg')
 
-Business.find(14).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/eleven/e_profile.jpg'), file_name: 'e_pro.jpg')
-Business.find(14).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/eleven/e_1.jpg'), file_name: 'e_1.jpg')
-Business.find(14).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/eleven/e_2.jpg'), file_name: 'e_2.jpg')
-Business.find(14).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/eleven/e_3.jpg'), file_name: 'e_3.jpg')
-Business.find(14).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/eleven/e_4.jpg'), file_name: 'e_4.jpg')
+Business.find(18).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/dunwell/d_pro.jpg'), filename: 'd_pro.jpg')
+Business.find(18).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/dunwell/d_1.jpg'), filename: 'd_1.jpg')
+Business.find(18).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/dunwell/d_2.jpg'), filename: 'd_2.jpg')
+Business.find(18).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/dunwell/d_3.jpg'), filename: 'd_3.jpg')
+Business.find(18).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/dunwell/d_4.jpg'), filename: 'd_4.jpg')
 
-Business.find(10).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/halal/h_profile.jpg'), file_name: 'h_pro.jpg')
-Business.find(10).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/halal/h_1.jpg'), file_name: 'h_1.jpg')
-Business.find(10).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/halal/h_2.jpg'), file_name: 'h_2.jpg')
-Business.find(10).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/halal/h_3.jpg'), file_name: 'h_3.jpg')
-Business.find(10).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/halal/h_4.jpg'), file_name: 'h_4.jpg')
+Business.find(19).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/levain/l_profile.jpg'), filename: 'l_pro.jpg')
+Business.find(19).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/levain/l_1.jpg'), filename: 'l_1.jpg')
+Business.find(19).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/levain/l_2.jpg'), filename: 'l_2.jpg')
+Business.find(19).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/levain/l_3.jpg'), filename: 'l_3.jpg')
+Business.find(19).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/levain/l_4.jpg'), filename: 'l_4.jpg')
 
-Business.find(20).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/jacobs/j_profile.jpg'), file_name: 'j_pro.jpg')
-Business.find(20).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/jacobs/j_1.jpg'), file_name: 'j_1.jpg')
-Business.find(20).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/jacobs/j_2.jpg'), file_name: 'j_2.jpg')
-Business.find(20).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/jacobs/j_3.jpg'), file_name: 'j_3.jpg')
-Business.find(20).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/jacobs/j_4.jpg'), file_name: 'j_4.jpg')
+Business.find(20).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/jacobs/j_profile.jpg'), filename: 'j_pro.jpg')
+Business.find(20).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/jacobs/j_1.jpg'), filename: 'j_1.jpg')
+Business.find(20).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/jacobs/j_2.jpg'), filename: 'j_2.jpg')
+Business.find(20).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/jacobs/j_3.jpg'), filename: 'j_3.jpg')
+Business.find(20).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/jacobs/j_4.jpg'), filename: 'j_4.jpg')
 
-Business.find(19).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/levain/l_profile.jpg'), file_name: 'l_pro.jpg')
-Business.find(19).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/levain/l_1.jpg'), file_name: 'l_1.jpg')
-Business.find(19).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/levain/l_2.jpg'), file_name: 'l_2.jpg')
-Business.find(19).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/levain/l_3.jpg'), file_name: 'l_3.jpg')
-Business.find(19).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/levain/l_4.jpg'), file_name: 'l_4.jpg')
-
-Business.find(9).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/naka/n_profile.jpg'), file_name: 'n_pro.jpg')
-Business.find(9).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/naka/n_1.jpg'), file_name: 'n_1.jpg')
-Business.find(9).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/naka/n_2.jpg'), file_name: 'n_2.jpg')
-Business.find(9).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/naka/n_3.jpg'), file_name: 'n_3.jpg')
-Business.find(9).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/naka/n_4.jpg'), file_name: 'n_4.jpg')
-
-Business.find(6).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/ocho/o_profile.jpg'), file_name: 'o_pro.jpg')
-Business.find(6).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/ocho/o_1.jpg'), file_name: 'o_1.jpg')
-Business.find(6).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/ocho/o_2.jpg'), file_name: 'o_2.jpg')
-Business.find(6).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/ocho/o_3.jpg'), file_name: 'o_3.jpg')
-Business.find(6).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/ocho/o_4.jpg'), file_name: 'o_4.jpg')
-
-
-Business.find(15).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/sugarfish/s_profile.jpg'), file_name: 's_pro.jpg')
-Business.find(15).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/sugarfish/s_1.jpg'), file_name: 's_1.jpg')
-Business.find(15).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/sugarfish/s_2.jpg'), file_name: 's_2.jpg')
-Business.find(15).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/sugarfish/s_3.jpg'), file_name: 's_3.jpg')
-Business.find(15).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/sugarfish/s_4.jpg'), file_name: 's_4.jpg')
-
-Business.find(12).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/tacos/t_profile.jpg'), file_name: 't_pro.jpg')
-Business.find(12).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/tacos/t_1.jpg'), file_name: 't_1.jpg')
-Business.find(12).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/tacos/t_2.jpg'), file_name: 't_2.jpg')
-Business.find(12).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/tacos/t_3.jpg'), file_name: 't_3.jpg')
-Business.find(12).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/tacos/t_4.jpg'), file_name: 't_4.jpg')
-
-Business.find(17).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/westlight/w_profile.jpg'), file_name: 'w_pro.jpg')
-Business.find(17).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/westlight/w_1.jpg'), file_name: 'w_1.jpg')
-Business.find(17).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/westlight/w_2.jpg'), file_name: 'w_2.jpg')
-Business.find(17).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/westlight/w_3.jpg'), file_name: 'w_3.jpg')
-Business.find(17).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/westlight/w_4.jpg'), file_name: 'w_4.jpg')
-
-Business.find(13).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/wolfgang/w_profile.jpg'), file_name: 'w_pro.jpg')
-Business.find(13).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/wolfgang/w_1.jpg'), file_name: 'w_1.jpg')
-Business.find(13).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/wolfgang/w_2.jpg'), file_name: 'w_2.jpg')
-Business.find(13).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/wolfgang/w_3.jpg'), file_name: 'w_3.jpg')
-Business.find(13).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/wolfgang/w_4.jpg'), file_name: 'w_4.jpg')

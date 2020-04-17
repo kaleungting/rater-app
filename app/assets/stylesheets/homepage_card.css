@@ -87,6 +87,7 @@ ul.biz-index-content {
 
 ul.biz-price-category {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   height: 30px;
 }
@@ -107,7 +108,7 @@ ul.biz-price-category li:hover {
 
 .biz-address ul {
   padding: 0;
-  width: 150px;
+  width: 160px;
   font-size: 14px;
   color: #666666;
 }

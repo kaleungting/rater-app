@@ -19,6 +19,7 @@ class ReviewForm extends React.Component {
   }
 
   componentDidMount() {
+    window.scrollTo(0, 0);
     this.props.fetchBusiness(this.props.match.params.businessId);
     this.setState({ ...this.props.review });
   }
