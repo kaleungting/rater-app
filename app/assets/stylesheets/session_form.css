@@ -33,6 +33,10 @@
   /* margin-bottom: 60px; */
 }
 
+.session-logo {
+  width: 100px;
+}
+
 .text-input {
   width: 100%;
   height: 30px;

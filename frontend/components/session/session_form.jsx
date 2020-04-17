@@ -341,7 +341,9 @@ class SessionForm extends React.Component {
     const display = this.props.formType === "Sign Up" ? signup : login;
     return (
       <>
-        <div className="session-form-top">Rater</div>
+        <div className="session-form-top">
+          <img className="session-logo" src={logo} />
+        </div>
         <div className="session-form-container">
           <div className="session-form">{display}</div>
           <div className="session-form-img">
