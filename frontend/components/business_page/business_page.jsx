@@ -47,6 +47,10 @@ class BusinessPage extends React.Component {
       photosList = "";
     }
 
+    const reviewText =
+      business.reviewIds.length > 1
+        ? `${business.reviewIds.length} reviews`
+        : `${business.reviewIds.length} review`;
     return (
       <div>
         <BusinessNavContainer searchBusinesses={this.props.searchBusinesses} />
@@ -72,6 +76,7 @@ class BusinessPage extends React.Component {
                       }
                       src="https://i.imgur.com/UkZkm0D.png"
                     ></img>
+                    {reviewText}
                   </div>
                   <ul className="business-price-category">
                     <li>{business.price_range}</li>

@@ -1,9 +1,10 @@
 import { connect } from "react-redux";
 import ReviewForm from "./review_form";
-import { createReview } from "../../actions/review_actions";
+import { createReview, clearErrors } from "../../actions/review_actions";
 import { fetchBusiness } from "../../actions/business_actions";
 
 const msp = (state, ownProps) => ({
+  errors: state.errors.review,
   currentUserId: state.session.id,
   reviewId: null,
   review: { body: "", rating: 0 },
@@ -15,6 +16,7 @@ const msp = (state, ownProps) => ({
 const mdp = (dispatch) => ({
   action: (review) => dispatch(createReview(review)),
   fetchBusiness: (businessId) => dispatch(fetchBusiness(businessId)),
+  clearErrors: () => dispatch(clearErrors()),
 });
 
 export default connect(msp, mdp)(ReviewForm);

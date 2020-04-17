@@ -44,7 +44,9 @@ class ReviewIndexItem extends React.Component {
       <div className="business-review-container">
         <div className="review-sidebar">
           <div className="reviewer-profile">
-            <div className="reviewer-photo">photo</div>
+            <div className="reviewer-photo">
+              <img src={reviewer.profile_picture} />
+            </div>
             <div className="reviewer-name">
               {reviewer.first_name} {reviewer.last_name}
               <div className="reviewer-address">

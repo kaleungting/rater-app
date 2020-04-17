@@ -24,8 +24,11 @@ demo = User.create!({first_name: "Demo", last_name: "User", email: "demo-user@gm
 # u3 = User.create!({first_name: "Paul", last_name: "Pierce", email: "pp34@gmail.com", password: "password1", birthday: "1969-9-28", zip_code: "11373" })
 # u4 = User.create!({first_name: "Kevin", last_name: "Garnett", email: "kg5@gmail.com", password: "password1", birthday: "1968-2-15", zip_code: "10010" })
 
-20.times do |i|
-    User.create!({first_name: Faker::Sports::Basketball.player.split(" ")[0], last_name: Faker::Sports::Basketball.player.split(" ")[1], email: "fakeuser#{i}@gmail.com", password: "password1", birthday: "1993-9-10", zip_code: Faker::Address.zip[0..4], city: Faker::Address.city, state: Faker::Address.state_abbr})
+10.times do |i|
+    User.create!({first_name: Faker::Name.female_first_name, last_name: Faker::Name.last_name, email: "fakeuser#{i}@gmail.com", password: "password1", birthday: "1993-9-10", zip_code: Faker::Address.zip[0..4], city: Faker::Address.city, state: Faker::Address.state_abbr})
+end
+10.times do |i|
+    User.create!({first_name: Faker::Name.male_first_name, last_name: Faker::Name.last_name, email: "fakeuser#{10+i}@gmail.com", password: "password1", birthday: "1993-9-10", zip_code: Faker::Address.zip[0..4], city: Faker::Address.city, state: Faker::Address.state_abbr})
 end
 
 
@@ -185,7 +188,19 @@ until i == 21 do
     i+=1
 end
 
-
+i= 13
+until i == 21 do
+    y = 1
+    until y == 4 do
+        Review.create!(
+        body: Faker::Restaurant.review, 
+        author_id: i, 
+        business_id: y, 
+        rating: rand(4..5))
+        y+=1
+    end
+    i+=1
+end
 
 
 #currylane
@@ -320,3 +335,27 @@ Business.find(20).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.co
 Business.find(20).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/jacobs/j_3.jpg'), filename: 'j_3.jpg')
 Business.find(20).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/jacobs/j_4.jpg'), filename: 'j_4.jpg')
 
+#demo
+User.find(1).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/profile_pic/demo.png'), filename: 'demo.jpg')
+#female
+User.find(2).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/profile_pic/f1.jpg'), filename: 'f1.jpg')
+User.find(3).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/profile_pic/f2.jpg'), filename: 'f2.jpg')
+User.find(4).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/profile_pic/f3.jpg'), filename: 'f3.jpg')
+User.find(5).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/profile_pic/f4.jpg'), filename: 'f4.jpg')
+User.find(6).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/profile_pic/f5.jpg'), filename: 'f5.jpg')
+User.find(7).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/profile_pic/f6.jpg'), filename: 'f6.jpg')
+User.find(8).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/profile_pic/f7.jpg'), filename: 'f7.jpg')
+User.find(9).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/profile_pic/f8.jpg'), filename: 'f8.jpg')
+User.find(10).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/profile_pic/f9.jpg'), filename: 'f9.jpg')
+User.find(11).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/profile_pic/f10.jpg'), filename: 'f10.jpg')
+#make
+User.find(12).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/profile_pic/m1.jpg'), filename: 'm1.jpg')
+User.find(13).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/profile_pic/m2.jpg'), filename: 'm2.jpg')
+User.find(14).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/profile_pic/m3.jpg'), filename: 'm3.jpg')
+User.find(15).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/profile_pic/m4.jpg'), filename: 'm4.jpg')
+User.find(16).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/profile_pic/m5.jpg'), filename: 'm5.jpg')
+User.find(17).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/profile_pic/m6.jpg'), filename: 'm6.jpg')
+User.find(18).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/profile_pic/m7.jpg'), filename: 'm7.jpg')
+User.find(19).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/profile_pic/m8.jpg'), filename: 'm8.jpg')
+User.find(20).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/profile_pic/m9.jpg'), filename: 'm9.jpg')
+User.find(21).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/profile_pic/m10.jpg'), filename: 'm10.jpg')

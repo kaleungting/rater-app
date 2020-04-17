@@ -2,6 +2,7 @@ import React from "react";
 import { withRouter, Redirect, Link } from "react-router-dom";
 import BusinessNavContainer from "../business_nav/business_nav_container";
 
+
 class ReviewForm extends React.Component {
   constructor(props) {
     super(props);
@@ -16,12 +17,14 @@ class ReviewForm extends React.Component {
     this.update = this.update.bind(this);
     this.mouseEnter = this.mouseEnter.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClearErrors = this.handleClearErrors.bind(this);
   }
 
   componentDidMount() {
     window.scrollTo(0, 0);
     this.props.fetchBusiness(this.props.match.params.businessId);
     this.setState({ ...this.props.review });
+    this.props.clearErrors();
   }
 
   componentDidUpdate(preProps) {
@@ -29,7 +32,6 @@ class ReviewForm extends React.Component {
       this.setState({ ...this.props.review });
     }
   }
-
 
   update(field) {
     return (e) => this.setState({ [field]: e.currentTarget.value });
@@ -63,8 +65,13 @@ class ReviewForm extends React.Component {
     };
   }
 
+  handleClearErrors(e) {
+    e.preventDefault();
+    this.props.clearErrors();
+  }
+
   render() {
-    const { business } = this.props;
+    const { business, errors } = this.props;
     const textArray = [
       "Select your rating",
       "Eek! Methinks not.",
@@ -84,7 +91,21 @@ class ReviewForm extends React.Component {
           <div className="review-form-title">
             <Link to={`/businesses/${business.id}`}>{business.name}</Link>
           </div>
-
+          <div
+            className={this.props.errors.length === 0 ? "" : "errors-container"}
+          >
+            <ul>
+              {errors.map((error, idx) => (
+                <li key={idx}>{error}.</li>
+              ))}
+            </ul>
+            <div className="error-icon">
+              <i
+                onClick={this.handleClearErrors}
+                className={this.props.errors.length === 0 ? "" : "fas fa-times"}
+              />
+            </div>
+          </div>
           <div>
             <form onSubmit={this.handleSubmit}>
               <div className="review-form-container">

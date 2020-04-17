@@ -8,7 +8,7 @@ class Api::ReviewsController < ApplicationController
     def create 
         @review = current_user.reviews.new(review_params)
         if @review
-            @review.save
+            @review.save!
             render :show
         else
             render @review.errors.full_messages, status: 422
@@ -17,7 +17,7 @@ class Api::ReviewsController < ApplicationController
 
     def update
         @review = current_user.reviews.find(params[:id])
-        if @review.update(review_params)
+        if @review.update!(review_params)
             render :show
         else
             render json: ["Cannot update review"]
@@ -35,6 +35,6 @@ class Api::ReviewsController < ApplicationController
 
     private
     def review_params
-        params.require(:review).permit(:body,:rating, :business_id)
+        params.require(:review).permit(:body, :rating, :business_id)
     end
 end
