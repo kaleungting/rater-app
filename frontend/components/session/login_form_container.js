@@ -3,7 +3,6 @@ import SessionForm from "./session_form";
 import { login, clearErrors } from "../../actions/session_actions";
 
 const msp = (state) => {
-  debugger;
   return {
     business: Object.values(state.entities.businesses),
     errors: state.errors.session,

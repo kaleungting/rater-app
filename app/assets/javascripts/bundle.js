@@ -2996,7 +2996,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var msp = function msp(state) {
-  debugger;
   return {
     business: Object.values(state.entities.businesses),
     errors: state.errors.session,
@@ -3569,7 +3568,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var msp = function msp(state) {
   return {
-    business: Object.values(state.entities.business),
+    business: Object.values(state.entities.businesses),
     errors: state.errors.session,
     formType: "Sign Up"
   };

@@ -4,7 +4,7 @@ import { clearErrors, signup, login } from "../../actions/session_actions";
 
 const msp = (state) => {
   return {
-    business: Object.values(state.entities.business),
+    business: Object.values(state.entities.businesses),
     errors: state.errors.session,
     formType: "Sign Up",
   };
