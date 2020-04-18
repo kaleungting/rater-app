@@ -33,6 +33,14 @@ class SubNav extends React.Component {
   }
 
   render() {
+    debugger;
+
+    let businessLink;
+    if (this.props.match.params.businessId === undefined) {
+      businessLink = "#/businesses";
+    } else {
+      businessLink = `#/businesses/${this.props.match.params.businessId}/reviews/new`;
+    }
     return (
       <div className="sub-nav-container">
         <div className="sub-nav-content">
@@ -63,7 +71,7 @@ class SubNav extends React.Component {
             </li>
           </ul>
           <div className="sub-nav-review">
-            <a href="#/businesses">
+            <a href={businessLink}>
               <i className="fas fa-pencil-alt"></i>
               <span>Write A Review</span>
             </a>

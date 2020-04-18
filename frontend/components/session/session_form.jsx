@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import Errors from "./errors";
 
 class SessionForm extends React.Component {
@@ -33,7 +33,15 @@ class SessionForm extends React.Component {
       let str = `${user["birthday"].year}-${user["birthday"].month}-${user["birthday"].day}`;
       user["birthday"] = str;
     }
+    // if (this.props.business) {
+    //   this.props
+    //     .action(user)
+    //     .then(() =>
+    //       this.props.history.push(`/businesses/${this.props.business.id}`)
+    //     );
+    // } else {
     this.props.action(user);
+    // }
   }
 
   componentDidMount() {
@@ -65,6 +73,7 @@ class SessionForm extends React.Component {
   }
 
   render() {
+    debugger;
     const { errors } = this.props;
     const signup = (
       <div>
@@ -355,4 +364,4 @@ class SessionForm extends React.Component {
   }
 }
 
-export default SessionForm;
+export default withRouter(SessionForm);

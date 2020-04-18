@@ -961,6 +961,15 @@ var SubNav = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this4 = this;
 
+      debugger;
+      var businessLink;
+
+      if (this.props.match.params.businessId === undefined) {
+        businessLink = "#/businesses";
+      } else {
+        businessLink = "#/businesses/".concat(this.props.match.params.businessId, "/reviews/new");
+      }
+
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "sub-nav-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1002,7 +1011,7 @@ var SubNav = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Testing"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Testing"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Testing")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "sub-nav-review"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#/businesses"
+        href: businessLink
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-pencil-alt"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Write A Review")))));
@@ -1146,7 +1155,8 @@ var BusinessPage = /*#__PURE__*/function (_React$Component) {
 
       var reviewText = business.reviewIds.length > 1 ? "".concat(business.reviewIds.length, " reviews") : "".concat(business.reviewIds.length, " review");
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_business_nav_business_nav_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        searchBusinesses: this.props.searchBusinesses
+        searchBusinesses: this.props.searchBusinesses,
+        business: business
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "business-header"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
@@ -2986,7 +2996,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var msp = function msp(state) {
+  debugger;
   return {
+    business: Object.values(state.entities.businesses),
     errors: state.errors.session,
     formType: "Log In"
   };
@@ -3099,9 +3111,16 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       if (this.props.formType === "Sign Up") {
         var str = "".concat(user["birthday"].year, "-").concat(user["birthday"].month, "-").concat(user["birthday"].day);
         user["birthday"] = str;
-      }
+      } // if (this.props.business) {
+      //   this.props
+      //     .action(user)
+      //     .then(() =>
+      //       this.props.history.push(`/businesses/${this.props.business.id}`)
+      //     );
+      // } else {
 
-      this.props.action(user);
+
+      this.props.action(user); // }
     }
   }, {
     key: "componentDidMount",
@@ -3143,6 +3162,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this3 = this;
 
+      debugger;
       var errors = this.props.errors;
       var signup = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: this.props.errors.length === 0 ? "" : "errors-container"
@@ -3527,7 +3547,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
   return SessionForm;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (SessionForm);
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(SessionForm));
 
 /***/ }),
 
@@ -3549,6 +3569,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var msp = function msp(state) {
   return {
+    business: Object.values(state.entities.business),
     errors: state.errors.session,
     formType: "Sign Up"
   };

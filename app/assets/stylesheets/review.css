@@ -25,10 +25,9 @@
   font-weight: bold;
 }
 
-.reviewer-photo {
+.reviewer-photo img {
   width: 60px;
   height: 60px;
-  background-color: grey;
 }
 
 .reviewer-profile {
