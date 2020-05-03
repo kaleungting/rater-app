@@ -9,10 +9,12 @@ class Footer extends React.Component {
             <ul>
               <li className="topic">About</li>
               <li>
-                <Link to="">Wiki</Link>
-              </li>
-              <li>
-                <Link to="">Github</Link>
+                <a
+                  href="https://github.com/kaleungting/rater-app"
+                  target="blank"
+                >
+                  Github
+                </a>
               </li>
               <li>
                 <Link to="/">Back to Rater</Link>
@@ -24,16 +26,27 @@ class Footer extends React.Component {
             <ul>
               <li className="topic">Discover</li>
               <li>
-                <Link to="">Personal Site</Link>
+                <a href="https://github.com/kaleungting" target="blank">
+                  Portfolio
+                </a>
               </li>
               <li>
-                <Link to="">Github</Link>
+                <a href="https://github.com/kaleungting" target="blank">
+                  Github
+                </a>
               </li>
               <li>
-                <Link to="">LinkedIn</Link>
+                <a
+                  href="https://www.linkedin.com/in/ken-ting-752a1768/"
+                  target="blank"
+                >
+                  LinkedIn
+                </a>
               </li>
               <li>
-                <Link to="">AngelList</Link>
+                <a href="https://angel.co/u/ken-ting-1" target="blank">
+                  AngelList
+                </a>
               </li>
             </ul>
           </div>
@@ -43,10 +56,10 @@ class Footer extends React.Component {
               <ul>
                 <li className="topic">Languages</li>
                 <li>
-                  <Link to="">TBD</Link>
+                  <Link to="">Ruby</Link>
                 </li>
                 <li>
-                  <Link to="">TBD</Link>
+                  <Link to="">Javascript</Link>
                 </li>
               </ul>
             </div>
@@ -54,10 +67,10 @@ class Footer extends React.Component {
               <ul>
                 <li className="topic">Education</li>
                 <li>
-                  <Link to="">TBD</Link>
+                  <Link to="">App Academy</Link>
                 </li>
                 <li>
-                  <Link to="">TBD</Link>
+                  <Link to="">Baruch College</Link>
                 </li>
               </ul>
             </div>

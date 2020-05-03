@@ -33,8 +33,6 @@ class SubNav extends React.Component {
   }
 
   render() {
-    debugger;
-
     let businessLink;
     if (this.props.match.params.businessId === undefined) {
       businessLink = "#/businesses";
@@ -64,9 +62,24 @@ class SubNav extends React.Component {
             <li className="sub-nav-contact">
               Contact Ken
               <ul className="contact-popup">
-                <li>Testing</li>
-                <li>Testing</li>
-                <li>Testing</li>
+                <li>
+                  <a href="https://github.com/kaleungting" target="blank">
+                    Github
+                  </a>
+                </li>
+                <li>
+                  <a href="https://github.com/kaleungting" target="blank">
+                    Portfolio
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.linkedin.com/in/ken-ting-752a1768/"
+                    target="blank"
+                  >
+                    LinkedIn
+                  </a>
+                </li>
               </ul>
             </li>
           </ul>

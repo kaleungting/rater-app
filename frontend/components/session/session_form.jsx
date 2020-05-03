@@ -73,25 +73,9 @@ class SessionForm extends React.Component {
   }
 
   render() {
-    debugger;
     const { errors } = this.props;
     const signup = (
       <div>
-        <div
-          className={this.props.errors.length === 0 ? "" : "errors-container"}
-        >
-          <ul>
-            {errors.map((error, idx) => (
-              <li key={idx}>{error}.</li>
-            ))}
-          </ul>
-          <div className="error-icon">
-            <i
-              onClick={this.handleClearErrors}
-              className={this.props.errors.length === 0 ? "" : "fas fa-times"}
-            />
-          </div>
-        </div>
         <h1>Be a Rater</h1>
         <button className="demo-btn" onClick={this.demoUser}>
           Demo Login
@@ -300,21 +284,6 @@ class SessionForm extends React.Component {
 
     const login = (
       <div>
-        <div
-          className={this.props.errors.length === 0 ? "" : "errors-container"}
-        >
-          <ul>
-            {errors.map((error, idx) => (
-              <li key={idx}>{error}.</li>
-            ))}
-          </ul>
-          <div className="error-icon">
-            <i
-              onClick={this.handleClearErrors}
-              className={this.props.errors.length === 0 ? "" : "fas fa-times"}
-            />
-          </div>
-        </div>
         <h1>Login</h1>
         <button className="demo-btn" onClick={this.demoUser}>
           Demo Login
@@ -351,12 +320,31 @@ class SessionForm extends React.Component {
     return (
       <>
         <div className="session-form-top">
-          <img className="session-logo" src={logo} />
+          <a href="/">
+            <img className="session-logo" src={logo} />
+          </a>
         </div>
         <div className="session-form-container">
-          <div className="session-form">{display}</div>
-          <div className="session-form-img">
-            <img src={signupIllustration} alt="signup-illustration" />
+          <div
+            className={this.props.errors.length === 0 ? "" : "errors-container"}
+          >
+            <div className="error-icon">
+              <i
+                onClick={this.handleClearErrors}
+                className={this.props.errors.length === 0 ? "" : "fas fa-times"}
+              />
+            </div>
+            <ul>
+              {errors.map((error, idx) => (
+                <li key={idx}>{error}.</li>
+              ))}
+            </ul>
+          </div>
+          <div className="session-form-content">
+            <div className="session-form">{display}</div>
+            <div className="session-form-img">
+              <img src={signupIllustration} alt="signup-illustration" />
+            </div>
           </div>
         </div>
       </>

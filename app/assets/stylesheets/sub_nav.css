@@ -156,3 +156,8 @@ li.sub-nav-left:first-child {
 .price-popup li:hover {
   color: #0073bb;
 }
+
+.contact-popup li a:hover {
+  border: none;
+  text-decoration: none;
+}
