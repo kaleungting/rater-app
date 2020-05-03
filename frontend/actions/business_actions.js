@@ -1,5 +1,6 @@
 export const RECEIVE_ALL_BUSINESSES = "RECEIVE_ALL_BUSINESSES";
 export const RECEIVE_BUSINESS = "RECEIVE_BUSINESS";
+export const CLEAR_BUSINESSES = "CLEAR_BUSINESSES";
 
 import * as BusinessApiUtil from "../util/business_api_util";
 
@@ -18,6 +19,10 @@ const receiveBusiness = (response) => {
     reviews: response.reviews,
   };
 };
+
+export const clearBusinesses = () => ({
+  type: CLEAR_BUSINESSES,
+});
 
 export const fetchBusinesses = () => {
   return (dispatch) => {

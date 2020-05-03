@@ -53,7 +53,10 @@ class BusinessPage extends React.Component {
         : `${business.reviewIds.length} review`;
     return (
       <div>
-        <BusinessNavContainer searchBusinesses={this.props.searchBusinesses} business={business} />
+        <BusinessNavContainer
+          searchBusinesses={this.props.searchBusinesses}
+          business={business}
+        />
         <div className="business-header">
           <ul className="business-photos-container">
             <ul>{photosList}</ul>
@@ -90,7 +93,7 @@ class BusinessPage extends React.Component {
                 </div>
               </div>
               <div className="top-header-right">
-                <Link to={`/businesses/${business.id}/reviews/new`}>
+                <Link to={`/biz/${business.id}/reviews/new`}>
                   <i className="fas fa-star"></i>
                   Write a Review
                 </Link>

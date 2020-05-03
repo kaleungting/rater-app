@@ -20,19 +20,15 @@ const App = () => (
     <Switch>
       <ProtectedRoute
         exact
-        path="/businesses/:businessId/reviews/new"
+        path="/biz/:businessId/reviews/new"
         component={CreateReviewFormContainer}
       />
       <ProtectedRoute
         exact
-        path="/businesses/:businessId/reviews/:reviewId/edit"
+        path="/biz/:businessId/reviews/:reviewId/edit"
         component={EditReviewFormContainer}
       />
-      <Route
-        exact
-        path="/businesses/:businessId"
-        component={BusinessPageContainer}
-      />
+      <Route exact path="/biz/:businessId" component={BusinessPageContainer} />
       <Route path="/businesses-search" component={BusinessIndexContainer} />
       <Route path="/businesses" component={BusinessIndexContainer} />
     </Switch>

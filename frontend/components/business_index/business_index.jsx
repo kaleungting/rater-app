@@ -11,10 +11,17 @@ class BusinessIndex extends React.Component {
 
   componentDidMount() {
     window.scrollTo(0, 0);
+    // debugger/;
     if (
       this.props.location.pathname !== "/businesses-search" &&
       (this.props.businesses.length === 0 || this.props.businesses.length === 1)
     ) {
+      this.props.fetchBusinesses();
+    } else if (
+      this.props.location.state !== undefined &&
+      this.props.location.state.prevPath === "/"
+    ) {
+      this.props.clearBusinesses();
       this.props.fetchBusinesses();
     }
   }

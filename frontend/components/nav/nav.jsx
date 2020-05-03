@@ -56,15 +56,29 @@ class Nav extends React.Component {
 
     const leftNav = (
       <div className="left-nav">
-        <Link to="/businesses" className="left-nav-link">
+        <Link
+          to={{
+            pathname: "/businesses",
+            state: { prevPath: location.pathname },
+          }}
+          className="left-nav-link"
+        >
           Write A Review
         </Link>
-        <Link to="TBD-GithubLink" className="left-nav-link">
+        <a
+          href="https://github.com/kaleungting/rater-app"
+          target="blank"
+          className="left-nav-link"
+        >
           Github
-        </Link>
-        <Link to="TBD-LinkedInLink" className="left-nav-link">
+        </a>
+        <a
+          href="https://www.linkedin.com/in/ken-ting-752a1768/"
+          target="blank"
+          className="left-nav-link"
+        >
           LinkedIn
-        </Link>
+        </a>
       </div>
     );
     return (

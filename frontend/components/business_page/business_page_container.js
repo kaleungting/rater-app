@@ -31,7 +31,7 @@ const mdp = (dispatch) => {
     fetchBusinesses: () => dispatch(fetchBusinesses()),
     searchBusinesses: (query) => dispatch(searchBusinesses(query)),
     deleteReview: (reviewId) => dispatch(deleteReview(reviewId)),
-    updateBounds: (bounds) => dispatch(updateBounds(bounds))
+    updateBounds: (bounds) => dispatch(updateBounds(bounds)),
   };
 };
 

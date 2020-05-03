@@ -16,7 +16,7 @@ class HomePageCard extends React.Component {
         ? `${biz.reviewIds.length} reviews`
         : `${biz.reviewIds.length} review`;
     return (
-      <Link to={`/businesses/${biz.id}`}>
+      <Link to={`/biz/${biz.id}`}>
         <li className="biz-index-item">
           <div className="biz-img">
             <img src={biz.profile_picture} />

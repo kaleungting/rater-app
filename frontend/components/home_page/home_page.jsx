@@ -5,7 +5,11 @@ import HomePageCard from "./home_page_card";
 class HomePage extends React.Component {
   componentDidMount() {
     window.scrollTo(0, 0);
-    this.props.fetchBusinesses();
+    this.props.clearBusinesses();
+    for (let i = 0; i < 3; i++) {
+      const rand = [Math.floor(Math.random() * 20)];
+      this.props.fetchBusiness(rand);
+    }
   }
 
   render() {

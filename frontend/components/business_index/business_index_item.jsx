@@ -21,7 +21,7 @@ class BusinessIndexItem extends React.Component {
         ? `${business.reviewIds.length} reviews`
         : `${business.reviewIds.length} review`;
     return (
-      <Link to={`/businesses/${business.id}`}>
+      <Link to={`/biz/${business.id}`}>
         <li className="business-index-item">
           <div className="business-img">
             <img src={business.profile_picture} />
