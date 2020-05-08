@@ -1,0 +1,29 @@
+/* .info-photo-container {
+  width: 200px;
+  height: 150px;
+  object-fit: contain;
+} */
+
+.businessInfo {
+  cursor: pointer;
+}
+
+p.info-title {
+  font-weight: 1000;
+  font-size: 14px;
+  margin-top: 5px;
+  margin-bottom: 0px;
+}
+
+.gm-style img {
+  width: 200px;
+  height: 150px;
+  object-fit: cover;
+}
+
+img.stars-medium {
+  width: 102px;
+  height: 18px;
+  margin-right: 6px;
+  object-fit: none;
+}

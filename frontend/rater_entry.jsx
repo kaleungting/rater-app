@@ -4,7 +4,6 @@ import Root from "./components/root";
 import configureStore from "./store/store";
 import { signup, login, logout } from "./util/session_api_util";
 import { fetchBusinesses } from "./actions/business_actions";
-import { updateBounds } from "./actions/filter_actions";
 
 document.addEventListener("DOMContentLoaded", () => {
   let store;
@@ -42,7 +41,6 @@ document.addEventListener("DOMContentLoaded", () => {
   window.dispatch = store.dispatch;
   window.getState = store.getState;
   window.fetchBusinesses = fetchBusinesses;
-  window.updateBounds = updateBounds;
 
   const root = document.getElementById("root");
   ReactDOM.render(<Root store={store} />, root);

@@ -14,10 +14,10 @@ class BusinessMap extends React.Component {
         zoom: 13,
       };
     }
-
     this.map = new google.maps.Map(this.mapNode, mapOptions);
     this.MarkerManager = new MarkerManager(this.map);
     if (this.props.businesses) {
+      this.idleBounds();
       this.MarkerManager.updateMarkers(this.props.businesses);
     } else if (this.props.business) {
       this.MarkerManager.createMarkerFromBusiness(this.props.business);
@@ -25,22 +25,14 @@ class BusinessMap extends React.Component {
   }
 
   idleBounds() {
-    if (this.map) {
-      this.map.addListener("idle", () => {
-        this.LatLngBounds = this.map.getBounds();
-      });
-      const northEast = this.LatLngBounds.getNorthEast();
-      const southWest = this.LatLngBounds.getSouthWest();
-      const northEastLat = northEast.lat;
-      const northEastLng = northEast.lng;
-      const southWestLat = southWest.lat;
-      const southWestLng = southWest.lng;
+    google.maps.event.addListener(this.map, "idle", () => {
+      const { north, south, east, west } = this.map.getBounds().toJSON();
       const bounds = {
-        northEast: { lat: northEastLat, lng: northEastLng },
-        southWest: { lat: southWestLat, lng: southWestLng },
+        northEast: { lat: north, lng: east },
+        southWest: { lat: south, lng: west },
       };
-      this.props.updateBounds(bounds);
-    }
+      this.props.updateFilter("bounds", bounds);
+    });
   }
 
   componentDidUpdate(prevState) {

@@ -130,11 +130,18 @@ var clearBusinesses = function clearBusinesses() {
   return {
     type: CLEAR_BUSINESSES
   };
-};
-var fetchBusinesses = function fetchBusinesses() {
+}; // export const fetchBusinesses = (bounds) => {
+//   return (dispatch) => {
+//     return BusinessApiUtil.fetchBusinesses(bounds).then((response) => {
+//       return dispatch(receiveAllBusinesses(response));
+//     });
+//   };
+// };
+
+var fetchBusinesses = function fetchBusinesses(filters) {
   return function (dispatch) {
-    return _util_business_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchBusinesses"]().then(function (response) {
-      return dispatch(receiveAllBusinesses(response));
+    return _util_business_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchBusinesses"](filters).then(function (businesses) {
+      return dispatch(receiveAllBusinesses(businesses));
     });
   };
 };
@@ -159,37 +166,31 @@ var searchBusinesses = function searchBusinesses(search) {
 /*!********************************************!*\
   !*** ./frontend/actions/filter_actions.js ***!
   \********************************************/
-/*! exports provided: UPDATE_BOUNDS, changeBounds, updateBounds */
+/*! exports provided: UPDATE_FILTER, changeFilter, updateFilter */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPDATE_BOUNDS", function() { return UPDATE_BOUNDS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "changeBounds", function() { return changeBounds; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateBounds", function() { return updateBounds; });
-/* harmony import */ var _util_business_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/business_api_util */ "./frontend/util/business_api_util.js");
-var UPDATE_BOUNDS = "UPDATE_BOUNDS";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPDATE_FILTER", function() { return UPDATE_FILTER; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "changeFilter", function() { return changeFilter; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateFilter", function() { return updateFilter; });
+/* harmony import */ var _business_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./business_actions */ "./frontend/actions/business_actions.js");
+var UPDATE_FILTER = "UPDATE_FILTER";
 
-var changeBounds = function changeBounds(businesses) {
+var changeFilter = function changeFilter(filter, value) {
   return {
-    type: UPDATE_BOUNDS,
-    businesses: businesses
-  };
-}; // export const updateBounds = (bounds) => {
-//   return (dispatch) => {
-//     return fetchBusinesses(bounds).then((businesses) => {
-//       return dispatch(fetchBusinesses(businesses));
-//     });
-//   };
-// };
-
-var updateBounds = function updateBounds(bounds) {
-  return function (dispatch) {
-    return Object(_util_business_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchBusinesses"])(bounds).then(function (businesses) {
-      return dispatch(changeBounds(businesses));
-    });
+    type: UPDATE_FILTER,
+    filter: filter,
+    value: value
   };
 };
+var updateFilter = function updateFilter(filter, value) {
+  return function (dispatch, getState) {
+    dispatch(changeFilter(filter, value));
+    return Object(_business_actions__WEBPACK_IMPORTED_MODULE_0__["fetchBusinesses"])(getState().ui.filters)(dispatch);
+  };
+}; // export const updateBounds = (bounds) => (dispatch) =>
+//   fetchBusinesses(bounds).then((bounds) => dispatch(changeBounds(bounds)));
 
 /***/ }),
 
@@ -472,21 +473,25 @@ var BusinessIndex = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, BusinessIndex);
 
     return _super.call(this, props);
-  }
+  } // componentDidMount() {
+  //   window.scrollTo(0, 0);
+  //   // debugger/;
+  //   if (
+  //     this.props.location.pathname !== "/businesses-search" &&
+  //     (this.props.businesses.length === 0 || this.props.businesses.length === 1)
+  //   ) {
+  //     this.props.updateBounds();
+  //   } else if (
+  //     this.props.location.state !== undefined &&
+  //     this.props.location.state.prevPath === "/"
+  //   ) {
+  //     this.props.clearBusinesses();
+  //     this.props.updateBounds();
+  //   }
+  // }
+
 
   _createClass(BusinessIndex, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      window.scrollTo(0, 0); // debugger/;
-
-      if (this.props.location.pathname !== "/businesses-search" && (this.props.businesses.length === 0 || this.props.businesses.length === 1)) {
-        this.props.fetchBusinesses();
-      } else if (this.props.location.state !== undefined && this.props.location.state.prevPath === "/") {
-        this.props.clearBusinesses();
-        this.props.fetchBusinesses();
-      }
-    }
-  }, {
     key: "render",
     value: function render() {
       var businesses = this.props.businesses;
@@ -507,7 +512,8 @@ var BusinessIndex = /*#__PURE__*/function (_React$Component) {
       }, businessList), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "business-index-side"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_map_business_map__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        businesses: businesses
+        businesses: businesses,
+        updateFilter: this.props.updateFilter
       }))));
     }
   }]);
@@ -531,6 +537,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _business_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./business_index */ "./frontend/components/business_index/business_index.jsx");
 /* harmony import */ var _actions_business_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/business_actions */ "./frontend/actions/business_actions.js");
+/* harmony import */ var _actions_filter_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/filter_actions */ "./frontend/actions/filter_actions.js");
+
 
 
 
@@ -552,6 +560,9 @@ var mdp = function mdp(dispatch) {
     },
     clearBusinesses: function clearBusinesses() {
       return dispatch(Object(_actions_business_actions__WEBPACK_IMPORTED_MODULE_2__["clearBusinesses"])());
+    },
+    updateFilter: function updateFilter(filter, value) {
+      return dispatch(Object(_actions_filter_actions__WEBPACK_IMPORTED_MODULE_3__["updateFilter"])(filter, value));
     }
   };
 };
@@ -980,7 +991,7 @@ var SubNav = /*#__PURE__*/function (_React$Component) {
       if (this.props.match.params.businessId === undefined) {
         businessLink = "#/businesses";
       } else {
-        businessLink = "#/businesses/".concat(this.props.match.params.businessId, "/reviews/new");
+        businessLink = "#/biz/".concat(this.props.match.params.businessId, "/reviews/new");
       }
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1025,7 +1036,7 @@ var SubNav = /*#__PURE__*/function (_React$Component) {
         href: "https://github.com/kaleungting",
         target: "blank"
       }, "Github")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "https://github.com/kaleungting",
+        href: "https://kaleungting.github.io",
         target: "blank"
       }, "Portfolio")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "https://www.linkedin.com/in/ken-ting-752a1768/",
@@ -1336,8 +1347,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_review_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/review_actions */ "./frontend/actions/review_actions.js");
 /* harmony import */ var _reducers_selectors__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../reducers/selectors */ "./frontend/reducers/selectors.js");
 /* harmony import */ var _business_page__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./business_page */ "./frontend/components/business_page/business_page.jsx");
-/* harmony import */ var _actions_filter_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../actions/filter_actions */ "./frontend/actions/filter_actions.js");
-
 
 
 
@@ -1372,9 +1381,6 @@ var mdp = function mdp(dispatch) {
     },
     deleteReview: function deleteReview(reviewId) {
       return dispatch(Object(_actions_review_actions__WEBPACK_IMPORTED_MODULE_2__["deleteReview"])(reviewId));
-    },
-    updateBounds: function updateBounds(bounds) {
-      return dispatch(Object(_actions_filter_actions__WEBPACK_IMPORTED_MODULE_5__["updateBounds"])(bounds));
     }
   };
 };
@@ -1452,7 +1458,7 @@ var Footer = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "topic"
       }, "Discover"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "https://github.com/kaleungting",
+        href: "https://kaleungting.github.io",
         target: "blank"
       }, "Portfolio")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "https://github.com/kaleungting",
@@ -1813,6 +1819,7 @@ var BusinessMap = /*#__PURE__*/function (_React$Component) {
       this.MarkerManager = new _util_marker_manager__WEBPACK_IMPORTED_MODULE_1__["default"](this.map);
 
       if (this.props.businesses) {
+        this.idleBounds();
         this.MarkerManager.updateMarkers(this.props.businesses);
       } else if (this.props.business) {
         this.MarkerManager.createMarkerFromBusiness(this.props.business);
@@ -1823,28 +1830,26 @@ var BusinessMap = /*#__PURE__*/function (_React$Component) {
     value: function idleBounds() {
       var _this = this;
 
-      if (this.map) {
-        this.map.addListener("idle", function () {
-          _this.LatLngBounds = _this.map.getBounds();
-        });
-        var northEast = this.LatLngBounds.getNorthEast();
-        var southWest = this.LatLngBounds.getSouthWest();
-        var northEastLat = northEast.lat;
-        var northEastLng = northEast.lng;
-        var southWestLat = southWest.lat;
-        var southWestLng = southWest.lng;
+      google.maps.event.addListener(this.map, "idle", function () {
+        var _this$map$getBounds$t = _this.map.getBounds().toJSON(),
+            north = _this$map$getBounds$t.north,
+            south = _this$map$getBounds$t.south,
+            east = _this$map$getBounds$t.east,
+            west = _this$map$getBounds$t.west;
+
         var bounds = {
           northEast: {
-            lat: northEastLat,
-            lng: northEastLng
+            lat: north,
+            lng: east
           },
           southWest: {
-            lat: southWestLat,
-            lng: southWestLng
+            lat: south,
+            lng: west
           }
         };
-        this.props.updateBounds(bounds);
-      }
+
+        _this.props.updateFilter("bounds", bounds);
+      });
     }
   }, {
     key: "componentDidUpdate",
@@ -3628,9 +3633,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./store/store */ "./frontend/store/store.js");
 /* harmony import */ var _util_session_api_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./util/session_api_util */ "./frontend/util/session_api_util.js");
 /* harmony import */ var _actions_business_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./actions/business_actions */ "./frontend/actions/business_actions.js");
-/* harmony import */ var _actions_filter_actions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./actions/filter_actions */ "./frontend/actions/filter_actions.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 
@@ -3678,7 +3681,6 @@ document.addEventListener("DOMContentLoaded", function () {
   window.dispatch = store.dispatch;
   window.getState = store.getState;
   window.fetchBusinesses = _actions_business_actions__WEBPACK_IMPORTED_MODULE_5__["fetchBusinesses"];
-  window.updateBounds = _actions_filter_actions__WEBPACK_IMPORTED_MODULE_6__["updateBounds"];
   var root = document.getElementById("root");
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_root__WEBPACK_IMPORTED_MODULE_2__["default"], {
     store: store
@@ -3820,23 +3822,28 @@ var errorsReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"]
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_filter_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/filter_actions */ "./frontend/actions/filter_actions.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
-var filterReducer = function filterReducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+var defaultFilters = Object.freeze({
+  bounds: {}
+});
+
+var filtersReducer = function filtersReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultFilters;
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(state);
 
-  switch (action.type) {
-    case _actions_filter_actions__WEBPACK_IMPORTED_MODULE_0__["UPDATE_BOUNDS"]:
-      return Object.assign({}, action.bounds);
+  if (action.type === _actions_filter_actions__WEBPACK_IMPORTED_MODULE_0__["UPDATE_FILTER"]) {
+    var newFilter = _defineProperty({}, action.filter, action.value);
 
-    default:
-      return state;
+    return Object.assign({}, state, newFilter);
+  } else {
+    return state;
   }
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (filterReducer);
+/* harmony default export */ __webpack_exports__["default"] = (filtersReducer);
 
 /***/ }),
 
@@ -4200,8 +4207,6 @@ var searchBusinesses = function searchBusinesses(search) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return MarkerManager; });
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -4221,15 +4226,24 @@ var MarkerManager = /*#__PURE__*/function () {
     value: function updateMarkers(businesses) {
       var _this = this;
 
+      var businessesObj = {}; // debugger;
+
       businesses.forEach(function (business) {
-        if (!Object.keys(_this.markers).includes(business.id)) {
-          _this.createMarkerFromBusiness(business);
-        }
+        return businessesObj[business.id] = business;
+      });
+      businesses.forEach(function (newBusiness, index) {
+        return _this.createMarkerFromBusiness(newBusiness, index + 1);
+      });
+      Object.keys(this.markers).filter(function (businessId) {
+        return !businessesObj[businessId];
+      }).forEach(function (businessId) {
+        return _this.removeMarker(_this.markers[businessId]);
       });
     }
   }, {
     key: "createMarkerFromBusiness",
     value: function createMarkerFromBusiness(business) {
+      var index = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
       var myLatLng = {
         lat: business.lat,
         lng: business.lng
@@ -4238,15 +4252,43 @@ var MarkerManager = /*#__PURE__*/function () {
         position: myLatLng,
         map: this.map,
         title: business.name,
-        url: "/businesses/".concat(business.id)
+        label: "".concat(index),
+        businessId: business.id,
+        url: "#/biz/".concat(business.id)
       });
-      marker.setMap(this.map);
-      Object.assign(this.markers, _defineProperty({}, business.id, marker));
+      var ratingClass = "stars-medium-".concat(Math.floor(business.average_rating * 2)) + " stars-medium";
+      var contentString = "<div class=\"businessInfo\">\n                            <div class=\"info-photo-container\">\n                              <img class=\"info-photo\" src=\"".concat(business.profile_picture, "\"/>\n                            </div>\n                            <p class=\"info-title\">").concat(business.name, "</p>\n                            <div class=\"business-rating\">\n                              <img class=\"").concat(ratingClass, "\"\n                                  src=\"https://i.imgur.com/UkZkm0D.png\">").concat(business.reviewIds.length, "</img>\n                          </div>");
+      var infoWindow = new google.maps.InfoWindow({
+        content: contentString
+      });
+      marker.addListener("mouseover", function () {
+        infoWindow.open(this.map, marker);
+      });
+      $(document).on("mouseleave", "div.businessInfo", function () {
+        infoWindow.close(this.map, marker);
+      }); // $(document).on("click", "div.businessInfo", function () {
+      //   window.location.href = `#/biz/${business.id}`;
+      // });
+
+      marker.addListener("click", function () {
+        window.location.href = marker.url;
+      });
+      this.markers[marker.businessId] = marker;
+    }
+  }, {
+    key: "removeMarker",
+    value: function removeMarker(marker) {
+      this.markers[marker.businessId].setMap(null);
+      delete this.markers[marker.businessId];
     }
   }]);
 
   return MarkerManager;
-}();
+}(); // <div className="businessInfo">
+//   <img className="info-photo" src="business.profile_picture" />
+//   <p className="info-title">business.name</p>
+// </div>;
+
 
 
 

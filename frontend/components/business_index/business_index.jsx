@@ -9,22 +9,22 @@ class BusinessIndex extends React.Component {
     super(props);
   }
 
-  componentDidMount() {
-    window.scrollTo(0, 0);
-    // debugger/;
-    if (
-      this.props.location.pathname !== "/businesses-search" &&
-      (this.props.businesses.length === 0 || this.props.businesses.length === 1)
-    ) {
-      this.props.fetchBusinesses();
-    } else if (
-      this.props.location.state !== undefined &&
-      this.props.location.state.prevPath === "/"
-    ) {
-      this.props.clearBusinesses();
-      this.props.fetchBusinesses();
-    }
-  }
+  // componentDidMount() {
+  //   window.scrollTo(0, 0);
+  //   // debugger/;
+  //   if (
+  //     this.props.location.pathname !== "/businesses-search" &&
+  //     (this.props.businesses.length === 0 || this.props.businesses.length === 1)
+  //   ) {
+  //     this.props.updateBounds();
+  //   } else if (
+  //     this.props.location.state !== undefined &&
+  //     this.props.location.state.prevPath === "/"
+  //   ) {
+  //     this.props.clearBusinesses();
+  //     this.props.updateBounds();
+  //   }
+  // }
 
   render() {
     const { businesses } = this.props;
@@ -46,7 +46,10 @@ class BusinessIndex extends React.Component {
         <div className="business-index-container">
           <ul className="business-index-content">{businessList}</ul>
           <div className="business-index-side">
-            <BusinessMap businesses={businesses} />
+            <BusinessMap
+              businesses={businesses}
+              updateFilter={this.props.updateFilter}
+            />
           </div>
         </div>
       </>

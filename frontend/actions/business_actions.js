@@ -24,13 +24,18 @@ export const clearBusinesses = () => ({
   type: CLEAR_BUSINESSES,
 });
 
-export const fetchBusinesses = () => {
-  return (dispatch) => {
-    return BusinessApiUtil.fetchBusinesses().then((response) => {
-      return dispatch(receiveAllBusinesses(response));
-    });
-  };
-};
+// export const fetchBusinesses = (bounds) => {
+//   return (dispatch) => {
+//     return BusinessApiUtil.fetchBusinesses(bounds).then((response) => {
+//       return dispatch(receiveAllBusinesses(response));
+//     });
+//   };
+// };
+export const fetchBusinesses = (filters) => (dispatch) =>
+  BusinessApiUtil.fetchBusinesses(filters).then((businesses) =>
+    dispatch(receiveAllBusinesses(businesses))
+  );
+
 export const fetchBusiness = (businessId) => {
   return (dispatch) => {
     return BusinessApiUtil.fetchBusiness(businessId).then((response) => {

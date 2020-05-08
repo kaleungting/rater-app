@@ -26,7 +26,7 @@ class Footer extends React.Component {
             <ul>
               <li className="topic">Discover</li>
               <li>
-                <a href="https://github.com/kaleungting" target="blank">
+                <a href="https://kaleungting.github.io" target="blank">
                   Portfolio
                 </a>
               </li>
