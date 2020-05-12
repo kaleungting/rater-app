@@ -29,6 +29,7 @@ const App = () => (
         component={EditReviewFormContainer}
       />
       <Route exact path="/biz/:businessId" component={BusinessPageContainer} />
+      <Route path="/businesses-filter" component={BusinessIndexContainer} />
       <Route path="/businesses-search" component={BusinessIndexContainer} />
       <Route path="/businesses" component={BusinessIndexContainer} />
     </Switch>

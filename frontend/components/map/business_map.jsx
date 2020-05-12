@@ -1,5 +1,7 @@
 import React from "react";
 import MarkerManager from "../../util/marker_manager";
+import { withRouter } from "react-router-dom";
+
 class BusinessMap extends React.Component {
   componentDidMount() {
     let mapOptions;
@@ -16,11 +18,15 @@ class BusinessMap extends React.Component {
     }
     this.map = new google.maps.Map(this.mapNode, mapOptions);
     this.MarkerManager = new MarkerManager(this.map);
-    if (this.props.businesses) {
-      this.idleBounds();
+    if (this.props.match.path === "/businesses-filter") {
       this.MarkerManager.updateMarkers(this.props.businesses);
-    } else if (this.props.business) {
-      this.MarkerManager.createMarkerFromBusiness(this.props.business);
+    } else {
+      if (this.props.businesses) {
+        this.idleBounds();
+        this.MarkerManager.updateMarkers(this.props.businesses);
+      } else if (this.props.business) {
+        this.MarkerManager.createMarkerFromBusiness(this.props.business);
+      }
     }
   }
 
@@ -31,6 +37,7 @@ class BusinessMap extends React.Component {
         northEast: { lat: north, lng: east },
         southWest: { lat: south, lng: west },
       };
+      debugger;
       this.props.updateFilter("bounds", bounds);
     });
   }
@@ -50,4 +57,4 @@ class BusinessMap extends React.Component {
   }
 }
 
-export default BusinessMap;
+export default withRouter(BusinessMap);

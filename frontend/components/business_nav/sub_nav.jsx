@@ -22,7 +22,7 @@ class SubNav extends React.Component {
     if (prevState !== currentState) {
       this.props
         .searchBusinesses(currentState)
-        .then(() => this.props.history.push("/businesses"));
+        .then(() => this.props.history.push("/businesses-filter"));
     }
   }
 

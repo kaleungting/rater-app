@@ -6,13 +6,11 @@ export default class MarkerManager {
 
   updateMarkers(businesses) {
     const businessesObj = {};
-    // debugger;
     businesses.forEach((business) => (businessesObj[business.id] = business));
 
     businesses.forEach((newBusiness, index) =>
       this.createMarkerFromBusiness(newBusiness, index + 1)
     );
-
     Object.keys(this.markers)
       .filter((businessId) => !businessesObj[businessId])
       .forEach((businessId) => this.removeMarker(this.markers[businessId]));

@@ -409,6 +409,9 @@ var App = function App() {
     path: "/biz/:businessId",
     component: _business_page_business_page_container__WEBPACK_IMPORTED_MODULE_7__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    path: "/businesses-filter",
+    component: _business_index_business_index_container__WEBPACK_IMPORTED_MODULE_6__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/businesses-search",
     component: _business_index_business_index_container__WEBPACK_IMPORTED_MODULE_6__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
@@ -968,7 +971,7 @@ var SubNav = /*#__PURE__*/function (_React$Component) {
 
       if (prevState !== currentState) {
         this.props.searchBusinesses(currentState).then(function () {
-          return _this2.props.history.push("/businesses");
+          return _this2.props.history.push("/businesses-filter");
         });
       }
     }
@@ -1756,6 +1759,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _util_marker_manager__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../util/marker_manager */ "./frontend/util/marker_manager.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1777,6 +1781,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -1818,11 +1823,15 @@ var BusinessMap = /*#__PURE__*/function (_React$Component) {
       this.map = new google.maps.Map(this.mapNode, mapOptions);
       this.MarkerManager = new _util_marker_manager__WEBPACK_IMPORTED_MODULE_1__["default"](this.map);
 
-      if (this.props.businesses) {
-        this.idleBounds();
+      if (this.props.match.path === "/businesses-filter") {
         this.MarkerManager.updateMarkers(this.props.businesses);
-      } else if (this.props.business) {
-        this.MarkerManager.createMarkerFromBusiness(this.props.business);
+      } else {
+        if (this.props.businesses) {
+          this.idleBounds();
+          this.MarkerManager.updateMarkers(this.props.businesses);
+        } else if (this.props.business) {
+          this.MarkerManager.createMarkerFromBusiness(this.props.business);
+        }
       }
     }
   }, {
@@ -1847,6 +1856,7 @@ var BusinessMap = /*#__PURE__*/function (_React$Component) {
             lng: west
           }
         };
+        debugger;
 
         _this.props.updateFilter("bounds", bounds);
       });
@@ -1879,7 +1889,7 @@ var BusinessMap = /*#__PURE__*/function (_React$Component) {
   return BusinessMap;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (BusinessMap);
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["withRouter"])(BusinessMap));
 
 /***/ }),
 
@@ -4226,8 +4236,7 @@ var MarkerManager = /*#__PURE__*/function () {
     value: function updateMarkers(businesses) {
       var _this = this;
 
-      var businessesObj = {}; // debugger;
-
+      var businessesObj = {};
       businesses.forEach(function (business) {
         return businessesObj[business.id] = business;
       });
