@@ -11,6 +11,7 @@ export default class MarkerManager {
     businesses.forEach((newBusiness, index) =>
       this.createMarkerFromBusiness(newBusiness, index + 1)
     );
+  
     Object.keys(this.markers)
       .filter((businessId) => !businessesObj[businessId])
       .forEach((businessId) => this.removeMarker(this.markers[businessId]));
@@ -30,7 +31,7 @@ export default class MarkerManager {
     let ratingClass =
       `stars-medium-${Math.floor(business.average_rating * 2)}` +
       " stars-medium";
-    const contentString = `<div class="businessInfo">
+    const contentString = `<div class="businessInfo" id="biz-${business.id}">
                             <div class="info-photo-container">
                               <img class="info-photo" src="${business.profile_picture}"/>
                             </div>
@@ -52,9 +53,9 @@ export default class MarkerManager {
       infoWindow.close(this.map, marker);
     });
 
-    // $(document).on("click", "div.businessInfo", function () {
-    //   window.location.href = `#/biz/${business.id}`;
-    // });
+    $(document).on("click", `div#biz-${business.id}`, function () {
+      window.location.href = marker.url;
+    });
 
     marker.addListener("click", function () {
       window.location.href = marker.url;

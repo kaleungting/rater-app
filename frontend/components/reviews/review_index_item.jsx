@@ -21,9 +21,7 @@ class ReviewIndexItem extends React.Component {
       review.author_id === parseInt(Object.keys(currentUser)) ? (
         <li className="edit-review">
           <i className="material-icons">create</i>
-          <Link
-            to={`/businesses/${review.business_id}/reviews/${review.id}/edit`}
-          >
+          <Link to={`/biz/${review.business_id}/reviews/${review.id}/edit`}>
             Edit Review
           </Link>
         </li>

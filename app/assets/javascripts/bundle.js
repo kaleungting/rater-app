@@ -1864,6 +1864,8 @@ var BusinessMap = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevState) {
+      debugger;
+
       if (prevState !== this.state) {
         if (this.props.businesses) {
           this.MarkerManager.updateMarkers(this.props.businesses);
@@ -2264,7 +2266,7 @@ var ReviewForm = /*#__PURE__*/function (_React$Component) {
 
       e.preventDefault();
       this.props.action(this.state).then(function () {
-        return _this3.props.history.push("/businesses/".concat(_this3.props.businessId));
+        return _this3.props.history.push("/biz/".concat(_this3.props.businessId));
       });
     }
   }, {
@@ -2316,7 +2318,7 @@ var ReviewForm = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "review-form-title"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/businesses/".concat(business.id)
+        to: "/biz/".concat(business.id)
       }, business.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: this.props.errors.length === 0 ? "" : "errors-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, errors.map(function (error, idx) {
@@ -2394,7 +2396,7 @@ var ReviewForm = /*#__PURE__*/function (_React$Component) {
       }, textArray[this.state.rating]))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
         className: "review-form-content",
         maxLength: "5000",
-        placeholder: "Your review helps others learn about great local businesses.\\n\\nPlease don't review this business if you received a freebie for writing this review, or if you're connected in any way to the owner or employees.",
+        placeholder: "Your review helps others learn about great local businesses. Please don't review this business if you received a freebie for writing this review, or if you're connected in any way to the owner or employees.",
         value: this.state.body,
         onChange: this.update("body")
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2649,7 +2651,7 @@ var ReviewIndexItem = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "material-icons"
       }, "create"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/businesses/".concat(review.business_id, "/reviews/").concat(review.id, "/edit")
+        to: "/biz/".concat(review.business_id, "/reviews/").concat(review.id, "/edit")
       }, "Edit Review")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null);
       var deleteReview = review.author_id === parseInt(Object.keys(currentUser)) ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.deleteReview,
@@ -2891,7 +2893,8 @@ var mdp = function mdp(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _util_marker_manager__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../util/marker_manager */ "./frontend/util/marker_manager.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -2915,6 +2918,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -2991,7 +2995,7 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
   return SearchBar;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(SearchBar));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["withRouter"])(SearchBar));
 
 /***/ }),
 
@@ -4266,7 +4270,7 @@ var MarkerManager = /*#__PURE__*/function () {
         url: "#/biz/".concat(business.id)
       });
       var ratingClass = "stars-medium-".concat(Math.floor(business.average_rating * 2)) + " stars-medium";
-      var contentString = "<div class=\"businessInfo\">\n                            <div class=\"info-photo-container\">\n                              <img class=\"info-photo\" src=\"".concat(business.profile_picture, "\"/>\n                            </div>\n                            <p class=\"info-title\">").concat(business.name, "</p>\n                            <div class=\"business-rating\">\n                              <img class=\"").concat(ratingClass, "\"\n                                  src=\"https://i.imgur.com/UkZkm0D.png\">").concat(business.reviewIds.length, "</img>\n                          </div>");
+      var contentString = "<div class=\"businessInfo\" id=\"biz-".concat(business.id, "\">\n                            <div class=\"info-photo-container\">\n                              <img class=\"info-photo\" src=\"").concat(business.profile_picture, "\"/>\n                            </div>\n                            <p class=\"info-title\">").concat(business.name, "</p>\n                            <div class=\"business-rating\">\n                              <img class=\"").concat(ratingClass, "\"\n                                  src=\"https://i.imgur.com/UkZkm0D.png\">").concat(business.reviewIds.length, "</img>\n                          </div>");
       var infoWindow = new google.maps.InfoWindow({
         content: contentString
       });
@@ -4275,10 +4279,10 @@ var MarkerManager = /*#__PURE__*/function () {
       });
       $(document).on("mouseleave", "div.businessInfo", function () {
         infoWindow.close(this.map, marker);
-      }); // $(document).on("click", "div.businessInfo", function () {
-      //   window.location.href = `#/biz/${business.id}`;
-      // });
-
+      });
+      $(document).on("click", "div#biz-".concat(business.id), function () {
+        window.location.href = marker.url;
+      });
       marker.addListener("click", function () {
         window.location.href = marker.url;
       });

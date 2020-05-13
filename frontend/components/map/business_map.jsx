@@ -43,6 +43,7 @@ class BusinessMap extends React.Component {
   }
 
   componentDidUpdate(prevState) {
+    debugger;
     if (prevState !== this.state) {
       if (this.props.businesses) {
         this.MarkerManager.updateMarkers(this.props.businesses);

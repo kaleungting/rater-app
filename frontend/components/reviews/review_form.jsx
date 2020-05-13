@@ -2,7 +2,6 @@ import React from "react";
 import { withRouter, Redirect, Link } from "react-router-dom";
 import BusinessNavContainer from "../business_nav/business_nav_container";
 
-
 class ReviewForm extends React.Component {
   constructor(props) {
     super(props);
@@ -41,9 +40,7 @@ class ReviewForm extends React.Component {
     e.preventDefault();
     this.props
       .action(this.state)
-      .then(() =>
-        this.props.history.push(`/businesses/${this.props.businessId}`)
-      );
+      .then(() => this.props.history.push(`/biz/${this.props.businessId}`));
   }
 
   addStars(index) {
@@ -89,7 +86,7 @@ class ReviewForm extends React.Component {
         <BusinessNavContainer />
         <div className="review-form-content">
           <div className="review-form-title">
-            <Link to={`/businesses/${business.id}`}>{business.name}</Link>
+            <Link to={`/biz/${business.id}`}>{business.name}</Link>
           </div>
           <div
             className={this.props.errors.length === 0 ? "" : "errors-container"}
@@ -188,7 +185,7 @@ class ReviewForm extends React.Component {
                 <textarea
                   className="review-form-content"
                   maxLength="5000"
-                  placeholder="Your review helps others learn about great local businesses.\n\nPlease don't review this business if you received a freebie for writing this review, or if you're connected in any way to the owner or employees."
+                  placeholder="Your review helps others learn about great local businesses. Please don't review this business if you received a freebie for writing this review, or if you're connected in any way to the owner or employees."
                   value={this.state.body}
                   onChange={this.update("body")}
                 ></textarea>
