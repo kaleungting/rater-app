@@ -66,6 +66,13 @@ export default class MarkerManager {
     this.markers[marker.businessId].setMap(null);
     delete this.markers[marker.businessId];
   }
+
+  removeAllMarkers() {
+    Object.values(this.markers).forEach((marker) => {
+      marker.setMap(null);
+    });
+    this.markers = {};
+  }
 }
 
 // <div className="businessInfo">

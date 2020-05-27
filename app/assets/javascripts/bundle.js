@@ -547,8 +547,23 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var msp = function msp(state) {
+  var filtered;
+
+  if (state.ui.filters.bounds.northEast) {
+    var _state$ui$filters$bou = state.ui.filters.bounds,
+        northEast = _state$ui$filters$bou.northEast,
+        southWest = _state$ui$filters$bou.southWest;
+    filtered = Object.values(state.entities.businesses).filter(function (business) {
+      debugger;
+      return business.lng < northEast.lng && business.lat < northEast.lat && business.lng > southWest.lng && business.lat > southWest.lat;
+    });
+  } else {
+    filtered = Object.values(state.entities.businesses);
+  }
+
+  debugger;
   return {
-    businesses: Object.values(state.entities.businesses),
+    businesses: filtered,
     categories: Object.values(state.entities.categories)
   };
 };
@@ -1822,12 +1837,16 @@ var BusinessMap = /*#__PURE__*/function (_React$Component) {
 
       this.map = new google.maps.Map(this.mapNode, mapOptions);
       this.MarkerManager = new _util_marker_manager__WEBPACK_IMPORTED_MODULE_1__["default"](this.map);
+      this.updateMarker = false;
 
       if (this.props.match.path === "/businesses-filter") {
+        this.MarkerManager.removeAllMarkers();
         this.MarkerManager.updateMarkers(this.props.businesses);
       } else {
         if (this.props.businesses) {
+          this.MarkerManager.removeAllMarkers();
           this.idleBounds();
+          this.updateMarker = true;
           this.MarkerManager.updateMarkers(this.props.businesses);
         } else if (this.props.business) {
           this.MarkerManager.createMarkerFromBusiness(this.props.business);
@@ -1856,9 +1875,12 @@ var BusinessMap = /*#__PURE__*/function (_React$Component) {
             lng: west
           }
         };
-        debugger;
 
-        _this.props.updateFilter("bounds", bounds);
+        if (!_this.updateMarker) {
+          _this.props.updateFilter("bounds", bounds);
+        } else {
+          _this.updateMarker = false;
+        }
       });
     }
   }, {
@@ -1866,6 +1888,7 @@ var BusinessMap = /*#__PURE__*/function (_React$Component) {
     value: function componentDidUpdate(prevState) {
       if (prevState !== this.state) {
         if (this.props.businesses) {
+          this.MarkerManager.removeAllMarkers();
           this.MarkerManager.updateMarkers(this.props.businesses);
         } else if (this.props.business) {
           this.MarkerManager.createMarkerFromBusiness(this.props.business);
@@ -4289,6 +4312,14 @@ var MarkerManager = /*#__PURE__*/function () {
     value: function removeMarker(marker) {
       this.markers[marker.businessId].setMap(null);
       delete this.markers[marker.businessId];
+    }
+  }, {
+    key: "removeAllMarkers",
+    value: function removeAllMarkers() {
+      Object.values(this.markers).forEach(function (marker) {
+        marker.setMap(null);
+      });
+      this.markers = {};
     }
   }]);
 
