@@ -18,11 +18,17 @@ class BusinessMap extends React.Component {
     }
     this.map = new google.maps.Map(this.mapNode, mapOptions);
     this.MarkerManager = new MarkerManager(this.map);
+
+    this.updateMarker = false;
+
     if (this.props.match.path === "/businesses-filter") {
+      this.MarkerManager.removeAllMarkers();
       this.MarkerManager.updateMarkers(this.props.businesses);
     } else {
       if (this.props.businesses) {
+        this.MarkerManager.removeAllMarkers();
         this.idleBounds();
+        this.updateMarker = true;
         this.MarkerManager.updateMarkers(this.props.businesses);
       } else if (this.props.business) {
         this.MarkerManager.createMarkerFromBusiness(this.props.business);
@@ -37,8 +43,11 @@ class BusinessMap extends React.Component {
         northEast: { lat: north, lng: east },
         southWest: { lat: south, lng: west },
       };
-      debugger;
-      this.props.updateFilter("bounds", bounds);
+      if (!this.updateMarker) {
+        this.props.updateFilter("bounds", bounds);
+      } else {
+        this.updateMarker = false;
+      }
     });
   }
 
@@ -46,6 +55,7 @@ class BusinessMap extends React.Component {
     debugger;
     if (prevState !== this.state) {
       if (this.props.businesses) {
+        this.MarkerManager.removeAllMarkers();
         this.MarkerManager.updateMarkers(this.props.businesses);
       } else if (this.props.business) {
         this.MarkerManager.createMarkerFromBusiness(this.props.business);
