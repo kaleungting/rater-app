@@ -30,6 +30,11 @@ class SubNav extends React.Component {
     this.props
       .fetchBusinesses()
       .then(() => this.props.history.push("/businesses"));
+    this.setState({
+      query: "",
+      location: "",
+      price_range: "",
+    });
   }
 
   render() {
