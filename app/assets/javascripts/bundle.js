@@ -554,14 +554,12 @@ var msp = function msp(state) {
         northEast = _state$ui$filters$bou.northEast,
         southWest = _state$ui$filters$bou.southWest;
     filtered = Object.values(state.entities.businesses).filter(function (business) {
-      debugger;
       return business.lng < northEast.lng && business.lat < northEast.lat && business.lng > southWest.lng && business.lat > southWest.lat;
     });
   } else {
     filtered = Object.values(state.entities.businesses);
   }
 
-  debugger;
   return {
     businesses: filtered,
     categories: Object.values(state.entities.categories)
@@ -997,6 +995,11 @@ var SubNav = /*#__PURE__*/function (_React$Component) {
 
       this.props.fetchBusinesses().then(function () {
         return _this3.props.history.push("/businesses");
+      });
+      this.setState({
+        query: "",
+        location: "",
+        price_range: ""
       });
     }
   }, {
@@ -1806,10 +1809,15 @@ var BusinessMap = /*#__PURE__*/function (_React$Component) {
 
   var _super = _createSuper(BusinessMap);
 
-  function BusinessMap() {
+  function BusinessMap(props) {
+    var _this;
+
     _classCallCheck(this, BusinessMap);
 
-    return _super.apply(this, arguments);
+    _this = _super.call(this, props);
+    _this.idleBounds = _this.idleBounds.bind(_assertThisInitialized(_this));
+    _this.clickMap = _this.clickMap.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(BusinessMap, [{
@@ -1824,6 +1832,14 @@ var BusinessMap = /*#__PURE__*/function (_React$Component) {
             lng: this.props.business.lng
           },
           zoom: 15
+        };
+      } else if (this.props.match.path === "/businesses-search") {
+        mapOptions = {
+          center: {
+            lat: this.props.businesses[0].lat,
+            lng: this.props.businesses[0].lng
+          },
+          zoom: 13
         };
       } else {
         mapOptions = {
@@ -1842,11 +1858,17 @@ var BusinessMap = /*#__PURE__*/function (_React$Component) {
       if (this.props.match.path === "/businesses-filter") {
         this.MarkerManager.removeAllMarkers();
         this.MarkerManager.updateMarkers(this.props.businesses);
+      } else if (this.props.match.path === "/businesses-search") {
+        this.MarkerManager.removeAllMarkers();
+        this.clickMap();
+        this.idleBounds();
+        this.updateMarker = true;
+        this.MarkerManager.updateMarkers(this.props.businesses);
       } else {
         if (this.props.businesses) {
           this.MarkerManager.removeAllMarkers();
+          this.clickMap();
           this.idleBounds();
-          this.updateMarker = true;
           this.MarkerManager.updateMarkers(this.props.businesses);
         } else if (this.props.business) {
           this.MarkerManager.createMarkerFromBusiness(this.props.business);
@@ -1856,14 +1878,13 @@ var BusinessMap = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "idleBounds",
     value: function idleBounds() {
-      var _this = this;
-
-      google.maps.event.addListener(this.map, "idle", function () {
-        var _this$map$getBounds$t = _this.map.getBounds().toJSON(),
-            north = _this$map$getBounds$t.north,
-            south = _this$map$getBounds$t.south,
-            east = _this$map$getBounds$t.east,
-            west = _this$map$getBounds$t.west;
+      var that = this;
+      google.maps.event.addListener(that.map, "idle", function () {
+        var _that$map$getBounds$t = that.map.getBounds().toJSON(),
+            north = _that$map$getBounds$t.north,
+            south = _that$map$getBounds$t.south,
+            east = _that$map$getBounds$t.east,
+            west = _that$map$getBounds$t.west;
 
         var bounds = {
           northEast: {
@@ -1876,26 +1897,48 @@ var BusinessMap = /*#__PURE__*/function (_React$Component) {
           }
         };
 
-        if (!_this.updateMarker) {
-          _this.props.updateFilter("bounds", bounds);
+        if (!that.updateMarker || that.updateMarker === undefined) {
+          that.props.updateFilter("bounds", bounds);
+          that.props.history.push("/businesses");
         } else {
-          _this.updateMarker = false;
+          that.updateMarker = false;
         }
+      });
+    }
+  }, {
+    key: "clickMap",
+    value: function clickMap() {
+      var that = this;
+      google.maps.event.addListener(that.map, "dragstart", function () {
+        that.updateMarker = false;
       });
     }
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevState) {
-      debugger;
-
       if (prevState !== this.state) {
-        if (this.props.businesses) {
+        if (this.props.businesses && this.props.match.path === "/businesses-search") {
           this.MarkerManager.removeAllMarkers();
+          this.updateMarker = true;
+          this.MarkerManager.updateMarkers(this.props.businesses);
+
+          if (this.props.businesses.length !== 0) {
+            this.moveMap(this.props.businesses[0].lat, this.props.businesses[0].lng);
+          }
+        } else if (this.props.businesses) {
+          this.MarkerManager.removeAllMarkers();
+          this.updateMarker = true;
           this.MarkerManager.updateMarkers(this.props.businesses);
         } else if (this.props.business) {
           this.MarkerManager.createMarkerFromBusiness(this.props.business);
         }
       }
+    }
+  }, {
+    key: "moveMap",
+    value: function moveMap(lat, lng) {
+      var center = new google.maps.LatLng(lat, lng);
+      this.map.panTo(center);
     }
   }, {
     key: "render",
@@ -2831,6 +2874,11 @@ var HomeSearchBar = /*#__PURE__*/function (_React$Component) {
       this.props.searchBusinesses(this.state).then(function () {
         return _this3.props.history.push("/businesses-search");
       });
+      this.setState({
+        query: "",
+        location: "",
+        price_range: ""
+      });
     }
   }, {
     key: "render",
@@ -2983,6 +3031,11 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
       e.preventDefault();
       this.props.searchBusinesses(this.state).then(function () {
         return _this3.props.history.push("/businesses-search");
+      });
+      this.setState({
+        query: "",
+        location: "",
+        price_range: ""
       });
     }
   }, {

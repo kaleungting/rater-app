@@ -89,6 +89,7 @@ div.business-img img {
 ul.business-price-category {
   display: flex;
   align-items: center;
+  color: #666666;
 }
 
 .fa-circle {
@@ -98,9 +99,6 @@ ul.business-price-category {
 
 ul.business-price-category li {
   padding: 0px 4px;
-}
-ul.business-price-category li:hover {
-  font-weight: 550;
 }
 
 .business-address ul {

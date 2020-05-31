@@ -23,6 +23,11 @@ class SearchBar extends React.Component {
     this.props
       .searchBusinesses(this.state)
       .then(() => this.props.history.push("/businesses-search"));
+    this.setState({
+      query: "",
+      location: "",
+      price_range: "",
+    });
   }
 
   render() {

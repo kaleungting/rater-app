@@ -90,6 +90,7 @@ ul.biz-price-category {
   flex-wrap: wrap;
   align-items: center;
   height: 30px;
+  color: #666666;
 }
 
 .fa-circle {
@@ -101,9 +102,6 @@ ul.biz-price-category li {
   padding: 0px 4px;
   margin: 0px;
   font-size: 14px;
-}
-ul.biz-price-category li:hover {
-  font-weight: 550;
 }
 
 .biz-address ul {

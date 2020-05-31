@@ -12,7 +12,6 @@ const msp = (state) => {
   if (state.ui.filters.bounds.northEast) {
     let { northEast, southWest } = state.ui.filters.bounds;
     filtered = Object.values(state.entities.businesses).filter((business) => {
-      debugger;
       return (
         business.lng < northEast.lng &&
         business.lat < northEast.lat &&
@@ -23,7 +22,6 @@ const msp = (state) => {
   } else {
     filtered = Object.values(state.entities.businesses);
   }
-  debugger;
   return {
     businesses: filtered,
     categories: Object.values(state.entities.categories),
