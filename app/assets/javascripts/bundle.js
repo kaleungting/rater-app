@@ -90,7 +90,7 @@
 /*!**********************************************!*\
   !*** ./frontend/actions/business_actions.js ***!
   \**********************************************/
-/*! exports provided: RECEIVE_ALL_BUSINESSES, RECEIVE_BUSINESS, CLEAR_BUSINESSES, clearBusinesses, fetchBusinesses, fetchBusiness, searchBusinesses */
+/*! exports provided: RECEIVE_ALL_BUSINESSES, RECEIVE_BUSINESS, CLEAR_BUSINESSES, UPDATE_KEYWORD, clearBusinesses, receiveKeyword, fetchBusinesses, fetchBusiness, searchBusinesses */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -98,7 +98,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ALL_BUSINESSES", function() { return RECEIVE_ALL_BUSINESSES; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_BUSINESS", function() { return RECEIVE_BUSINESS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLEAR_BUSINESSES", function() { return CLEAR_BUSINESSES; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPDATE_KEYWORD", function() { return UPDATE_KEYWORD; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearBusinesses", function() { return clearBusinesses; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveKeyword", function() { return receiveKeyword; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchBusinesses", function() { return fetchBusinesses; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchBusiness", function() { return fetchBusiness; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "searchBusinesses", function() { return searchBusinesses; });
@@ -106,6 +108,7 @@ __webpack_require__.r(__webpack_exports__);
 var RECEIVE_ALL_BUSINESSES = "RECEIVE_ALL_BUSINESSES";
 var RECEIVE_BUSINESS = "RECEIVE_BUSINESS";
 var CLEAR_BUSINESSES = "CLEAR_BUSINESSES";
+var UPDATE_KEYWORD = "UPDATE_KEYWORD";
 
 
 var receiveAllBusinesses = function receiveAllBusinesses(response) {
@@ -129,6 +132,12 @@ var receiveBusiness = function receiveBusiness(response) {
 var clearBusinesses = function clearBusinesses() {
   return {
     type: CLEAR_BUSINESSES
+  };
+};
+var receiveKeyword = function receiveKeyword(keyword) {
+  return {
+    type: UPDATE_KEYWORD,
+    keyword: keyword
   };
 }; // export const fetchBusinesses = (bounds) => {
 //   return (dispatch) => {
@@ -1833,13 +1842,14 @@ var BusinessMap = /*#__PURE__*/function (_React$Component) {
           },
           zoom: 15
         };
-      } else if (this.props.match.path === "/businesses-search") {
+      } else if (this.props.match.path === "/businesses-search" && this.props.businesses.length !== 0) {
+        debugger;
         mapOptions = {
           center: {
             lat: this.props.businesses[0].lat,
             lng: this.props.businesses[0].lng
           },
-          zoom: 13
+          zoom: 15
         };
       } else {
         mapOptions = {
@@ -3029,6 +3039,11 @@ var SearchBar = /*#__PURE__*/function (_React$Component) {
       var _this3 = this;
 
       e.preventDefault();
+
+      if (this.state.location !== "") {
+        this.props.updateKeyword(this.state.location);
+      }
+
       this.props.searchBusinesses(this.state).then(function () {
         return _this3.props.history.push("/businesses-search");
       });
@@ -3937,6 +3952,41 @@ var filtersReducer = function filtersReducer() {
 
 /***/ }),
 
+/***/ "./frontend/reducers/keyword_reducer.js":
+/*!**********************************************!*\
+  !*** ./frontend/reducers/keyword_reducer.js ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_business_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/business_actions */ "./frontend/actions/business_actions.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+var defaultKeyword = Object.freeze({
+  keyword: {}
+});
+
+var keywordReducer = function keywordReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultKeyword;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  if (action.type === _actions_business_actions__WEBPACK_IMPORTED_MODULE_0__["UPDATE_KEYWORD"]) {
+    var newKeyword = _defineProperty({}, action.keyword, action.value);
+
+    return Object.assign({}, state, newKeyword);
+  } else {
+    return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (keywordReducer);
+
+/***/ }),
+
 /***/ "./frontend/reducers/review_errors_reducer.js":
 /*!****************************************************!*\
   !*** ./frontend/reducers/review_errors_reducer.js ***!
@@ -4180,10 +4230,13 @@ var sessionReducer = function sessionReducer() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _filter_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./filter_reducer */ "./frontend/reducers/filter_reducer.js");
+/* harmony import */ var _keyword_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./keyword_reducer */ "./frontend/reducers/keyword_reducer.js");
+
 
 
 var uiReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  filters: _filter_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
+  filters: _filter_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
+  keyword: _keyword_reducer__WEBPACK_IMPORTED_MODULE_3__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (uiReducer);
 

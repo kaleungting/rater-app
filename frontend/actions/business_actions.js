@@ -1,6 +1,7 @@
 export const RECEIVE_ALL_BUSINESSES = "RECEIVE_ALL_BUSINESSES";
 export const RECEIVE_BUSINESS = "RECEIVE_BUSINESS";
 export const CLEAR_BUSINESSES = "CLEAR_BUSINESSES";
+export const UPDATE_KEYWORD = "UPDATE_KEYWORD";
 
 import * as BusinessApiUtil from "../util/business_api_util";
 
@@ -24,6 +25,10 @@ export const clearBusinesses = () => ({
   type: CLEAR_BUSINESSES,
 });
 
+export const receiveKeyword = (keyword) => ({
+  type: UPDATE_KEYWORD,
+  keyword,
+});
 // export const fetchBusinesses = (bounds) => {
 //   return (dispatch) => {
 //     return BusinessApiUtil.fetchBusinesses(bounds).then((response) => {

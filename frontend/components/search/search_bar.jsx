@@ -20,6 +20,9 @@ class SearchBar extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    if (this.state.location !== "") {
+      this.props.updateKeyword(this.state.location);
+    }
     this.props
       .searchBusinesses(this.state)
       .then(() => this.props.history.push("/businesses-search"));

@@ -17,13 +17,17 @@ class BusinessMap extends React.Component {
         center: { lat: this.props.business.lat, lng: this.props.business.lng },
         zoom: 15,
       };
-    } else if (this.props.match.path === "/businesses-search") {
+    } else if (
+      this.props.match.path === "/businesses-search" &&
+      this.props.businesses.length !== 0
+    ) {
+      debugger;
       mapOptions = {
         center: {
           lat: this.props.businesses[0].lat,
           lng: this.props.businesses[0].lng,
         },
-        zoom: 13,
+        zoom: 15,
       };
     } else {
       mapOptions = {
