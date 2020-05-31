@@ -1909,7 +1909,8 @@ var BusinessMap = /*#__PURE__*/function (_React$Component) {
     key: "clickMap",
     value: function clickMap() {
       var that = this;
-      google.maps.event.addListener(that.map, "bounds_changed", function () {
+      google.maps.event.addListener(that.map, "dragend", function () {
+        that.props.history.push("/businesses");
         that.updateMarker = false;
       });
     }
