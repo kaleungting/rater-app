@@ -76,7 +76,7 @@ class BusinessMap extends React.Component {
 
   clickMap() {
     let that = this;
-    google.maps.event.addListener(that.map, "dragstart", () => {
+    google.maps.event.addListener(that.map, "bounds_changed", () => {
       that.updateMarker = false;
     });
   }
