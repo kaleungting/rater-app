@@ -152,7 +152,7 @@ until i == 4 do
         body: Faker::Restaurant.review, 
         author_id: i, 
         business_id: y, 
-        rating: rand(1..2))
+        rating: rand(4..5))
         y+=1
     end
     i+=1

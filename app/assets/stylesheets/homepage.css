@@ -43,7 +43,7 @@
   border: none;
   outline: none;
   font-size: 18px;
-  color: #a3a3a3;
+  color: black;
 }
 .home-location-container span {
   background-color: white;
@@ -58,7 +58,7 @@
   border: none;
   outline: none;
   font-size: 18px;
-  color: #a3a3a3;
+  color: black;
 }
 
 .home-btn-search-submit {
