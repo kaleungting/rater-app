@@ -1816,7 +1816,7 @@ var BusinessMap = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.idleBounds = _this.idleBounds.bind(_assertThisInitialized(_this));
-    _this.clickMap = _this.clickMap.bind(_assertThisInitialized(_this));
+    _this.interactMap = _this.interactMap.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -1860,15 +1860,36 @@ var BusinessMap = /*#__PURE__*/function (_React$Component) {
         this.MarkerManager.updateMarkers(this.props.businesses);
       } else if (this.props.match.path === "/businesses-search") {
         this.MarkerManager.removeAllMarkers();
-        this.clickMap();
+        this.interactMap();
         this.idleBounds();
         this.updateMarker = true;
         this.MarkerManager.updateMarkers(this.props.businesses);
       } else {
         if (this.props.businesses) {
           this.MarkerManager.removeAllMarkers();
-          this.clickMap();
+          this.interactMap();
           this.idleBounds();
+          this.MarkerManager.updateMarkers(this.props.businesses);
+        } else if (this.props.business) {
+          this.MarkerManager.createMarkerFromBusiness(this.props.business);
+        }
+      }
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevState) {
+      if (prevState !== this.state) {
+        if (this.props.businesses && this.props.match.path === "/businesses-search") {
+          this.MarkerManager.removeAllMarkers();
+          this.updateMarker = true;
+          this.MarkerManager.updateMarkers(this.props.businesses);
+
+          if (this.props.businesses.length !== 0) {
+            this.moveMap(this.props.businesses[0].lat, this.props.businesses[0].lng);
+          }
+        } else if (this.props.businesses) {
+          this.MarkerManager.removeAllMarkers();
+          this.updateMarker = true;
           this.MarkerManager.updateMarkers(this.props.businesses);
         } else if (this.props.business) {
           this.MarkerManager.createMarkerFromBusiness(this.props.business);
@@ -1906,34 +1927,13 @@ var BusinessMap = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
-    key: "clickMap",
-    value: function clickMap() {
+    key: "interactMap",
+    value: function interactMap() {
       var that = this;
       google.maps.event.addListener(that.map, "dragend", function () {
         that.props.history.push("/businesses");
         that.updateMarker = false;
       });
-    }
-  }, {
-    key: "componentDidUpdate",
-    value: function componentDidUpdate(prevState) {
-      if (prevState !== this.state) {
-        if (this.props.businesses && this.props.match.path === "/businesses-search") {
-          this.MarkerManager.removeAllMarkers();
-          this.updateMarker = true;
-          this.MarkerManager.updateMarkers(this.props.businesses);
-
-          if (this.props.businesses.length !== 0) {
-            this.moveMap(this.props.businesses[0].lat, this.props.businesses[0].lng);
-          }
-        } else if (this.props.businesses) {
-          this.MarkerManager.removeAllMarkers();
-          this.updateMarker = true;
-          this.MarkerManager.updateMarkers(this.props.businesses);
-        } else if (this.props.business) {
-          this.MarkerManager.createMarkerFromBusiness(this.props.business);
-        }
-      }
     }
   }, {
     key: "moveMap",
@@ -4349,10 +4349,17 @@ var MarkerManager = /*#__PURE__*/function () {
       var ratingClass = "stars-medium-".concat(Math.floor(business.average_rating * 2)) + " stars-medium";
       var contentString = "<div class=\"businessInfo\" id=\"biz-".concat(business.id, "\">\n                            <div class=\"info-photo-container\">\n                              <img class=\"info-photo\" src=\"").concat(business.profile_picture, "\"/>\n                            </div>\n                            <p class=\"info-title\">").concat(business.name, "</p>\n                            <div class=\"business-rating\">\n                              <img class=\"").concat(ratingClass, "\"\n                                  src=\"https://i.imgur.com/UkZkm0D.png\">").concat(business.reviewIds.length, "</img>\n                          </div>");
       var infoWindow = new google.maps.InfoWindow({
-        content: contentString
+        content: contentString,
+        disableAutoPan: true
       });
       marker.addListener("mouseover", function () {
         infoWindow.open(this.map, marker);
+        var iw_container = $(".gm-style-iw").parent();
+        iw_container.stop().hide();
+        iw_container.fadeIn(400);
+      });
+      marker.addListener("mouseout", function () {
+        infoWindow.close();
       });
       $(document).on("mouseleave", "div.businessInfo", function () {
         infoWindow.close(this.map, marker);
@@ -4382,11 +4389,7 @@ var MarkerManager = /*#__PURE__*/function () {
   }]);
 
   return MarkerManager;
-}(); // <div className="businessInfo">
-//   <img className="info-photo" src="business.profile_picture" />
-//   <p className="info-title">business.name</p>
-// </div>;
-
+}();
 
 
 

@@ -11,7 +11,7 @@ export default class MarkerManager {
     businesses.forEach((newBusiness, index) =>
       this.createMarkerFromBusiness(newBusiness, index + 1)
     );
-  
+
     Object.keys(this.markers)
       .filter((businessId) => !businessesObj[businessId])
       .forEach((businessId) => this.removeMarker(this.markers[businessId]));
@@ -43,10 +43,18 @@ export default class MarkerManager {
 
     const infoWindow = new google.maps.InfoWindow({
       content: contentString,
+      disableAutoPan: true,
     });
 
     marker.addListener("mouseover", function () {
       infoWindow.open(this.map, marker);
+      const iw_container = $(".gm-style-iw").parent();
+      iw_container.stop().hide();
+      iw_container.fadeIn(400);
+    });
+
+    marker.addListener("mouseout", function () {
+      infoWindow.close();
     });
 
     $(document).on("mouseleave", "div.businessInfo", function () {
@@ -75,8 +83,3 @@ export default class MarkerManager {
     this.markers = {};
   }
 }
-
-// <div className="businessInfo">
-//   <img className="info-photo" src="business.profile_picture" />
-//   <p className="info-title">business.name</p>
-// </div>;

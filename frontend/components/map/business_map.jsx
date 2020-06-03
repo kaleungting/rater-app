@@ -7,7 +7,7 @@ class BusinessMap extends React.Component {
     super(props);
 
     this.idleBounds = this.idleBounds.bind(this);
-    this.clickMap = this.clickMap.bind(this);
+    this.interactMap = this.interactMap.bind(this);
   }
 
   componentDidMount() {
@@ -40,46 +40,20 @@ class BusinessMap extends React.Component {
       this.MarkerManager.updateMarkers(this.props.businesses);
     } else if (this.props.match.path === "/businesses-search") {
       this.MarkerManager.removeAllMarkers();
-      this.clickMap();
+      this.interactMap();
       this.idleBounds();
       this.updateMarker = true;
       this.MarkerManager.updateMarkers(this.props.businesses);
     } else {
       if (this.props.businesses) {
         this.MarkerManager.removeAllMarkers();
-        this.clickMap();
+        this.interactMap();
         this.idleBounds();
         this.MarkerManager.updateMarkers(this.props.businesses);
       } else if (this.props.business) {
         this.MarkerManager.createMarkerFromBusiness(this.props.business);
       }
     }
-  }
-
-  idleBounds() {
-    let that = this;
-    google.maps.event.addListener(that.map, "idle", () => {
-      const { north, south, east, west } = that.map.getBounds().toJSON();
-      const bounds = {
-        northEast: { lat: north, lng: east },
-        southWest: { lat: south, lng: west },
-      };
-
-      if (!that.updateMarker || that.updateMarker === undefined) {
-        that.props.updateFilter("bounds", bounds);
-        that.props.history.push("/businesses");
-      } else {
-        that.updateMarker = false;
-      }
-    });
-  }
-
-  clickMap() {
-    let that = this;
-    google.maps.event.addListener(that.map, "dragend", () => {
-      that.props.history.push("/businesses");
-      that.updateMarker = false;
-    });
   }
 
   componentDidUpdate(prevState) {
@@ -105,6 +79,32 @@ class BusinessMap extends React.Component {
         this.MarkerManager.createMarkerFromBusiness(this.props.business);
       }
     }
+  }
+
+  idleBounds() {
+    let that = this;
+    google.maps.event.addListener(that.map, "idle", () => {
+      const { north, south, east, west } = that.map.getBounds().toJSON();
+      const bounds = {
+        northEast: { lat: north, lng: east },
+        southWest: { lat: south, lng: west },
+      };
+
+      if (!that.updateMarker || that.updateMarker === undefined) {
+        that.props.updateFilter("bounds", bounds);
+        that.props.history.push("/businesses");
+      } else {
+        that.updateMarker = false;
+      }
+    });
+  }
+
+  interactMap() {
+    let that = this;
+    google.maps.event.addListener(that.map, "dragend", () => {
+      that.props.history.push("/businesses");
+      that.updateMarker = false;
+    });
   }
 
   moveMap(lat, lng) {
