@@ -6,7 +6,9 @@
     "@babel/preset-env": "^7.9.0",
     "@babel/preset-react": "^7.9.4",
     "babel-loader": "^8.1.0",
-    "react": "^16.13.1",
+    "chokidar": "^3.5.1",
+    "fsevents": "^2.3.2",
+    "react": "^16.14.0",
     "react-dom": "^16.13.1",
     "react-logger": "^1.1.0",
     "react-redux": "^7.2.0",
@@ -26,10 +28,9 @@
     "test": "test"
   },
   "engines": {
-    "node": "10.13.0",
-    "npm": "6.9.0"
+    "node": "15.5.1",
+    "npm": "7.3.0"
   },
-  "devDependencies": {},
   "scripts": {
     "postinstall": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1",
