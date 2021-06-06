@@ -7,11 +7,10 @@ class Api::ReviewsController < ApplicationController
 
     def create 
         @review = current_user.reviews.new(review_params)
-        if @review
-            @review.save!
+        if @review.save
             render :show
         else
-            render @review.errors.full_messages, status: 422
+            render json: @review.errors.full_messages, status: 422
         end
     end
 

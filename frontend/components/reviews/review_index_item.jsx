@@ -10,7 +10,7 @@ class ReviewIndexItem extends React.Component {
   deleteReview() {
     this.props
       .deleteReview(this.props.review)
-      .then(() => this.props.fetchBusiness(this.props.review.business_id));
+      .then(() => this.props.fetchBusiness(this.props.review.business_id))
   }
 
   render() {
@@ -26,8 +26,8 @@ class ReviewIndexItem extends React.Component {
           </Link>
         </li>
       ) : (
-        <li></li>
-      );
+          <li></li>
+        );
 
     const deleteReview =
       review.author_id === parseInt(Object.keys(currentUser)) ? (
@@ -35,8 +35,8 @@ class ReviewIndexItem extends React.Component {
           <i className="material-icons">delete</i>
         </button>
       ) : (
-        <div></div>
-      );
+          <div></div>
+        );
 
     return (
       <div className="business-review-container">

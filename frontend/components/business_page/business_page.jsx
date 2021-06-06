@@ -7,6 +7,10 @@ import ReviewIndexContainer from "../reviews/review_index_container";
 class BusinessPage extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      hasReview: false,
+      businessId: this.props.businessId
+    };
   }
 
   componentDidMount() {
@@ -26,10 +30,12 @@ class BusinessPage extends React.Component {
   }
 
   render() {
-    const { business, categories } = this.props;
+    const { business, categories, hasReview, reviewId } = this.props;
+
     if (!business) {
       return null;
     }
+
     let photosList;
     if (business.photos) {
       photosList = business.photos.map((photo, idx) => {
@@ -93,10 +99,16 @@ class BusinessPage extends React.Component {
                 </div>
               </div>
               <div className="top-header-right">
-                <Link to={`/biz/${business.id}/reviews/new`}>
-                  <i className="fas fa-star"></i>
-                  Write a Review
-                </Link>
+                {hasReview
+                  ? <Link to={`/biz/${business.id}/reviews/${reviewId}/edit`}>
+                    <i className="fas fa-star"></i>
+                      Edit a Review
+                    </Link>
+                  : <Link to={`/biz/${business.id}/reviews/new`}>
+                    <i className="fas fa-star"></i>
+                      Write a Review
+                    </Link>
+                }
                 <div className="business-btns">
                   <button>
                     <i className="material-icons">add_a_photo</i>

@@ -135,8 +135,7 @@ hr {
   justify-content: center;
   padding: 10px;
   font-size: 14px;
-  margin: 0 auto;
-  margin-top: 20px;
+  margin: 20px auto;
 }
 
 .errors-container ul {

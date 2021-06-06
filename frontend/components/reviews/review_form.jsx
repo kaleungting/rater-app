@@ -91,17 +91,17 @@ class ReviewForm extends React.Component {
           <div
             className={this.props.errors.length === 0 ? "" : "errors-container"}
           >
-            <ul>
-              {errors.map((error, idx) => (
-                <li key={idx}>{error}.</li>
-              ))}
-            </ul>
             <div className="error-icon">
               <i
                 onClick={this.handleClearErrors}
                 className={this.props.errors.length === 0 ? "" : "fas fa-times"}
               />
             </div>
+            <ul>
+              {errors.map((error, idx) => (
+                <li key={idx}>{error}.</li>
+              ))}
+            </ul>
           </div>
           <div>
             <form onSubmit={this.handleSubmit}>

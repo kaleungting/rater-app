@@ -203,21 +203,21 @@ until i == 21 do
 end
 
 
-#currylane
+# #currylane
 Business.find(1).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/curry_lane/curry_lane_profile_pic.jpg'), filename: 'cl_pp.jpg')
 Business.find(1).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/curry_lane/cl_photo5.jpg'), filename: 'cl_p2.jpg')
 Business.find(1).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/curry_lane/cl_photo6.jpg'), filename: 'cl_p3.jpg')
 Business.find(1).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/curry_lane/cl_photo4.jpg'), filename: 'cl_p4.jpg')
 Business.find(1).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/curry_lane/cl_photo2.jpg'), filename: 'cl_p5.jpg')
 
-#mfc
+# #mfc
 Business.find(2).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/mfc/mfc_profile_picture.jpg'), filename: 'mfcpp.jpg')
 Business.find(2).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/mfc/mfc_photo1.jpg'), filename: 'mfc1.jpg')
 Business.find(2).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/mfc/mfc_photo2.jpg'), filename: 'mfc2.jpg')
 Business.find(2).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/mfc/mfc_photo3.jpg'), filename: 'mfc3.jpg')
 Business.find(2).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/mfc/mfc4.jpg'), filename: 'mfc4.jpg')
 
-#thaison
+# #thaison
 Business.find(3).profile_picture.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/thai_son/ts_profile_pic.jpg'), filename: 'ts.jpg')
 Business.find(3).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/thai_son/ts_photo1.jpg'), filename: 'ts1.jpg')
 Business.find(3).photos.attach(io: open('https://rater-app-seed.s3.amazonaws.com/businesses/thai_son/ts_photo2.jpg'), filename: 'ts2.jpg')
