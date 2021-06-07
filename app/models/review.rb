@@ -13,8 +13,7 @@
 class Review < ApplicationRecord
 
     validates :body, :author_id, :business_id, presence: { message: "can't be blank" }
-    validates :author_id, uniqueness: { scope: :business_id }
-    # validates :rating, inclusion: { in: 1..5}, :message => "Rating can't be blank"
+    validates :author_id, uniqueness: { scope: :business_id, :message => "already has a review" }
     validates :rating, :inclusion => { :in => 1..5, :message => "can't be blank" }
 
 
